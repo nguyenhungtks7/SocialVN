@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\SocialVN.API.props" />
+</Project>
