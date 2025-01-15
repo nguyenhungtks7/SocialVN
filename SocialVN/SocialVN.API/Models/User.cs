@@ -16,7 +16,7 @@
 
         // Thuộc tính điều hướng
         public ICollection<Post> Posts{ get; set; }
-        public ICollection<Friendship> Friendships { get; set; }
+        public ICollection<Friendship> Friendships { get; set; } 
         public ICollection<Report> Reports { get; set; }
     }
 }

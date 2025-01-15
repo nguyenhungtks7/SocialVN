@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SocialVN.API.Data;
 
@@ -11,9 +12,11 @@ using SocialVN.API.Data;
 namespace SocialVN.API.Migrations
 {
     [DbContext(typeof(SocialVNDbContext))]
-    partial class SocialVNDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250115015120_sua lai tiep")]
+    partial class sualaitiep
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,35 +66,42 @@ namespace SocialVN.API.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasComment("ID duy nhất của yêu cầu kết bạn (UUID)");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2")
                         .HasComment("Thời gian gửi yêu cầu");
 
                     b.Property<Guid>("ReceiverId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasComment("ID của người nhận yêu cầu");
 
                     b.Property<Guid>("RequesterId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasComment("ID của người gửi yêu cầu");
 
                     b.Property<string>("Status")
                         .IsRequired()
                         .ValueGeneratedOnAdd()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)")
+                        .HasColumnType("nvarchar(max)")
                         .HasDefaultValue("pending")
-                        .HasComment("Trạng thái của yêu cầu kết bạn (pending/accepted/declined)");
+                        .HasComment("Trạng thái của yêu cầu (pending/accepted/declined)");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2")
                         .HasComment("Thời gian cập nhật trạng thái yêu cầu");
+
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ReceiverId");
 
                     b.HasIndex("RequesterId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Friendships", (string)null);
                 });
@@ -303,14 +313,18 @@ namespace SocialVN.API.Migrations
                     b.HasOne("SocialVN.API.Models.User", "Receiver")
                         .WithMany()
                         .HasForeignKey("ReceiverId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("SocialVN.API.Models.User", "Requester")
-                        .WithMany("Friendships")
+                        .WithMany()
                         .HasForeignKey("RequesterId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
+
+                    b.HasOne("SocialVN.API.Models.User", null)
+                        .WithMany("Friendships")
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Receiver");
 

@@ -10,13 +10,12 @@ namespace SocialVN.API.Data
         {
             
         }
-        DbSet<Comment> comments;
-        DbSet<User> users;
-        DbSet<Friendship> friendships;
-        DbSet<Like> like;
-        DbSet<Post> posts;
-        DbSet<Report> reports;
-
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Friendship> Friendships { get; set; }
+        public DbSet<Like> Likes { get; set; }
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<Report> Reports { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Cấu hình bảng User
@@ -37,7 +36,6 @@ namespace SocialVN.API.Data
                 entity.Property(u => u.UpdatedAt).HasComment("Thời gian cập nhật tài khoản");
             });
 
-
             // Cấu hình bảng Post
             modelBuilder.Entity<Post>(entity =>
             {
@@ -55,7 +53,6 @@ namespace SocialVN.API.Data
                       .HasForeignKey(p => p.UserId)
                       .OnDelete(DeleteBehavior.Cascade);
             });
-
 
             // Cấu hình bảng Comment
             modelBuilder.Entity<Comment>(entity =>
@@ -79,7 +76,6 @@ namespace SocialVN.API.Data
                       .HasForeignKey(c => c.UserId)
                       .OnDelete(DeleteBehavior.Cascade);
             });
-
 
             // Cấu hình bảng Like
             modelBuilder.Entity<Like>(entity =>
@@ -105,30 +101,37 @@ namespace SocialVN.API.Data
 
 
             // Cấu hình bảng Friendship
-            // Cấu hình bảng Friendship
             modelBuilder.Entity<Friendship>(entity =>
             {
                 entity.ToTable("Friendships");
+
                 entity.HasKey(f => f.Id);
-                entity.Property(f => f.Id).HasComment("ID duy nhất của yêu cầu kết bạn (UUID)");
-                entity.Property(f => f.RequesterId).IsRequired().HasComment("ID của người gửi yêu cầu");
-                entity.Property(f => f.ReceiverId).IsRequired().HasComment("ID của người nhận yêu cầu");
-                entity.Property(f => f.Status).IsRequired().HasDefaultValue("pending").HasComment("Trạng thái của yêu cầu (pending/accepted/declined)");
-                entity.Property(f => f.CreatedAt).IsRequired().HasComment("Thời gian gửi yêu cầu");
-                entity.Property(f => f.UpdatedAt).HasComment("Thời gian cập nhật trạng thái yêu cầu");
 
+                entity.Property(f => f.Status)
+                      .IsRequired()
+                      .HasDefaultValue("pending")
+                      .HasMaxLength(50)
+                      .HasComment("Trạng thái của yêu cầu kết bạn (pending/accepted/declined)");
+
+                entity.Property(f => f.CreatedAt)
+                      .IsRequired()
+                      .HasComment("Thời gian gửi yêu cầu");
+
+                entity.Property(f => f.UpdatedAt)
+                      .HasComment("Thời gian cập nhật trạng thái yêu cầu");
+
+                // Cấu hình mối quan hệ giữa Friendship và User (Requester)
                 entity.HasOne(f => f.Requester)
-                      .WithMany()
+                      .WithMany(u => u.Friendships) // Nếu User có nhiều Friendship
                       .HasForeignKey(f => f.RequesterId)
-                      .OnDelete(DeleteBehavior.NoAction); // Thay đổi từ Cascade sang NoAction
+                      .OnDelete(DeleteBehavior.Restrict); // Tránh xóa dữ liệu liên quan
 
+                // Cấu hình mối quan hệ giữa Friendship và User (Receiver)
                 entity.HasOne(f => f.Receiver)
                       .WithMany()
                       .HasForeignKey(f => f.ReceiverId)
-                      .OnDelete(DeleteBehavior.NoAction); // Thay đổi từ Cascade sang NoAction
+                      .OnDelete(DeleteBehavior.Restrict); // Tránh xóa dữ liệu liên quan
             });
-
-
 
             // Cấu hình bảng Report
             modelBuilder.Entity<Report>(entity =>
@@ -151,7 +154,6 @@ namespace SocialVN.API.Data
                       .HasForeignKey(r => r.UserId)
                       .OnDelete(DeleteBehavior.Cascade);
             });
-
         }
     }
 }
