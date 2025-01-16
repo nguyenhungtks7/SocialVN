@@ -19,6 +19,7 @@ namespace SocialVN.API.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
+            // Cầu hình
             // Cấu hình bảng User
             modelBuilder.Entity<User>(entity =>
             {
