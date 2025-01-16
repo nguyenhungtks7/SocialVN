@@ -10,10 +10,8 @@
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
 
-        //Thuộc tính điều hướng
-        public User Requester { get; set; } // Người yêu cầu
-        public User Receiver { get; set; } // Người nhận yêu cầu
-
-
+        // Thuộc tính điều hướng
+        public User Requester { get; set; }
+        public User Receiver { get; set; }
     }
 }

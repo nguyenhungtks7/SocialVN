@@ -15,8 +15,11 @@
         public DateTime UpdatedAt { get; set; }
 
         // Thuộc tính điều hướng
-        public ICollection<Post> Posts{ get; set; }
-        public ICollection<Friendship> Friendships { get; set; } 
-        public ICollection<Report> Reports { get; set; }
+        public ICollection<Post> Posts { get; set; } = new List<Post>();
+        public ICollection<Friendship> FriendshipsAsRequester { get; set; } = new List<Friendship>();
+        public ICollection<Friendship> FriendshipsAsReceiver { get; set; } = new List<Friendship>();
+        public ICollection<Report> Reports { get; set; } = new List<Report>();
+        public ICollection<Comment> Comments { get; set; } = new List<Comment>();
+        public ICollection<Like> Likes { get; set; } = new List<Like>();
     }
 }

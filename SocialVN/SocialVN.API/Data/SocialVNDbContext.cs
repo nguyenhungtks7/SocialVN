@@ -18,6 +18,7 @@ namespace SocialVN.API.Data
         public DbSet<Report> Reports { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
             // Cấu hình bảng User
             modelBuilder.Entity<User>(entity =>
             {
@@ -66,15 +67,18 @@ namespace SocialVN.API.Data
                 entity.Property(c => c.CreatedAt).IsRequired().HasComment("Thời gian tạo comment");
                 entity.Property(c => c.UpdatedAt).HasComment("Thời gian cập nhật comment");
 
+                // Cấu hình quan hệ với Post (OnDelete Cascade)
                 entity.HasOne(c => c.Post)
                       .WithMany(p => p.Comments)
                       .HasForeignKey(c => c.PostId)
-                      .OnDelete(DeleteBehavior.Cascade);
+                      .OnDelete(DeleteBehavior.Restrict); // Xóa comment khi xóa bài viết
 
+                // Cấu hình quan hệ với User (OnDelete No Action)
                 entity.HasOne(c => c.User)
-                      .WithMany()
-                      .HasForeignKey(c => c.UserId)
-                      .OnDelete(DeleteBehavior.Cascade);
+                       .WithMany(u => u.Comments)  // Một User có thể có nhiều Comment
+                    .HasForeignKey(c => c.UserId) // Khoá ngoại liên kết với bảng User
+                      .OnDelete(DeleteBehavior.Restrict); // Không làm gì khi xóa người dùng
+            
             });
 
             // Cấu hình bảng Like
@@ -91,20 +95,20 @@ namespace SocialVN.API.Data
                 entity.HasOne(l => l.Post)
                       .WithMany(p => p.Likes)
                       .HasForeignKey(l => l.PostId)
-                      .OnDelete(DeleteBehavior.Cascade);
+                      .OnDelete(DeleteBehavior.Restrict);
 
                 entity.HasOne(l => l.User)
                       .WithMany()
                       .HasForeignKey(l => l.UserId)
-                      .OnDelete(DeleteBehavior.Cascade);
+                      .OnDelete(DeleteBehavior.Restrict);
             });
+
 
 
             // Cấu hình bảng Friendship
             modelBuilder.Entity<Friendship>(entity =>
             {
                 entity.ToTable("Friendships");
-
                 entity.HasKey(f => f.Id);
 
                 entity.Property(f => f.Status)
@@ -120,18 +124,21 @@ namespace SocialVN.API.Data
                 entity.Property(f => f.UpdatedAt)
                       .HasComment("Thời gian cập nhật trạng thái yêu cầu");
 
-                // Cấu hình mối quan hệ giữa Friendship và User (Requester)
+                // Cấu hình quan hệ giữa User và Friendship
                 entity.HasOne(f => f.Requester)
-                      .WithMany(u => u.Friendships) // Nếu User có nhiều Friendship
+                      .WithMany(u => u.FriendshipsAsRequester)
                       .HasForeignKey(f => f.RequesterId)
-                      .OnDelete(DeleteBehavior.Restrict); // Tránh xóa dữ liệu liên quan
+                      .OnDelete(DeleteBehavior.Restrict)
+                      .HasConstraintName("FK_Friendships_Requester");
 
-                // Cấu hình mối quan hệ giữa Friendship và User (Receiver)
                 entity.HasOne(f => f.Receiver)
-                      .WithMany()
+                      .WithMany(u => u.FriendshipsAsReceiver)
                       .HasForeignKey(f => f.ReceiverId)
-                      .OnDelete(DeleteBehavior.Restrict); // Tránh xóa dữ liệu liên quan
+                      .OnDelete(DeleteBehavior.Restrict)
+                      .HasConstraintName("FK_Friendships_Receiver");
             });
+
+
 
             // Cấu hình bảng Report
             modelBuilder.Entity<Report>(entity =>

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SocialVN.API.Migrations
 {
     /// <inheritdoc />
-    public partial class DBbandau : Migration
+    public partial class dbbandau : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -36,33 +36,28 @@ namespace SocialVN.API.Migrations
                 name: "Friendships",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false, comment: "ID duy nhất của yêu cầu kết bạn (UUID)"),
-                    RequesterId = table.Column<Guid>(type: "uniqueidentifier", nullable: false, comment: "ID của người gửi yêu cầu"),
-                    ReceiverId = table.Column<Guid>(type: "uniqueidentifier", nullable: false, comment: "ID của người nhận yêu cầu"),
-                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false, defaultValue: "pending", comment: "Trạng thái của yêu cầu (pending/accepted/declined)"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    RequesterId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ReceiverId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, defaultValue: "pending", comment: "Trạng thái của yêu cầu kết bạn (pending/accepted/declined)"),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, comment: "Thời gian gửi yêu cầu"),
-                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, comment: "Thời gian cập nhật trạng thái yêu cầu")
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Friendships", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Friendships_Users_ReceiverId",
+                        name: "FK_Friendships_Receiver",
                         column: x => x.ReceiverId,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Friendships_Users_RequesterId",
+                        name: "FK_Friendships_Requester",
                         column: x => x.RequesterId,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Friendships_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "Id");
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -99,7 +94,8 @@ namespace SocialVN.API.Migrations
                     NewFriends = table.Column<int>(type: "int", nullable: false, comment: "Số lượng bạn bè mới trong tuần"),
                     TotalLikes = table.Column<int>(type: "int", nullable: false, comment: "Tổng số lượt thích trong tuần"),
                     TotalComments = table.Column<int>(type: "int", nullable: false, comment: "Tổng số lượt comment trong tuần"),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, comment: "Thời gian tạo báo cáo")
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, comment: "Thời gian tạo báo cáo"),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, comment: "Thời gian cập nhật báo cáo")
                 },
                 constraints: table =>
                 {
@@ -120,7 +116,8 @@ namespace SocialVN.API.Migrations
                     PostId = table.Column<Guid>(type: "uniqueidentifier", nullable: false, comment: "ID bài viết mà comment thuộc về"),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false, comment: "ID của người tạo comment"),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: false, comment: "Nội dung comment"),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, comment: "Thời gian tạo comment")
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, comment: "Thời gian tạo comment"),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, comment: "Thời gian cập nhật comment")
                 },
                 constraints: table =>
                 {
@@ -130,13 +127,13 @@ namespace SocialVN.API.Migrations
                         column: x => x.PostId,
                         principalTable: "Posts",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Comments_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -146,7 +143,9 @@ namespace SocialVN.API.Migrations
                     LikeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false, comment: "ID duy nhất của lượt thích (UUID)"),
                     PostId = table.Column<Guid>(type: "uniqueidentifier", nullable: false, comment: "ID bài viết được thích"),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false, comment: "ID của người thực hiện thích bài viết"),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, comment: "Thời gian thực hiện thích bài viết")
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, comment: "Thời gian thực hiện thích bài viết"),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, comment: "Thời gian cập nhật lượt thích"),
+                    UserId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -156,13 +155,18 @@ namespace SocialVN.API.Migrations
                         column: x => x.PostId,
                         principalTable: "Posts",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Likes_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Likes_Users_UserId1",
+                        column: x => x.UserId1,
+                        principalTable: "Users",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
@@ -186,11 +190,6 @@ namespace SocialVN.API.Migrations
                 column: "RequesterId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Friendships_UserId",
-                table: "Friendships",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Likes_PostId",
                 table: "Likes",
                 column: "PostId");
@@ -199,6 +198,11 @@ namespace SocialVN.API.Migrations
                 name: "IX_Likes_UserId",
                 table: "Likes",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Likes_UserId1",
+                table: "Likes",
+                column: "UserId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Posts_UserId",

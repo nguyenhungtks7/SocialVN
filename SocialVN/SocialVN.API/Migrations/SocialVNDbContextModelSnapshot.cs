@@ -119,11 +119,16 @@ namespace SocialVN.API.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasComment("ID của người thực hiện thích bài viết");
 
+                    b.Property<Guid?>("UserId1")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("LikeId");
 
                     b.HasIndex("PostId");
 
                     b.HasIndex("UserId");
+
+                    b.HasIndex("UserId1");
 
                     b.ToTable("Likes", (string)null);
                 });
@@ -284,13 +289,13 @@ namespace SocialVN.API.Migrations
                     b.HasOne("SocialVN.API.Models.Post", "Post")
                         .WithMany("Comments")
                         .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("SocialVN.API.Models.User", "User")
-                        .WithMany()
+                        .WithMany("Comments")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Post");
@@ -301,16 +306,18 @@ namespace SocialVN.API.Migrations
             modelBuilder.Entity("SocialVN.API.Models.Friendship", b =>
                 {
                     b.HasOne("SocialVN.API.Models.User", "Receiver")
-                        .WithMany()
+                        .WithMany("FriendshipsAsReceiver")
                         .HasForeignKey("ReceiverId")
                         .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("FK_Friendships_Receiver");
 
                     b.HasOne("SocialVN.API.Models.User", "Requester")
-                        .WithMany("Friendships")
+                        .WithMany("FriendshipsAsRequester")
                         .HasForeignKey("RequesterId")
                         .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("FK_Friendships_Requester");
 
                     b.Navigation("Receiver");
 
@@ -322,14 +329,18 @@ namespace SocialVN.API.Migrations
                     b.HasOne("SocialVN.API.Models.Post", "Post")
                         .WithMany("Likes")
                         .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("SocialVN.API.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.HasOne("SocialVN.API.Models.User", null)
+                        .WithMany("Likes")
+                        .HasForeignKey("UserId1");
 
                     b.Navigation("Post");
 
@@ -367,7 +378,13 @@ namespace SocialVN.API.Migrations
 
             modelBuilder.Entity("SocialVN.API.Models.User", b =>
                 {
-                    b.Navigation("Friendships");
+                    b.Navigation("Comments");
+
+                    b.Navigation("FriendshipsAsReceiver");
+
+                    b.Navigation("FriendshipsAsRequester");
+
+                    b.Navigation("Likes");
 
                     b.Navigation("Posts");
 

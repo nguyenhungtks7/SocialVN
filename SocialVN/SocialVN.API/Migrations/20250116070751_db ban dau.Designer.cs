@@ -12,8 +12,8 @@ using SocialVN.API.Data;
 namespace SocialVN.API.Migrations
 {
     [DbContext(typeof(SocialVNDbContext))]
-    [Migration("20250114102923_Sua lai Db Ban Dau")]
-    partial class SualaiDbBanDau
+    [Migration("20250116070751_db ban dau")]
+    partial class dbbandau
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -66,42 +66,35 @@ namespace SocialVN.API.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasComment("ID duy nhất của yêu cầu kết bạn (UUID)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2")
                         .HasComment("Thời gian gửi yêu cầu");
 
                     b.Property<Guid>("ReceiverId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasComment("ID của người nhận yêu cầu");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("RequesterId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasComment("ID của người gửi yêu cầu");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Status")
                         .IsRequired()
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(max)")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
                         .HasDefaultValue("pending")
-                        .HasComment("Trạng thái của yêu cầu (pending/accepted/declined)");
+                        .HasComment("Trạng thái của yêu cầu kết bạn (pending/accepted/declined)");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2")
                         .HasComment("Thời gian cập nhật trạng thái yêu cầu");
-
-                    b.Property<Guid?>("UserId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ReceiverId");
 
                     b.HasIndex("RequesterId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Friendships", (string)null);
                 });
@@ -129,11 +122,16 @@ namespace SocialVN.API.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasComment("ID của người thực hiện thích bài viết");
 
+                    b.Property<Guid?>("UserId1")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("LikeId");
 
                     b.HasIndex("PostId");
 
                     b.HasIndex("UserId");
+
+                    b.HasIndex("UserId1");
 
                     b.ToTable("Likes", (string)null);
                 });
@@ -294,13 +292,13 @@ namespace SocialVN.API.Migrations
                     b.HasOne("SocialVN.API.Models.Post", "Post")
                         .WithMany("Comments")
                         .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("SocialVN.API.Models.User", "User")
-                        .WithMany()
+                        .WithMany("Comments")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Post");
@@ -311,20 +309,18 @@ namespace SocialVN.API.Migrations
             modelBuilder.Entity("SocialVN.API.Models.Friendship", b =>
                 {
                     b.HasOne("SocialVN.API.Models.User", "Receiver")
-                        .WithMany()
+                        .WithMany("FriendshipsAsReceiver")
                         .HasForeignKey("ReceiverId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("FK_Friendships_Receiver");
 
                     b.HasOne("SocialVN.API.Models.User", "Requester")
-                        .WithMany()
+                        .WithMany("FriendshipsAsRequester")
                         .HasForeignKey("RequesterId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SocialVN.API.Models.User", null)
-                        .WithMany("Friendships")
-                        .HasForeignKey("UserId");
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("FK_Friendships_Requester");
 
                     b.Navigation("Receiver");
 
@@ -336,14 +332,18 @@ namespace SocialVN.API.Migrations
                     b.HasOne("SocialVN.API.Models.Post", "Post")
                         .WithMany("Likes")
                         .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("SocialVN.API.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.HasOne("SocialVN.API.Models.User", null)
+                        .WithMany("Likes")
+                        .HasForeignKey("UserId1");
 
                     b.Navigation("Post");
 
@@ -381,7 +381,13 @@ namespace SocialVN.API.Migrations
 
             modelBuilder.Entity("SocialVN.API.Models.User", b =>
                 {
-                    b.Navigation("Friendships");
+                    b.Navigation("Comments");
+
+                    b.Navigation("FriendshipsAsReceiver");
+
+                    b.Navigation("FriendshipsAsRequester");
+
+                    b.Navigation("Likes");
 
                     b.Navigation("Posts");
 
