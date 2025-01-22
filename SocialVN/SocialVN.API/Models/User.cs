@@ -1,6 +1,6 @@
 ﻿namespace SocialVN.API.Models
 {
-    public class User
+    public class User :Base
     {
         public Guid Id { get; set; }
         public string Email { get; set; }
@@ -11,8 +11,7 @@
         public string Occupation { get; set; }
         public string Location { get; set; }
         public string Avatar { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
+      
 
         // Thuộc tính điều hướng
         public ICollection<Post> Posts { get; set; } = new List<Post>();
