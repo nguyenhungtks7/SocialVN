@@ -1,4 +1,4 @@
-﻿namespace SocialVN.API.Models
+﻿namespace SocialVN.API.Models.Domain
 {
     public class Report : Base
     {
@@ -10,7 +10,7 @@
         public int NewFriends { get; set; }
         public int TotalLikes { get; set; }
         public int TotalComments { get; set; }
-       
+
         // Thuộc tính điều hướng
         public User User { get; set; }
     }

@@ -1,4 +1,4 @@
-﻿namespace SocialVN.API.Models
+﻿namespace SocialVN.API.Models.Domain
 {
     public class Friendship : Base
     {
@@ -7,7 +7,7 @@
         public Guid ReceiverId { get; set; }
         public string Status { get; set; }
 
-       
+
 
         // Thuộc tính điều hướng
         public User Requester { get; set; }

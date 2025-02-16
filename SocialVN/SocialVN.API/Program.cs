@@ -1,5 +1,10 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using SocialVN.API.Data;
+using SocialVN.API.Mappings;
+using SocialVN.API.Repositories;
+
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +15,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<SocialVNDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("SocialVNConnectionString")));
+// Đăng ký AutoMapper và thêm cấu hình ánh xạ từ AutoMapperProfiles
+builder.Services.AddAutoMapper(typeof(AutomapperProfiles));
+builder.Services.AddScoped<IUserRepository, SQLUserRepository>(); // Đăng ký dịch vụ
 
 var app = builder.Build();
 

@@ -1,12 +1,11 @@
 {
   "Version": 1,
-  "Hash": "TVPgelTj/Y1zk+5jp9/foN1Ofj4oHDsuWH7WTm3v/Ss=",
+  "Hash": "2lOo0chybh97l4YeFplH15rysHF3pGDu8pYObvvd8j4=",
   "Source": "SocialVN.API",
   "BasePath": "_content/SocialVN.API",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": [],
-  "Endpoints": []
+  "Assets": []
 }

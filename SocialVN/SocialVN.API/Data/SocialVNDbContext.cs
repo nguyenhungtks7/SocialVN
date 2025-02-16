@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
-using SocialVN.API.Models;
+using SocialVN.API.Models.Domain;
 
 namespace SocialVN.API.Data
 {

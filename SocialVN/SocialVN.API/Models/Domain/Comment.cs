@@ -1,6 +1,6 @@
-﻿namespace SocialVN.API.Models
+﻿namespace SocialVN.API.Models.Domain
 {
-    public class Comment: Base
+    public class Comment : Base
     {
         public Guid Id { get; set; }
         public Guid PostId { get; set; }
