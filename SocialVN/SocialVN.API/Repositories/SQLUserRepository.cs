@@ -37,12 +37,47 @@ namespace SocialVN.API.Repositories
             var skipResults = (pageNumber -1)*pageSize;
             return await user.Skip(skipResults).Take(pageSize).ToListAsync();
         }
-        public async Task<User> CreteAsync(User user)
+        public async Task<User> CreateAsync(User user)
         {
            await dbContext.Users.AddAsync(user);
             await dbContext.SaveChangesAsync();
             return user;
         }
 
+        public async Task<User> GetByIdAsync(Guid id)
+        {
+           return await dbContext.Users.FirstOrDefaultAsync(x => x.Id == id);
+        }
+
+        public async Task<User> UpdateAsync(User user)
+        {
+            var existingUser = await dbContext.Users.FirstOrDefaultAsync(x => x.Id == user.Id);
+            if (existingUser == null)
+            {
+                return null;
+            }
+            existingUser.FullName = user.FullName;
+            existingUser.Email = user.Email;
+            existingUser.Avatar = user.Avatar;
+            existingUser.Role = user.Role;
+            existingUser.BirthDate = user.BirthDate;
+            existingUser.Occupation = user.Occupation;
+            existingUser.Location = user.Location;
+            await dbContext.SaveChangesAsync();
+            return existingUser;
+        }
+
+        public async Task<User> DeleteAsync(Guid id)
+        {
+           var existingUser = await dbContext.Users.FirstOrDefaultAsync(x => x.Id == id);
+            if (existingUser == null)
+            {
+                return null;
+            }
+            dbContext.Users.Remove(existingUser);
+            dbContext.SaveChangesAsync();
+            
+            return existingUser;
+        }
     }
 }

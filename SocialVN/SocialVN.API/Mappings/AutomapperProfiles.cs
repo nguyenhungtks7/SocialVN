@@ -10,6 +10,7 @@ namespace SocialVN.API.Mappings
 
             CreateMap<User, UserDto>().ReverseMap();
             CreateMap<AddUserRequestDto, User>().ReverseMap();
+            CreateMap<UpdateUserRequestDto, User>().ReverseMap();
         }
 
     }
