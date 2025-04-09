@@ -76,7 +76,6 @@ namespace SocialVN.API.Repositories
             }
             dbContext.Users.Remove(existingUser);
             dbContext.SaveChangesAsync();
-            
             return existingUser;
         }
     }

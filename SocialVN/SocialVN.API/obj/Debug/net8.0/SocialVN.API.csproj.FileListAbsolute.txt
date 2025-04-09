@@ -511,3 +511,7 @@ D:\C#\MangxahoiC#\SocialVN\SocialVN\SocialVN.API\obj\Debug\net8.0\refint\SocialV
 D:\C#\MangxahoiC#\SocialVN\SocialVN\SocialVN.API\obj\Debug\net8.0\SocialVN.API.pdb
 D:\C#\MangxahoiC#\SocialVN\SocialVN\SocialVN.API\obj\Debug\net8.0\SocialVN.API.genruntimeconfig.cache
 D:\C#\MangxahoiC#\SocialVN\SocialVN\SocialVN.API\obj\Debug\net8.0\ref\SocialVN.API.dll
+D:\C#\MangxahoiC#\SocialVN\SocialVN\SocialVN.API\bin\Debug\net8.0\SocialVN.API.staticwebassets.endpoints.json
+D:\C#\MangxahoiC#\SocialVN\SocialVN\SocialVN.API\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+D:\C#\MangxahoiC#\SocialVN\SocialVN\SocialVN.API\obj\Debug\net8.0\staticwebassets\msbuild.SocialVN.API.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+D:\C#\MangxahoiC#\SocialVN\SocialVN\SocialVN.API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
