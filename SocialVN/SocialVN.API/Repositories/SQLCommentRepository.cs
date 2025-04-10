@@ -4,7 +4,7 @@ using SocialVN.API.Models.Domain;
 
 namespace SocialVN.API.Repositories
 {
-    public class SQLCommentRepository : ICommentsRepository
+    public class SQLCommentRepository : ICommentRepository
     {
         private readonly SocialVNDbContext dbContext;
         public SQLCommentRepository(SocialVNDbContext dbContext)
@@ -56,7 +56,7 @@ namespace SocialVN.API.Repositories
                 existingComment.PostId = comment.PostId;
                 existingComment.UserId = comment.UserId;
                 existingComment.Content = comment.Content;
-               
+                existingComment.UpdatedAt = DateTime.Now;
 
                 await dbContext.SaveChangesAsync();
                 return existingComment;

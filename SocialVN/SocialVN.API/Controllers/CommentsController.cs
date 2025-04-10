@@ -11,10 +11,10 @@ namespace SocialVN.API.Controllers
     [ApiController]
     public class CommentsController : ControllerBase
     {
-        private readonly ICommentsRepository commentsRepository;
+        private readonly ICommentRepository commentsRepository;
         private readonly Mapper mapper;
 
-        public CommentsController(ICommentsRepository commentsRepository ,Mapper mapper)
+        public CommentsController(ICommentRepository commentsRepository ,Mapper mapper)
         {
             this.commentsRepository = commentsRepository;
             this.mapper = mapper;

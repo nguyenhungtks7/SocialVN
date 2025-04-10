@@ -63,6 +63,7 @@ namespace SocialVN.API.Repositories
             existingUser.BirthDate = user.BirthDate;
             existingUser.Occupation = user.Occupation;
             existingUser.Location = user.Location;
+            existingUser.UpdatedAt = DateTime.Now;
             await dbContext.SaveChangesAsync();
             return existingUser;
         }

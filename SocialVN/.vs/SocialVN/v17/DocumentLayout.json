@@ -1,102 +1,174 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\",
+  "WorkspaceRootPath": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\c#\\mangxahoic#\\socialvn\\socialvn\\socialvn.api\\controllers\\likescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\controllers\\likescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\c#\\mangxahoic#\\socialvn\\socialvn\\socialvn.api\\models\\dto\\addlikerequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\models\\dto\\addlikerequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\c#\\mangxahoic#\\socialvn\\socialvn\\socialvn.api\\models\\domain\\like.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\models\\domain\\like.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\c#\\mangxahoic#\\socialvn\\socialvn\\socialvn.api\\models\\domain\\post.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\models\\domain\\post.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\c#\\mangxahoic#\\socialvn\\socialvn\\socialvn.api\\models\\dto\\likedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\models\\dto\\likedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\c#\\mangxahoic#\\socialvn\\socialvn\\socialvn.api\\mappings\\automapperprofiles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\mappings\\automapperprofiles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\c#\\mangxahoic#\\socialvn\\socialvn\\socialvn.api\\controllers\\commentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\controllers\\commentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\c#\\mangxahoic#\\socialvn\\socialvn\\socialvn.api\\repositories\\sqllikerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\repositories\\sqllikerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\c#\\mangxahoic#\\socialvn\\socialvn\\socialvn.api\\models\\domain\\friendship.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\models\\domain\\friendship.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\models\\domain\\friendship.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\c#\\mangxahoic#\\socialvn\\socialvn\\socialvn.api\\repositories\\ilikerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\repositories\\ilikerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\models\\domain\\report.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\models\\domain\\report.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\c#\\mangxahoic#\\socialvn\\socialvn\\socialvn.api\\repositories\\sqluserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\repositories\\sqluserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\controllers\\friendshipscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\controllers\\friendshipscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\c#\\mangxahoic#\\socialvn\\socialvn\\socialvn.api\\repositories\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\repositories\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\repositories\\ifriendshiprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\repositories\\ifriendshiprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\c#\\mangxahoic#\\socialvn\\socialvn\\socialvn.api\\repositories\\sqlcommentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\repositories\\sqlfriendshiprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\repositories\\sqlfriendshiprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\repositories\\sqlcommentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\repositories\\sqlcommentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\c#\\mangxahoic#\\socialvn\\socialvn\\socialvn.api\\repositories\\icommentsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\repositories\\icommentsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\models\\dto\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\models\\dto\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\c#\\mangxahoic#\\socialvn\\socialvn\\socialvn.api\\models\\dto\\addcommentrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\models\\dto\\addcommentrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\c#\\mangxahoic#\\socialvn\\socialvn\\socialvn.api\\models\\dto\\updatecommentrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\models\\dto\\updatecommentrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\c#\\mangxahoic#\\socialvn\\socialvn\\socialvn.api\\models\\domain\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\models\\domain\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\c#\\mangxahoic#\\socialvn\\socialvn\\socialvn.api\\models\\dto\\commentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\models\\dto\\commentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\c#\\mangxahoic#\\socialvn\\socialvn\\socialvn.api\\data\\socialvndbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\data\\socialvndbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\c#\\mangxahoic#\\socialvn\\socialvn\\socialvn.api\\models\\domain\\base.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\models\\domain\\base.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\c#\\mangxahoic#\\socialvn\\socialvn\\socialvn.api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\c#\\mangxahoic#\\socialvn\\socialvn\\socialvn.api\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\controllers\\commentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\controllers\\commentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\c#\\mangxahoic#\\socialvn\\socialvn\\socialvn.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\controllers\\postscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\controllers\\postscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\controllers\\likescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\controllers\\likescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\models\\dto\\addcommentrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\models\\dto\\addcommentrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\repositories\\sqluserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\repositories\\sqluserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\repositories\\ilikerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\repositories\\ilikerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\repositories\\sqllikerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\repositories\\sqllikerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\repositories\\sqlpostrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\repositories\\sqlpostrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\c#\\mangxahoic#\\socialvn\\socialvn\\socialvn.api\\models\\dto\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\models\\dto\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\repositories\\ipostrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\repositories\\ipostrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\repositories\\icommentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\repositories\\icommentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\repositories\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\repositories\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\models\\dto\\basedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\models\\dto\\basedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\mappings\\automapperprofiles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\mappings\\automapperprofiles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\models\\dto\\likedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\models\\dto\\likedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\models\\dto\\postdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\models\\dto\\postdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\models\\dto\\updatecommentrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\models\\dto\\updatecommentrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\models\\dto\\addfriendshiprequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\models\\dto\\addfriendshiprequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\models\\dto\\friendshipdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\models\\dto\\friendshipdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\enums\\friendshipstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\enums\\friendshipstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\models\\dto\\updateuserrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\models\\dto\\updateuserrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\models\\dto\\updatepostrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\models\\dto\\updatepostrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\models\\dto\\adduserrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\models\\dto\\adduserrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\models\\domain\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\models\\domain\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\models\\dto\\addlikerequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\models\\dto\\addlikerequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\models\\dto\\addpostrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\models\\dto\\addpostrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\models\\domain\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\models\\domain\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\models\\domain\\post.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\models\\domain\\post.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\models\\domain\\like.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\models\\domain\\like.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\models\\dto\\commentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\models\\dto\\commentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\data\\socialvndbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\data\\socialvndbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\models\\domain\\base.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\models\\domain\\base.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn.api\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -106,140 +178,158 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "AddLikeRequestDto.cs",
-              "DocumentMoniker": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\AddLikeRequestDto.cs",
-              "RelativeDocumentMoniker": "SocialVN.API\\Models\\DTO\\AddLikeRequestDto.cs",
-              "ToolTip": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\AddLikeRequestDto.cs",
-              "RelativeToolTip": "SocialVN.API\\Models\\DTO\\AddLikeRequestDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAoAAAAAAAAAA==",
+              "Title": "Report.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\Domain\\Report.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Models\\Domain\\Report.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\Domain\\Report.cs",
+              "RelativeToolTip": "SocialVN.API\\Models\\Domain\\Report.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T19:47:35.729Z",
+              "WhenOpened": "2025-04-10T10:10:42.164Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FriendshipsController.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Controllers\\FriendshipsController.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Controllers\\FriendshipsController.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Controllers\\FriendshipsController.cs",
+              "RelativeToolTip": "SocialVN.API\\Controllers\\FriendshipsController.cs",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAmwFgAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T08:06:37.32Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "LikeDto.cs",
-              "DocumentMoniker": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\LikeDto.cs",
-              "RelativeDocumentMoniker": "SocialVN.API\\Models\\DTO\\LikeDto.cs",
-              "ToolTip": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\LikeDto.cs",
-              "RelativeToolTip": "SocialVN.API\\Models\\DTO\\LikeDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAEAAAAAAAAAA==",
+              "Title": "SQLFriendshipRepository.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Repositories\\SQLFriendshipRepository.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Repositories\\SQLFriendshipRepository.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Repositories\\SQLFriendshipRepository.cs",
+              "RelativeToolTip": "SocialVN.API\\Repositories\\SQLFriendshipRepository.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAwwBEAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T19:46:55.144Z",
+              "WhenOpened": "2025-04-10T04:41:21.303Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IFriendshipRepository.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Repositories\\IFriendshipRepository.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Repositories\\IFriendshipRepository.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Repositories\\IFriendshipRepository.cs",
+              "RelativeToolTip": "SocialVN.API\\Repositories\\IFriendshipRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAsAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T04:06:56.396Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Controllers\\UsersController.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "SocialVN.API\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAAAAoAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T18:19:23.815Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "LikesController.cs",
-              "DocumentMoniker": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Controllers\\LikesController.cs",
-              "RelativeDocumentMoniker": "SocialVN.API\\Controllers\\LikesController.cs",
-              "ToolTip": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Controllers\\LikesController.cs",
-              "RelativeToolTip": "SocialVN.API\\Controllers\\LikesController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T19:43:52.275Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
               "Title": "Friendship.cs",
-              "DocumentMoniker": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Models\\Domain\\Friendship.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\Domain\\Friendship.cs",
               "RelativeDocumentMoniker": "SocialVN.API\\Models\\Domain\\Friendship.cs",
-              "ToolTip": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Models\\Domain\\Friendship.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\Domain\\Friendship.cs",
               "RelativeToolTip": "SocialVN.API\\Models\\Domain\\Friendship.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAiwAwAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-09T19:26:00.192Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SQLCommentRepository.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Repositories\\SQLCommentRepository.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Repositories\\SQLCommentRepository.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Repositories\\SQLCommentRepository.cs",
+              "RelativeToolTip": "SocialVN.API\\Repositories\\SQLCommentRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T17:35:47.881Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CommentsController.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Controllers\\CommentsController.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Controllers\\CommentsController.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Controllers\\CommentsController.cs",
+              "RelativeToolTip": "SocialVN.API\\Controllers\\CommentsController.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAA5wEoAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T18:21:11.867Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UserDto.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\UserDto.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Models\\DTO\\UserDto.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\UserDto.cs",
+              "RelativeToolTip": "SocialVN.API\\Models\\DTO\\UserDto.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAQAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T17:57:12.178Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "ILikeRepository.cs",
-              "DocumentMoniker": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Repositories\\ILikeRepository.cs",
-              "RelativeDocumentMoniker": "SocialVN.API\\Repositories\\ILikeRepository.cs",
-              "ToolTip": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Repositories\\ILikeRepository.cs",
-              "RelativeToolTip": "SocialVN.API\\Repositories\\ILikeRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA8AAAAAAAAAA==",
+              "Title": "PostsController.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Controllers\\PostsController.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Controllers\\PostsController.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Controllers\\PostsController.cs",
+              "RelativeToolTip": "SocialVN.API\\Controllers\\PostsController.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwAAAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T19:04:33.498Z",
+              "WhenOpened": "2025-04-10T03:46:03.467Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "SQLLikeRepository.cs",
-              "DocumentMoniker": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Repositories\\SQLLikeRepository.cs",
-              "RelativeDocumentMoniker": "SocialVN.API\\Repositories\\SQLLikeRepository.cs",
-              "ToolTip": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Repositories\\SQLLikeRepository.cs",
-              "RelativeToolTip": "SocialVN.API\\Repositories\\SQLLikeRepository.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAgwCwAAAAfAAAAAAAAAA==",
+              "DocumentIndex": 10,
+              "Title": "LikesController.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Controllers\\LikesController.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Controllers\\LikesController.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Controllers\\LikesController.cs",
+              "RelativeToolTip": "SocialVN.API\\Controllers\\LikesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T19:03:44.682Z",
+              "WhenOpened": "2025-04-09T19:43:52.275Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Like.cs",
-              "DocumentMoniker": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Models\\Domain\\Like.cs",
-              "RelativeDocumentMoniker": "SocialVN.API\\Models\\Domain\\Like.cs",
-              "ToolTip": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Models\\Domain\\Like.cs",
-              "RelativeToolTip": "SocialVN.API\\Models\\Domain\\Like.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T18:59:06.386Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Post.cs",
-              "DocumentMoniker": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Models\\Domain\\Post.cs",
-              "RelativeDocumentMoniker": "SocialVN.API\\Models\\Domain\\Post.cs",
-              "ToolTip": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Models\\Domain\\Post.cs",
-              "RelativeToolTip": "SocialVN.API\\Models\\Domain\\Post.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T18:58:34.782Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "UpdateCommentRequestDto.cs",
-              "DocumentMoniker": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\UpdateCommentRequestDto.cs",
-              "RelativeDocumentMoniker": "SocialVN.API\\Models\\DTO\\UpdateCommentRequestDto.cs",
-              "ToolTip": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\UpdateCommentRequestDto.cs",
-              "RelativeToolTip": "SocialVN.API\\Models\\DTO\\UpdateCommentRequestDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T18:50:48.831Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 11,
               "Title": "AddCommentRequestDto.cs",
-              "DocumentMoniker": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\AddCommentRequestDto.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\AddCommentRequestDto.cs",
               "RelativeDocumentMoniker": "SocialVN.API\\Models\\DTO\\AddCommentRequestDto.cs",
-              "ToolTip": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\AddCommentRequestDto.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\AddCommentRequestDto.cs",
               "RelativeToolTip": "SocialVN.API\\Models\\DTO\\AddCommentRequestDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -248,102 +338,63 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "CommentDto.cs",
-              "DocumentMoniker": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\CommentDto.cs",
-              "RelativeDocumentMoniker": "SocialVN.API\\Models\\DTO\\CommentDto.cs",
-              "ToolTip": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\CommentDto.cs",
-              "RelativeToolTip": "SocialVN.API\\Models\\DTO\\CommentDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAgAAAAAAAAAA==",
+              "DocumentIndex": 12,
+              "Title": "SQLUserRepository.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Repositories\\SQLUserRepository.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Repositories\\SQLUserRepository.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Repositories\\SQLUserRepository.cs",
+              "RelativeToolTip": "SocialVN.API\\Repositories\\SQLUserRepository.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAYwEEAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T18:44:20.719Z",
+              "WhenOpened": "2025-04-09T17:28:10.805Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "SocialVNDbContext.cs",
-              "DocumentMoniker": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Data\\SocialVNDbContext.cs",
-              "RelativeDocumentMoniker": "SocialVN.API\\Data\\SocialVNDbContext.cs",
-              "ToolTip": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Data\\SocialVNDbContext.cs",
-              "RelativeToolTip": "SocialVN.API\\Data\\SocialVNDbContext.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAwwCUAAAAwAAAAAAAAAA==",
+              "DocumentIndex": 13,
+              "Title": "ILikeRepository.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Repositories\\ILikeRepository.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Repositories\\ILikeRepository.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Repositories\\ILikeRepository.cs",
+              "RelativeToolTip": "SocialVN.API\\Repositories\\ILikeRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T17:49:12.444Z",
+              "WhenOpened": "2025-04-09T19:04:33.498Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "WeatherForecastController.cs",
-              "DocumentMoniker": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Controllers\\WeatherForecastController.cs",
-              "RelativeDocumentMoniker": "SocialVN.API\\Controllers\\WeatherForecastController.cs",
-              "ToolTip": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Controllers\\WeatherForecastController.cs",
-              "RelativeToolTip": "SocialVN.API\\Controllers\\WeatherForecastController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 14,
+              "Title": "SQLLikeRepository.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Repositories\\SQLLikeRepository.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Repositories\\SQLLikeRepository.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Repositories\\SQLLikeRepository.cs",
+              "RelativeToolTip": "SocialVN.API\\Repositories\\SQLLikeRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T18:21:22.035Z",
+              "WhenOpened": "2025-04-09T19:03:44.682Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "CommentsController.cs",
-              "DocumentMoniker": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Controllers\\CommentsController.cs",
-              "RelativeDocumentMoniker": "SocialVN.API\\Controllers\\CommentsController.cs",
-              "ToolTip": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Controllers\\CommentsController.cs",
-              "RelativeToolTip": "SocialVN.API\\Controllers\\CommentsController.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAEAAAAAfAAAAAAAAAA==",
+              "DocumentIndex": 15,
+              "Title": "SQLPostRepository.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Repositories\\SQLPostRepository.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Repositories\\SQLPostRepository.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Repositories\\SQLPostRepository.cs",
+              "RelativeToolTip": "SocialVN.API\\Repositories\\SQLPostRepository.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAA5wDcAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T18:21:11.867Z",
+              "WhenOpened": "2025-04-10T03:03:14.101Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "UsersController.cs",
-              "DocumentMoniker": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Controllers\\UsersController.cs",
-              "RelativeDocumentMoniker": "SocialVN.API\\Controllers\\UsersController.cs",
-              "ToolTip": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Controllers\\UsersController.cs",
-              "RelativeToolTip": "SocialVN.API\\Controllers\\UsersController.cs",
-              "ViewState": "AgIAADIAAAAAAAAAAAAgwAoAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T18:19:23.815Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "AutomapperProfiles.cs",
-              "DocumentMoniker": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Mappings\\AutomapperProfiles.cs",
-              "RelativeDocumentMoniker": "SocialVN.API\\Mappings\\AutomapperProfiles.cs",
-              "ToolTip": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Mappings\\AutomapperProfiles.cs",
-              "RelativeToolTip": "SocialVN.API\\Mappings\\AutomapperProfiles.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T18:18:34.266Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "Base.cs",
-              "DocumentMoniker": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Models\\Domain\\Base.cs",
-              "RelativeDocumentMoniker": "SocialVN.API\\Models\\Domain\\Base.cs",
-              "ToolTip": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Models\\Domain\\Base.cs",
-              "RelativeToolTip": "SocialVN.API\\Models\\Domain\\Base.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T18:07:29.27Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 16,
               "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\appsettings.json",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\appsettings.json",
               "RelativeDocumentMoniker": "SocialVN.API\\appsettings.json",
-              "ToolTip": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\appsettings.json",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\appsettings.json",
               "RelativeToolTip": "SocialVN.API\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
@@ -352,63 +403,37 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "UserDto.cs",
-              "DocumentMoniker": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\UserDto.cs",
-              "RelativeDocumentMoniker": "SocialVN.API\\Models\\DTO\\UserDto.cs",
-              "ToolTip": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\UserDto.cs",
-              "RelativeToolTip": "SocialVN.API\\Models\\DTO\\UserDto.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 17,
+              "Title": "IPostRepository.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Repositories\\IPostRepository.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Repositories\\IPostRepository.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Repositories\\IPostRepository.cs",
+              "RelativeToolTip": "SocialVN.API\\Repositories\\IPostRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T17:57:12.178Z",
+              "WhenOpened": "2025-04-10T02:13:03.488Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "Comment.cs",
-              "DocumentMoniker": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Models\\Domain\\Comment.cs",
-              "RelativeDocumentMoniker": "SocialVN.API\\Models\\Domain\\Comment.cs",
-              "ToolTip": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Models\\Domain\\Comment.cs",
-              "RelativeToolTip": "SocialVN.API\\Models\\Domain\\Comment.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAQAAAAEAAAAAAAAAA==",
+              "DocumentIndex": 18,
+              "Title": "ICommentRepository.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Repositories\\ICommentRepository.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Repositories\\ICommentRepository.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Repositories\\ICommentRepository.cs",
+              "RelativeToolTip": "SocialVN.API\\Repositories\\ICommentRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T17:37:31.743Z",
+              "WhenOpened": "2025-04-09T17:27:27.179Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "SQLCommentRepository.cs",
-              "DocumentMoniker": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Repositories\\SQLCommentRepository.cs",
-              "RelativeDocumentMoniker": "SocialVN.API\\Repositories\\SQLCommentRepository.cs",
-              "ToolTip": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Repositories\\SQLCommentRepository.cs",
-              "RelativeToolTip": "SocialVN.API\\Repositories\\SQLCommentRepository.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAkwCsAAAA5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T17:35:47.881Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "SQLUserRepository.cs",
-              "DocumentMoniker": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Repositories\\SQLUserRepository.cs",
-              "RelativeDocumentMoniker": "SocialVN.API\\Repositories\\SQLUserRepository.cs",
-              "ToolTip": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Repositories\\SQLUserRepository.cs",
-              "RelativeToolTip": "SocialVN.API\\Repositories\\SQLUserRepository.cs",
-              "ViewState": "AgIAADMAAAAAAAAAAAA7wE0AAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T17:28:10.805Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 19,
               "Title": "IUserRepository.cs",
-              "DocumentMoniker": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Repositories\\IUserRepository.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Repositories\\IUserRepository.cs",
               "RelativeDocumentMoniker": "SocialVN.API\\Repositories\\IUserRepository.cs",
-              "ToolTip": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Repositories\\IUserRepository.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Repositories\\IUserRepository.cs",
               "RelativeToolTip": "SocialVN.API\\Repositories\\IUserRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -417,16 +442,285 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "ICommentsRepository.cs",
-              "DocumentMoniker": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Repositories\\ICommentsRepository.cs",
-              "RelativeDocumentMoniker": "SocialVN.API\\Repositories\\ICommentsRepository.cs",
-              "ToolTip": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Repositories\\ICommentsRepository.cs",
-              "RelativeToolTip": "SocialVN.API\\Repositories\\ICommentsRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAYAAABHAAAAAAAAAA==",
+              "DocumentIndex": 20,
+              "Title": "BaseDto.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\BaseDto.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Models\\DTO\\BaseDto.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\BaseDto.cs",
+              "RelativeToolTip": "SocialVN.API\\Models\\DTO\\BaseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T17:27:27.179Z",
+              "WhenOpened": "2025-04-10T02:29:28.047Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "AutomapperProfiles.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Mappings\\AutomapperProfiles.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Mappings\\AutomapperProfiles.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Mappings\\AutomapperProfiles.cs",
+              "RelativeToolTip": "SocialVN.API\\Mappings\\AutomapperProfiles.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABkAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T18:18:34.266Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "LikeDto.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\LikeDto.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Models\\DTO\\LikeDto.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\LikeDto.cs",
+              "RelativeToolTip": "SocialVN.API\\Models\\DTO\\LikeDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T19:46:55.144Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "PostDto.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\PostDto.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Models\\DTO\\PostDto.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\PostDto.cs",
+              "RelativeToolTip": "SocialVN.API\\Models\\DTO\\PostDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T03:43:41.717Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "UpdateCommentRequestDto.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\UpdateCommentRequestDto.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Models\\DTO\\UpdateCommentRequestDto.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\UpdateCommentRequestDto.cs",
+              "RelativeToolTip": "SocialVN.API\\Models\\DTO\\UpdateCommentRequestDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T08:19:12.945Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "AddFriendshipRequestDto.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\AddFriendshipRequestDto.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Models\\DTO\\AddFriendshipRequestDto.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\AddFriendshipRequestDto.cs",
+              "RelativeToolTip": "SocialVN.API\\Models\\DTO\\AddFriendshipRequestDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T08:15:42.989Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "FriendshipDto.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\FriendshipDto.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Models\\DTO\\FriendshipDto.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\FriendshipDto.cs",
+              "RelativeToolTip": "SocialVN.API\\Models\\DTO\\FriendshipDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T08:17:00.124Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "FriendshipStatus.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Enums\\FriendshipStatus.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Enums\\FriendshipStatus.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Enums\\FriendshipStatus.cs",
+              "RelativeToolTip": "SocialVN.API\\Enums\\FriendshipStatus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T06:12:10.381Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "UpdateUserRequestDto.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\UpdateUserRequestDto.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Models\\DTO\\UpdateUserRequestDto.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\UpdateUserRequestDto.cs",
+              "RelativeToolTip": "SocialVN.API\\Models\\DTO\\UpdateUserRequestDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T04:01:56.507Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "UpdatePostRequestDto.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\UpdatePostRequestDto.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Models\\DTO\\UpdatePostRequestDto.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\UpdatePostRequestDto.cs",
+              "RelativeToolTip": "SocialVN.API\\Models\\DTO\\UpdatePostRequestDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T03:44:30.296Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "AddUserRequestDto.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\AddUserRequestDto.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Models\\DTO\\AddUserRequestDto.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\AddUserRequestDto.cs",
+              "RelativeToolTip": "SocialVN.API\\Models\\DTO\\AddUserRequestDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T04:02:20.947Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\Domain\\User.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Models\\Domain\\User.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\Domain\\User.cs",
+              "RelativeToolTip": "SocialVN.API\\Models\\Domain\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T02:30:11.542Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "AddLikeRequestDto.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\AddLikeRequestDto.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Models\\DTO\\AddLikeRequestDto.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\AddLikeRequestDto.cs",
+              "RelativeToolTip": "SocialVN.API\\Models\\DTO\\AddLikeRequestDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T19:47:35.729Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "AddPostRequestDto.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\AddPostRequestDto.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Models\\DTO\\AddPostRequestDto.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\AddPostRequestDto.cs",
+              "RelativeToolTip": "SocialVN.API\\Models\\DTO\\AddPostRequestDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T03:45:24.238Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "Post.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\Domain\\Post.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Models\\Domain\\Post.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\Domain\\Post.cs",
+              "RelativeToolTip": "SocialVN.API\\Models\\Domain\\Post.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T18:58:34.782Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "Comment.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\Domain\\Comment.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Models\\Domain\\Comment.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\Domain\\Comment.cs",
+              "RelativeToolTip": "SocialVN.API\\Models\\Domain\\Comment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAQAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T17:37:31.743Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "Like.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\Domain\\Like.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Models\\Domain\\Like.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\Domain\\Like.cs",
+              "RelativeToolTip": "SocialVN.API\\Models\\Domain\\Like.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T18:59:06.386Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Program.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Program.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Program.cs",
+              "RelativeToolTip": "SocialVN.API\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T03:04:32.339Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "CommentDto.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\CommentDto.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Models\\DTO\\CommentDto.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\DTO\\CommentDto.cs",
+              "RelativeToolTip": "SocialVN.API\\Models\\DTO\\CommentDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T18:44:20.719Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "SocialVNDbContext.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Data\\SocialVNDbContext.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Data\\SocialVNDbContext.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Data\\SocialVNDbContext.cs",
+              "RelativeToolTip": "SocialVN.API\\Data\\SocialVNDbContext.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAwwCUAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T17:49:12.444Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "WeatherForecastController.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Controllers\\WeatherForecastController.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Controllers\\WeatherForecastController.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Controllers\\WeatherForecastController.cs",
+              "RelativeToolTip": "SocialVN.API\\Controllers\\WeatherForecastController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T18:21:22.035Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "Base.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\Domain\\Base.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Models\\Domain\\Base.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN.API\\Models\\Domain\\Base.cs",
+              "RelativeToolTip": "SocialVN.API\\Models\\Domain\\Base.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T18:07:29.27Z"
             }
           ]
         }

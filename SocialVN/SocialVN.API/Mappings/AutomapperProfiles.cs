@@ -19,6 +19,14 @@ namespace SocialVN.API.Mappings
 
             CreateMap<Like, LikeDto>().ReverseMap();
             CreateMap<AddLikeRequestDto, Like>().ReverseMap();
+
+
+            CreateMap<Post, PostDto>().ReverseMap();
+            CreateMap<AddPostRequestDto, Post>().ReverseMap();
+            CreateMap<UpdatePostRequestDto, Post>().ReverseMap();
+
+            CreateMap<Friendship, FriendshipDto>().ReverseMap();
+            CreateMap<AddFriendshipRequestDto, Friendship>().ReverseMap();
         }
 
     }
