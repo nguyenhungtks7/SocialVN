@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SocialVN.API</name>
+    </assembly>
+    <members>
+        <member name="T:SocialVN.API.Migrations.dbbandau">
+            <inheritdoc />
+        </member>
+        <member name="M:SocialVN.API.Migrations.dbbandau.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SocialVN.API.Migrations.dbbandau.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SocialVN.API.Migrations.dbbandau.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:SocialVN.API.Migrations.thembase">
+            <inheritdoc />
+        </member>
+        <member name="M:SocialVN.API.Migrations.thembase.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SocialVN.API.Migrations.thembase.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SocialVN.API.Migrations.thembase.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:SocialVN.API.Migrations.themdbtrenmay">
+            <inheritdoc />
+        </member>
+        <member name="M:SocialVN.API.Migrations.themdbtrenmay.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SocialVN.API.Migrations.themdbtrenmay.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SocialVN.API.Migrations.themdbtrenmay.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

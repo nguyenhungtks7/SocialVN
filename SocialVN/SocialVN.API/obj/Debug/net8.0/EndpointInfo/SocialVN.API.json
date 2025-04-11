@@ -10,6 +10,8 @@
         "tags": [
           "Comments"
         ],
+        "summary": "Get all comment",
+        "description": "Truy xuất tất cả các bình luận với tùy chọn sắp xếp và phân trang.",
         "parameters": [
           {
             "name": "sortBy",
@@ -54,6 +56,8 @@
         "tags": [
           "Comments"
         ],
+        "summary": "Create comment",
+        "description": "Tạo bình luận mới.",
         "requestBody": {
           "content": {
             "application/json": {
@@ -85,6 +89,8 @@
         "tags": [
           "Comments"
         ],
+        "summary": "Get comment by id",
+        "description": "Truy xuất bình luận theo id.",
         "parameters": [
           {
             "name": "id",
@@ -106,6 +112,8 @@
         "tags": [
           "Comments"
         ],
+        "summary": "Update comment",
+        "description": "Cập nhật bình luận theo id.",
         "parameters": [
           {
             "name": "id",
@@ -146,9 +154,242 @@
         "tags": [
           "Comments"
         ],
+        "summary": "Delete comment",
+        "description": "Xóa bình luận theo id.",
         "parameters": [
           {
             "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Friendships": {
+      "post": {
+        "tags": [
+          "Friendships"
+        ],
+        "summary": "Send friend request",
+        "description": "Gửi yêu cầu kết bạn.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddFriendshipRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddFriendshipRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddFriendshipRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Friendships/accept/{requestId}": {
+      "put": {
+        "tags": [
+          "Friendships"
+        ],
+        "summary": "Accept friend request",
+        "description": "Chấp nhận yêu cầu kết bạn.",
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Friendships/cancel/{requestId}": {
+      "delete": {
+        "tags": [
+          "Friendships"
+        ],
+        "summary": "Cancel friend request",
+        "description": "Hủy yêu cầu kết bạn.",
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Friendships/status/{userId1}/{userId2}": {
+      "get": {
+        "tags": [
+          "Friendships"
+        ],
+        "summary": "Check friendship status",
+        "description": "Kiểm tra trạng thái kết bạn.",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "friendId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "userId1",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userId2",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Friendships/friends/{userId}": {
+      "get": {
+        "tags": [
+          "Friendships"
+        ],
+        "summary": "Get friends list",
+        "description": "Lấy danh sách bạn bè.",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Friendships/requests/{userId}": {
+      "get": {
+        "tags": [
+          "Friendships"
+        ],
+        "summary": "Get friend requests",
+        "description": "Lấy danh sách yêu cầu kết bạn.",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Friendships/reject/{requestId}": {
+      "delete": {
+        "tags": [
+          "Friendships"
+        ],
+        "summary": "Reject friend request",
+        "description": "Từ chối yêu cầu kết bạn.",
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Friendships/remove/{friendId}": {
+      "delete": {
+        "tags": [
+          "Friendships"
+        ],
+        "summary": "Remove friend",
+        "description": "Xóa bạn bè.",
+        "parameters": [
+          {
+            "name": "friendId",
             "in": "path",
             "required": true,
             "schema": {
@@ -169,6 +410,8 @@
         "tags": [
           "Likes"
         ],
+        "summary": "Create a new like",
+        "description": "Tạo lượt thích mới cho một bài đăng cụ thể của người dùng.",
         "requestBody": {
           "content": {
             "application/json": {
@@ -200,6 +443,8 @@
         "tags": [
           "Likes"
         ],
+        "summary": "Delete a like",
+        "description": "Xóa lượt thích theo id.",
         "parameters": [
           {
             "name": "id",
@@ -223,6 +468,8 @@
         "tags": [
           "Likes"
         ],
+        "summary": "Check if a like exists",
+        "description": "Kiểm tra xem lượt thích có tồn tại hay không.",
         "parameters": [
           {
             "name": "postId",
@@ -255,6 +502,8 @@
         "tags": [
           "Likes"
         ],
+        "summary": "Count likes",
+        "description": "Đếm số lượt thích cho một bài đăng cụ thể.",
         "parameters": [
           {
             "name": "postId",
@@ -278,9 +527,146 @@
         "tags": [
           "Likes"
         ],
+        "summary": "Get users who liked a post",
+        "description": "Lấy danh sách người dùng đã thích một bài đăng cụ thể.",
         "parameters": [
           {
             "name": "postId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Posts": {
+      "get": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "Get all posts",
+        "description": "Lấy danh sách tất cả các bài đăng.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "Create post",
+        "description": "Tạo bài đăng mới.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddPostRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddPostRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddPostRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Posts/{id}": {
+      "get": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "Get post by id",
+        "description": "Lấy bài đăng theo id.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "Update post",
+        "description": "Cập nhật bài đăng theo id.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePostRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePostRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePostRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "Delete post",
+        "description": "Xóa bài đăng theo id.",
+        "parameters": [
+          {
+            "name": "id",
             "in": "path",
             "required": true,
             "schema": {
@@ -533,6 +919,24 @@
         },
         "additionalProperties": false
       },
+      "AddFriendshipRequestDto": {
+        "type": "object",
+        "properties": {
+          "requesterId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "receiverId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "AddLikeRequestDto": {
         "type": "object",
         "properties": {
@@ -543,6 +947,24 @@
           "userId": {
             "type": "string",
             "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AddPostRequestDto": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "content": {
+            "type": "string",
+            "nullable": true
+          },
+          "image": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -610,6 +1032,24 @@
             "format": "uuid"
           },
           "content": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdatePostRequestDto": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "content": {
+            "type": "string",
+            "nullable": true
+          },
+          "image": {
             "type": "string",
             "nullable": true
           }

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using SocialVN.API.Models.Domain;
 using SocialVN.API.Models.DTO;
 using SocialVN.API.Repositories;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace SocialVN.API.Controllers
 {
@@ -18,9 +19,11 @@ namespace SocialVN.API.Controllers
             this.likeRepository = likeRepository;
             this.mapper = mapper;
         }
-  
+
         // Create like
         // POST: http:localhost:portnumber/api/likes
+
+        [SwaggerOperation(Summary = "Create a new like", Description = "Tạo lượt thích mới cho một bài đăng cụ thể của người dùng.")]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] AddLikeRequestDto like)
         {
@@ -30,6 +33,7 @@ namespace SocialVN.API.Controllers
         }
         //Delete like by id
         // DELETE: http:localhost:portnumber/api/likes/{id}
+        [SwaggerOperation(Summary = "Delete a like", Description = "Xóa lượt thích theo id.")]
         [HttpDelete("{id:Guid}")]
         public async Task<IActionResult> Delete(Guid id)
         {
@@ -43,6 +47,7 @@ namespace SocialVN.API.Controllers
 
         // Chekk like exist
         // GET: http:localhost:portnumber/api/likes/{postId}/{userId}
+        [SwaggerOperation(Summary = "Check if a like exists", Description = "Kiểm tra xem lượt thích có tồn tại hay không.")]
         [HttpGet("{postId:Guid}/{userId:Guid}")]
         public async Task<IActionResult> IsLikeExist(Guid postId, Guid userId)
         {
@@ -51,6 +56,7 @@ namespace SocialVN.API.Controllers
         }
         // Count likes
         // GET: http:localhost:portnumber/api/likes/{postId}
+        [SwaggerOperation(Summary = "Count likes", Description = "Đếm số lượt thích cho một bài đăng cụ thể.")]
         [HttpGet("{postId:Guid}")]
         public async Task<IActionResult> CountLikes(Guid postId)
         {
@@ -59,6 +65,7 @@ namespace SocialVN.API.Controllers
         }
         // Get users who liked a post
         // GET: http:localhost:portnumber/api/likes/{postId}
+        [SwaggerOperation(Summary = "Get users who liked a post", Description = "Lấy danh sách người dùng đã thích một bài đăng cụ thể.")]
         [HttpGet("{postId:Guid}/users")]
         public async Task<IActionResult> GetUsersWhoLiked(Guid postId)
         {

@@ -1,6 +1,6 @@
 ﻿namespace SocialVN.API.Models.DTO
 {
-    public class UpdateCommentRequestDto
+    public class UpdateCommentRequestDto :BaseDto
     {
         public Guid Id { get; set; }
         public Guid PostId { get; set; }

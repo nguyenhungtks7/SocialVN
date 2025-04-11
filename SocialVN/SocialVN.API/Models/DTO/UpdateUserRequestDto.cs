@@ -1,6 +1,6 @@
 ﻿namespace SocialVN.API.Models.DTO
 {
-    public class UpdateUserRequestDto
+    public class UpdateUserRequestDto :BaseDto
     {
         public string Email { get; set; }
         public string Role { get; set; }
