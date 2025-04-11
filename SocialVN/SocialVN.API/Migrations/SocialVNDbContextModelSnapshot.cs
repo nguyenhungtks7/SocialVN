@@ -17,12 +17,12 @@ namespace SocialVN.API.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.0")
+                .HasAnnotation("ProductVersion", "8.0.15")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("SocialVN.API.Models.Comment", b =>
+            modelBuilder.Entity("SocialVN.API.Models.Domain.Comment", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -59,7 +59,7 @@ namespace SocialVN.API.Migrations
                     b.ToTable("Comments", (string)null);
                 });
 
-            modelBuilder.Entity("SocialVN.API.Models.Friendship", b =>
+            modelBuilder.Entity("SocialVN.API.Models.Domain.Friendship", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -96,7 +96,7 @@ namespace SocialVN.API.Migrations
                     b.ToTable("Friendships", (string)null);
                 });
 
-            modelBuilder.Entity("SocialVN.API.Models.Like", b =>
+            modelBuilder.Entity("SocialVN.API.Models.Domain.Like", b =>
                 {
                     b.Property<Guid>("LikeId")
                         .ValueGeneratedOnAdd()
@@ -133,7 +133,7 @@ namespace SocialVN.API.Migrations
                     b.ToTable("Likes", (string)null);
                 });
 
-            modelBuilder.Entity("SocialVN.API.Models.Post", b =>
+            modelBuilder.Entity("SocialVN.API.Models.Domain.Post", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -169,7 +169,7 @@ namespace SocialVN.API.Migrations
                     b.ToTable("Posts", (string)null);
                 });
 
-            modelBuilder.Entity("SocialVN.API.Models.Report", b =>
+            modelBuilder.Entity("SocialVN.API.Models.Domain.Report", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -219,7 +219,7 @@ namespace SocialVN.API.Migrations
                     b.ToTable("Reports", (string)null);
                 });
 
-            modelBuilder.Entity("SocialVN.API.Models.User", b =>
+            modelBuilder.Entity("SocialVN.API.Models.Domain.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -284,15 +284,15 @@ namespace SocialVN.API.Migrations
                     b.ToTable("Users", (string)null);
                 });
 
-            modelBuilder.Entity("SocialVN.API.Models.Comment", b =>
+            modelBuilder.Entity("SocialVN.API.Models.Domain.Comment", b =>
                 {
-                    b.HasOne("SocialVN.API.Models.Post", "Post")
+                    b.HasOne("SocialVN.API.Models.Domain.Post", "Post")
                         .WithMany("Comments")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("SocialVN.API.Models.User", "User")
+                    b.HasOne("SocialVN.API.Models.Domain.User", "User")
                         .WithMany("Comments")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -303,16 +303,16 @@ namespace SocialVN.API.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("SocialVN.API.Models.Friendship", b =>
+            modelBuilder.Entity("SocialVN.API.Models.Domain.Friendship", b =>
                 {
-                    b.HasOne("SocialVN.API.Models.User", "Receiver")
+                    b.HasOne("SocialVN.API.Models.Domain.User", "Receiver")
                         .WithMany("FriendshipsAsReceiver")
                         .HasForeignKey("ReceiverId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
                         .HasConstraintName("FK_Friendships_Receiver");
 
-                    b.HasOne("SocialVN.API.Models.User", "Requester")
+                    b.HasOne("SocialVN.API.Models.Domain.User", "Requester")
                         .WithMany("FriendshipsAsRequester")
                         .HasForeignKey("RequesterId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -324,21 +324,21 @@ namespace SocialVN.API.Migrations
                     b.Navigation("Requester");
                 });
 
-            modelBuilder.Entity("SocialVN.API.Models.Like", b =>
+            modelBuilder.Entity("SocialVN.API.Models.Domain.Like", b =>
                 {
-                    b.HasOne("SocialVN.API.Models.Post", "Post")
+                    b.HasOne("SocialVN.API.Models.Domain.Post", "Post")
                         .WithMany("Likes")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("SocialVN.API.Models.User", "User")
+                    b.HasOne("SocialVN.API.Models.Domain.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("SocialVN.API.Models.User", null)
+                    b.HasOne("SocialVN.API.Models.Domain.User", null)
                         .WithMany("Likes")
                         .HasForeignKey("UserId1");
 
@@ -347,9 +347,9 @@ namespace SocialVN.API.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("SocialVN.API.Models.Post", b =>
+            modelBuilder.Entity("SocialVN.API.Models.Domain.Post", b =>
                 {
-                    b.HasOne("SocialVN.API.Models.User", "User")
+                    b.HasOne("SocialVN.API.Models.Domain.User", "User")
                         .WithMany("Posts")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -358,9 +358,9 @@ namespace SocialVN.API.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("SocialVN.API.Models.Report", b =>
+            modelBuilder.Entity("SocialVN.API.Models.Domain.Report", b =>
                 {
-                    b.HasOne("SocialVN.API.Models.User", "User")
+                    b.HasOne("SocialVN.API.Models.Domain.User", "User")
                         .WithMany("Reports")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -369,14 +369,14 @@ namespace SocialVN.API.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("SocialVN.API.Models.Post", b =>
+            modelBuilder.Entity("SocialVN.API.Models.Domain.Post", b =>
                 {
                     b.Navigation("Comments");
 
                     b.Navigation("Likes");
                 });
 
-            modelBuilder.Entity("SocialVN.API.Models.User", b =>
+            modelBuilder.Entity("SocialVN.API.Models.Domain.User", b =>
                 {
                     b.Navigation("Comments");
 

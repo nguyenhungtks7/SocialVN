@@ -18,8 +18,11 @@ builder.Services.AddSwaggerGen(options =>
 {
     options.EnableAnnotations(); // ✅ Để dùng SwaggerOperation, SwaggerResponse
 });
-builder.Services.AddDbContext<SocialVNDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("SocialVNConnectionString")));
-// Đăng ký AutoMapper và thêm cấu hình ánh xạ từ AutoMapperProfiles
+//builder.Services.AddDbContext<SocialVNDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("SocialVNConnectionString")));
+builder.Services.AddDbContext<SocialVNDbContext>(options =>
+    options.UseMySql(builder.Configuration.GetConnectionString("SocialVNConnectionStrings"),
+    new MySqlServerVersion(new Version(8, 0, 41))));
+//Đăng ký AutoMapper và thêm cấu hình ánh xạ từ AutoMapperProfiles
 builder.Services.AddAutoMapper(typeof(AutomapperProfiles));
 
 //Tiêm các kho lưu trữ vào bộ điều khiển
