@@ -12,45 +12,47 @@ using SocialVN.API.Data;
 namespace SocialVN.API.Migrations
 {
     [DbContext(typeof(SocialVNDbContext))]
-    [Migration("20250121034013_them base")]
-    partial class thembase
+    [Migration("20250413122345_fixx")]
+    partial class fixx
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.0")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+                .HasAnnotation("ProductVersion", "8.0.15")
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+            MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
-            modelBuilder.Entity("SocialVN.API.Models.Comment", b =>
+            modelBuilder.Entity("SocialVN.API.Models.Domain.Comment", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("varchar(36)")
                         .HasComment("ID duy nhất của comment (UUID)");
 
                     b.Property<string>("Content")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("longtext")
                         .HasComment("Nội dung comment");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("datetime(6)")
                         .HasComment("Thời gian tạo comment");
 
-                    b.Property<Guid>("PostId")
-                        .HasColumnType("uniqueidentifier")
+                    b.Property<string>("PostId")
+                        .IsRequired()
+                        .HasColumnType("varchar(36)")
                         .HasComment("ID bài viết mà comment thuộc về");
 
                     b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("datetime(6)")
                         .HasComment("Thời gian cập nhật comment");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier")
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("varchar(36)")
                         .HasComment("ID của người tạo comment");
 
                     b.HasKey("Id");
@@ -62,32 +64,34 @@ namespace SocialVN.API.Migrations
                     b.ToTable("Comments", (string)null);
                 });
 
-            modelBuilder.Entity("SocialVN.API.Models.Friendship", b =>
+            modelBuilder.Entity("SocialVN.API.Models.Domain.Friendship", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("char(36)");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("datetime(6)")
                         .HasComment("Thời gian gửi yêu cầu");
 
-                    b.Property<Guid>("ReceiverId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("ReceiverId")
+                        .IsRequired()
+                        .HasColumnType("varchar(36)");
 
-                    b.Property<Guid>("RequesterId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("RequesterId")
+                        .IsRequired()
+                        .HasColumnType("varchar(36)");
 
                     b.Property<string>("Status")
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)")
+                        .HasColumnType("varchar(50)")
                         .HasDefaultValue("pending")
                         .HasComment("Trạng thái của yêu cầu kết bạn (pending/accepted/declined)");
 
                     b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("datetime(6)")
                         .HasComment("Thời gian cập nhật trạng thái yêu cầu");
 
                     b.HasKey("Id");
@@ -99,31 +103,30 @@ namespace SocialVN.API.Migrations
                     b.ToTable("Friendships", (string)null);
                 });
 
-            modelBuilder.Entity("SocialVN.API.Models.Like", b =>
+            modelBuilder.Entity("SocialVN.API.Models.Domain.Like", b =>
                 {
-                    b.Property<Guid>("LikeId")
+                    b.Property<string>("LikeId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("varchar(36)")
                         .HasComment("ID duy nhất của lượt thích (UUID)");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("datetime(6)")
                         .HasComment("Thời gian thực hiện thích bài viết");
 
-                    b.Property<Guid>("PostId")
-                        .HasColumnType("uniqueidentifier")
+                    b.Property<string>("PostId")
+                        .IsRequired()
+                        .HasColumnType("varchar(36)")
                         .HasComment("ID bài viết được thích");
 
                     b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("datetime(6)")
                         .HasComment("Thời gian cập nhật lượt thích");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier")
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("varchar(36)")
                         .HasComment("ID của người thực hiện thích bài viết");
-
-                    b.Property<Guid?>("UserId1")
-                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("LikeId");
 
@@ -131,38 +134,37 @@ namespace SocialVN.API.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.HasIndex("UserId1");
-
                     b.ToTable("Likes", (string)null);
                 });
 
-            modelBuilder.Entity("SocialVN.API.Models.Post", b =>
+            modelBuilder.Entity("SocialVN.API.Models.Domain.Post", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("varchar(36)")
                         .HasComment("ID duy nhất của bài viết (UUID)");
 
                     b.Property<string>("Content")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("longtext")
                         .HasComment("Nội dung bài viết");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("datetime(6)")
                         .HasComment("Thời gian tạo bài viết");
 
                     b.Property<string>("Image")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("longtext")
                         .HasComment("Đường dẫn ảnh của bài viết (nếu có)");
 
                     b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("datetime(6)")
                         .HasComment("Thời gian cập nhật bài viết");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier")
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("varchar(36)")
                         .HasComment("ID của người dùng tạo bài viết");
 
                     b.HasKey("Id");
@@ -172,15 +174,15 @@ namespace SocialVN.API.Migrations
                     b.ToTable("Posts", (string)null);
                 });
 
-            modelBuilder.Entity("SocialVN.API.Models.Report", b =>
+            modelBuilder.Entity("SocialVN.API.Models.Domain.Report", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("varchar(36)")
                         .HasComment("ID duy nhất của báo cáo (UUID)");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("datetime(6)")
                         .HasComment("Thời gian tạo báo cáo");
 
                     b.Property<int>("NewFriends")
@@ -200,19 +202,20 @@ namespace SocialVN.API.Migrations
                         .HasComment("Tổng số bài viết trong tuần");
 
                     b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("datetime(6)")
                         .HasComment("Thời gian cập nhật báo cáo");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier")
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("varchar(36)")
                         .HasComment("ID của người dùng thực hiện báo cáo");
 
                     b.Property<DateTime>("WeekEnd")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("datetime(6)")
                         .HasComment("Ngày kết thúc của tuần được báo cáo");
 
                     b.Property<DateTime>("WeekStart")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("datetime(6)")
                         .HasComment("Ngày bắt đầu của tuần được báo cáo");
 
                     b.HasKey("Id");
@@ -222,64 +225,64 @@ namespace SocialVN.API.Migrations
                     b.ToTable("Reports", (string)null);
                 });
 
-            modelBuilder.Entity("SocialVN.API.Models.User", b =>
+            modelBuilder.Entity("SocialVN.API.Models.Domain.User", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("varchar(36)")
                         .HasComment("ID duy nhất của người dùng (UUID)");
 
                     b.Property<string>("Avatar")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("longtext")
                         .HasComment("Đường dẫn ảnh đại diện của người dùng");
 
                     b.Property<DateTime?>("BirthDate")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("datetime(6)")
                         .HasComment("Ngày tháng năm sinh của người dùng");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("datetime(6)")
                         .HasComment("Thời gian tạo tài khoản");
 
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)")
+                        .HasColumnType("varchar(100)")
                         .HasComment("Email của người dùng");
 
                     b.Property<string>("FullName")
                         .IsRequired()
                         .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("varchar(200)")
                         .HasComment("Họ và tên đầy đủ của người dùng");
 
                     b.Property<string>("Location")
                         .IsRequired()
                         .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("varchar(200)")
                         .HasComment("Địa chỉ nơi sinh sống của người dùng");
 
                     b.Property<string>("Occupation")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)")
+                        .HasColumnType("varchar(100)")
                         .HasComment("Nghề nghiệp của người dùng");
 
                     b.Property<string>("PasswordHash")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("longtext")
                         .HasComment("Mật khẩu được mã hóa");
 
                     b.Property<string>("Role")
                         .IsRequired()
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("longtext")
                         .HasDefaultValue("user")
                         .HasComment("Vai trò của người dùng");
 
                     b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("datetime(6)")
                         .HasComment("Thời gian cập nhật tài khoản");
 
                     b.HasKey("Id");
@@ -287,15 +290,15 @@ namespace SocialVN.API.Migrations
                     b.ToTable("Users", (string)null);
                 });
 
-            modelBuilder.Entity("SocialVN.API.Models.Comment", b =>
+            modelBuilder.Entity("SocialVN.API.Models.Domain.Comment", b =>
                 {
-                    b.HasOne("SocialVN.API.Models.Post", "Post")
+                    b.HasOne("SocialVN.API.Models.Domain.Post", "Post")
                         .WithMany("Comments")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("SocialVN.API.Models.User", "User")
+                    b.HasOne("SocialVN.API.Models.Domain.User", "User")
                         .WithMany("Comments")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -306,16 +309,16 @@ namespace SocialVN.API.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("SocialVN.API.Models.Friendship", b =>
+            modelBuilder.Entity("SocialVN.API.Models.Domain.Friendship", b =>
                 {
-                    b.HasOne("SocialVN.API.Models.User", "Receiver")
+                    b.HasOne("SocialVN.API.Models.Domain.User", "Receiver")
                         .WithMany("FriendshipsAsReceiver")
                         .HasForeignKey("ReceiverId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
                         .HasConstraintName("FK_Friendships_Receiver");
 
-                    b.HasOne("SocialVN.API.Models.User", "Requester")
+                    b.HasOne("SocialVN.API.Models.Domain.User", "Requester")
                         .WithMany("FriendshipsAsRequester")
                         .HasForeignKey("RequesterId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -327,32 +330,28 @@ namespace SocialVN.API.Migrations
                     b.Navigation("Requester");
                 });
 
-            modelBuilder.Entity("SocialVN.API.Models.Like", b =>
+            modelBuilder.Entity("SocialVN.API.Models.Domain.Like", b =>
                 {
-                    b.HasOne("SocialVN.API.Models.Post", "Post")
+                    b.HasOne("SocialVN.API.Models.Domain.Post", "Post")
                         .WithMany("Likes")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("SocialVN.API.Models.User", "User")
-                        .WithMany()
+                    b.HasOne("SocialVN.API.Models.Domain.User", "User")
+                        .WithMany("Likes")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-
-                    b.HasOne("SocialVN.API.Models.User", null)
-                        .WithMany("Likes")
-                        .HasForeignKey("UserId1");
 
                     b.Navigation("Post");
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("SocialVN.API.Models.Post", b =>
+            modelBuilder.Entity("SocialVN.API.Models.Domain.Post", b =>
                 {
-                    b.HasOne("SocialVN.API.Models.User", "User")
+                    b.HasOne("SocialVN.API.Models.Domain.User", "User")
                         .WithMany("Posts")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -361,9 +360,9 @@ namespace SocialVN.API.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("SocialVN.API.Models.Report", b =>
+            modelBuilder.Entity("SocialVN.API.Models.Domain.Report", b =>
                 {
-                    b.HasOne("SocialVN.API.Models.User", "User")
+                    b.HasOne("SocialVN.API.Models.Domain.User", "User")
                         .WithMany("Reports")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -372,14 +371,14 @@ namespace SocialVN.API.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("SocialVN.API.Models.Post", b =>
+            modelBuilder.Entity("SocialVN.API.Models.Domain.Post", b =>
                 {
                     b.Navigation("Comments");
 
                     b.Navigation("Likes");
                 });
 
-            modelBuilder.Entity("SocialVN.API.Models.User", b =>
+            modelBuilder.Entity("SocialVN.API.Models.Domain.User", b =>
                 {
                     b.Navigation("Comments");
 

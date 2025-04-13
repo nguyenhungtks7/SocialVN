@@ -1,4 +1,6 @@
-﻿namespace SocialVN.API.Models.Domain
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace SocialVN.API.Models.Domain
 {
     public class Like : Base
     {
@@ -7,7 +9,10 @@
         public Guid UserId { get; set; }
 
         // Thuộc tính điều hướng
-        public Post Post { get; set; }
+        [ForeignKey("UserId")]
         public User User { get; set; }
+
+        [ForeignKey("PostId")]
+        public Post Post { get; set; }
     }
 }

@@ -19,13 +19,14 @@ namespace SocialVN.API.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
-            // Cầu hình
             // Cấu hình bảng User
             modelBuilder.Entity<User>(entity =>
             {
                 entity.ToTable("Users");
                 entity.HasKey(u => u.Id);
-                entity.Property(u => u.Id).HasComment("ID duy nhất của người dùng (UUID)");
+                entity.Property(u => u.Id)
+                    .HasComment("ID duy nhất của người dùng (UUID)")
+                    .HasColumnType("varchar(36)"); // Chuyển đổi Guid sang varchar(36)
                 entity.Property(u => u.Email).IsRequired().HasMaxLength(100).HasComment("Email của người dùng");
                 entity.Property(u => u.PasswordHash).IsRequired().HasComment("Mật khẩu được mã hóa");
                 entity.Property(u => u.Role).IsRequired().HasDefaultValue("user").HasComment("Vai trò của người dùng");
@@ -43,7 +44,9 @@ namespace SocialVN.API.Data
             {
                 entity.ToTable("Posts");
                 entity.HasKey(p => p.Id);
-                entity.Property(p => p.Id).HasComment("ID duy nhất của bài viết (UUID)");
+                entity.Property(p => p.Id)
+                    .HasComment("ID duy nhất của bài viết (UUID)")
+                    .HasColumnType("varchar(36)"); // Chuyển đổi Guid sang varchar(36)
                 entity.Property(p => p.UserId).IsRequired().HasComment("ID của người dùng tạo bài viết");
                 entity.Property(p => p.Content).HasComment("Nội dung bài viết");
                 entity.Property(p => p.Image).HasComment("Đường dẫn ảnh của bài viết (nếu có)");
@@ -61,7 +64,9 @@ namespace SocialVN.API.Data
             {
                 entity.ToTable("Comments");
                 entity.HasKey(c => c.Id);
-                entity.Property(c => c.Id).HasComment("ID duy nhất của comment (UUID)");
+                entity.Property(c => c.Id)
+                    .HasComment("ID duy nhất của comment (UUID)")
+                    .HasColumnType("varchar(36)"); // Chuyển đổi Guid sang varchar(36)
                 entity.Property(c => c.PostId).IsRequired().HasComment("ID bài viết mà comment thuộc về");
                 entity.Property(c => c.UserId).IsRequired().HasComment("ID của người tạo comment");
                 entity.Property(c => c.Content).IsRequired().HasComment("Nội dung comment");
@@ -77,9 +82,8 @@ namespace SocialVN.API.Data
                 // Cấu hình quan hệ với User (OnDelete No Action)
                 entity.HasOne(c => c.User)
                        .WithMany(u => u.Comments)  // Một User có thể có nhiều Comment
-                    .HasForeignKey(c => c.UserId) // Khoá ngoại liên kết với bảng User
-                      .OnDelete(DeleteBehavior.Restrict); // Không làm gì khi xóa người dùng
-            
+                       .HasForeignKey(c => c.UserId) // Khoá ngoại liên kết với bảng User
+                       .OnDelete(DeleteBehavior.Restrict); // Không làm gì khi xóa người dùng
             });
 
             // Cấu hình bảng Like
@@ -87,7 +91,9 @@ namespace SocialVN.API.Data
             {
                 entity.ToTable("Likes");
                 entity.HasKey(l => l.LikeId);
-                entity.Property(l => l.LikeId).HasComment("ID duy nhất của lượt thích (UUID)");
+                entity.Property(l => l.LikeId)
+                    .HasComment("ID duy nhất của lượt thích (UUID)")
+                    .HasColumnType("varchar(36)"); // Chuyển đổi Guid sang varchar(36)
                 entity.Property(l => l.PostId).IsRequired().HasComment("ID bài viết được thích");
                 entity.Property(l => l.UserId).IsRequired().HasComment("ID của người thực hiện thích bài viết");
                 entity.Property(l => l.CreatedAt).IsRequired().HasComment("Thời gian thực hiện thích bài viết");
@@ -99,12 +105,10 @@ namespace SocialVN.API.Data
                       .OnDelete(DeleteBehavior.Restrict);
 
                 entity.HasOne(l => l.User)
-                      .WithMany()
-                      .HasForeignKey(l => l.UserId)
-                      .OnDelete(DeleteBehavior.Restrict);
+                .WithMany(u => u.Likes)
+                  .HasForeignKey(l => l.UserId)
+                   .OnDelete(DeleteBehavior.Restrict);
             });
-
-
 
             // Cấu hình bảng Friendship
             modelBuilder.Entity<Friendship>(entity =>
@@ -139,14 +143,14 @@ namespace SocialVN.API.Data
                       .HasConstraintName("FK_Friendships_Receiver");
             });
 
-
-
             // Cấu hình bảng Report
             modelBuilder.Entity<Report>(entity =>
             {
                 entity.ToTable("Reports");
                 entity.HasKey(r => r.Id);
-                entity.Property(r => r.Id).HasComment("ID duy nhất của báo cáo (UUID)");
+                entity.Property(r => r.Id)
+                    .HasComment("ID duy nhất của báo cáo (UUID)")
+                    .HasColumnType("varchar(36)"); // Chuyển đổi Guid sang varchar(36)
                 entity.Property(r => r.UserId).IsRequired().HasComment("ID của người dùng thực hiện báo cáo");
                 entity.Property(r => r.WeekStart).IsRequired().HasComment("Ngày bắt đầu của tuần được báo cáo");
                 entity.Property(r => r.WeekEnd).IsRequired().HasComment("Ngày kết thúc của tuần được báo cáo");
@@ -162,6 +166,7 @@ namespace SocialVN.API.Data
                       .HasForeignKey(r => r.UserId)
                       .OnDelete(DeleteBehavior.Cascade);
             });
+
         }
     }
 }

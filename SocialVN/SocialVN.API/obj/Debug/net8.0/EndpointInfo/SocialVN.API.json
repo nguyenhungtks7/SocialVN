@@ -900,6 +900,14 @@
       "AddCommentRequestDto": {
         "type": "object",
         "properties": {
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
           "id": {
             "type": "string",
             "format": "uuid"
@@ -922,6 +930,14 @@
       "AddFriendshipRequestDto": {
         "type": "object",
         "properties": {
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
           "requesterId": {
             "type": "string",
             "format": "uuid"
@@ -940,6 +956,14 @@
       "AddLikeRequestDto": {
         "type": "object",
         "properties": {
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
           "postId": {
             "type": "string",
             "format": "uuid"
@@ -954,6 +978,14 @@
       "AddPostRequestDto": {
         "type": "object",
         "properties": {
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
           "userId": {
             "type": "string",
             "format": "uuid"
@@ -1019,6 +1051,14 @@
       "UpdateCommentRequestDto": {
         "type": "object",
         "properties": {
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
           "id": {
             "type": "string",
             "format": "uuid"
@@ -1041,6 +1081,14 @@
       "UpdatePostRequestDto": {
         "type": "object",
         "properties": {
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
           "userId": {
             "type": "string",
             "format": "uuid"
@@ -1059,6 +1107,14 @@
       "UpdateUserRequestDto": {
         "type": "object",
         "properties": {
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
           "email": {
             "type": "string",
             "nullable": true
