@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SocialVN.API.Models.Domain;
 using SocialVN.API.Models.DTO;
@@ -22,6 +23,7 @@ namespace SocialVN.API.Controllers
         }
         // GET all comments
         // GET: http:localhost:portnumber/api/comments
+       
         [SwaggerOperation(Summary = "Get all comment", Description = "Truy xuất tất cả các bình luận với tùy chọn sắp xếp và phân trang.")]
         [HttpGet]
         public async Task<IActionResult> GetAll([FromQuery] string? sortBy, [FromQuery] bool? isAscending,
