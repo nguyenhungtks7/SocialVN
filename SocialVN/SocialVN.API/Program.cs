@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using SocialVN.API.Data;
@@ -119,6 +120,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     }
 );
 
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
@@ -135,6 +137,16 @@ app.UseAuthentication();
 
 // Kích hoạt middleware ủy quyền để kiểm tra quyền truy cập của người dùng đã xác thực
 app.UseAuthorization();
+
+// Kích hoạt middleware phục vụ các tệp tĩnh (như hình ảnh, CSS, JavaScript)
+app.UseStaticFiles(new StaticFileOptions
+{
+    // Chỉ định thư mục vật lý chứa các tệp tĩnh (ở đây là thư mục "Images" trong thư mục hiện tại)
+    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "Images")),
+
+    // Định nghĩa đường dẫn URL từ đó các tệp tĩnh sẽ được truy cập (ví dụ: https://localhost:1234/Images)
+    RequestPath = "/Images"
+});
 
 app.MapControllers();
 

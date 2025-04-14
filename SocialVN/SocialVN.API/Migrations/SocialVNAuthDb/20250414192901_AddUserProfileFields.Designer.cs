@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SocialVN.API.Data;
 
@@ -11,9 +12,11 @@ using SocialVN.API.Data;
 namespace SocialVN.API.Migrations.SocialVNAuthDb
 {
     [DbContext(typeof(SocialVNAuthDbContext))]
-    partial class SocialVNAuthDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250414192901_AddUserProfileFields")]
+    partial class AddUserProfileFields
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

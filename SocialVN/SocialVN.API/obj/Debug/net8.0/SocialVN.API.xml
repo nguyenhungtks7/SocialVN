@@ -64,5 +64,17 @@
         <member name="M:SocialVN.API.Migrations.SocialVNAuthDb.themvaluerole.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:SocialVN.API.Migrations.SocialVNAuthDb.AddUserProfileFields">
+            <inheritdoc />
+        </member>
+        <member name="M:SocialVN.API.Migrations.SocialVNAuthDb.AddUserProfileFields.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SocialVN.API.Migrations.SocialVNAuthDb.AddUserProfileFields.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SocialVN.API.Migrations.SocialVNAuthDb.AddUserProfileFields.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
     </members>
 </doc>

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SocialVN.API.Models.Domain
 {
@@ -9,6 +10,9 @@ namespace SocialVN.API.Models.Domain
         public DateTime? BirthDate { get; set; }
         public string? Occupation { get; set; }
         public string? Location { get; set; }
-        public string? Avatar { get; set; }
+        [NotMapped]
+        public IFormFile? Avatar { get; set; }
+
+        public string? AvatarPath { get; set; }
     }
 }
