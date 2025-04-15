@@ -15,11 +15,14 @@ namespace SocialVN.API.Repositories
         {
             this.configuration = configuration;
         }
-        public string CreateJWTToken(ApplicationUser userm, List<string> roles)
+        public string CreateJWTToken(ApplicationUser user, List<string> roles)
         {
             // Create claims
-            var claims = new List<Claim>();
-            claims.Add(new Claim(ClaimTypes.Email, userm.Email));
+            var claims = new List<Claim>
+                 {
+                       new Claim(ClaimTypes.Email, user.Email), // Claim Email
+                        new Claim(ClaimTypes.NameIdentifier, user.Id) // Thêm Claim NameIdentifier với user.Id
+                   };
 
             foreach (var role in roles)
             {

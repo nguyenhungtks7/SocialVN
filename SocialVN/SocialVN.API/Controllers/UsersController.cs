@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -7,6 +8,7 @@ using SocialVN.API.Models.Domain;
 using SocialVN.API.Models.DTO;
 using SocialVN.API.Repositories;
 using Swashbuckle.AspNetCore.Annotations;
+using System.Security.Claims;
 using static System.Net.Mime.MediaTypeNames;
 
 // cần sửa lại giá trị trả về DTO
@@ -15,6 +17,7 @@ namespace SocialVN.API.Controllers
     // https:localhost:portnumber/api/users
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class UsersController : ControllerBase
     {
 
@@ -29,13 +32,21 @@ namespace SocialVN.API.Controllers
             this.env = env;
         }
 
+       
         [SwaggerOperation(Summary = "Update Profile ", Description = "Cập nhật hồ sơ.")]
-        [HttpPut("{id:Guid}")]
-        public async Task<IActionResult> Update(string id, [FromForm] UpdateUserProfileDto dto)
+        [HttpPut("me")]
+        public async Task<IActionResult> Update([FromForm] UpdateUserProfileDto dto)
         {
-            var user = await userManager.FindByIdAsync(id);
-            if (user == null) 
-                return NotFound("Không tìm thấy người dùng");
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            foreach (var claim in User.Claims)
+            {
+                Console.WriteLine($"{claim.Type}: {claim.Value}");
+            }
+            if (string.IsNullOrEmpty(userId))
+                return BadRequest(new ApiResponse<string>(400, "Không xác định được người dùng.", null));
+            var user = await userManager.FindByIdAsync(userId);
+            if (user == null)
+                return BadRequest(new ApiResponse<string>(400, "Không tìm thấy người dùng", null));
 
             user.FullName = dto.FullName;
             user.BirthDate = dto.BirthDate;
@@ -54,8 +65,8 @@ namespace SocialVN.API.Controllers
                 using var stream = new FileStream(filePath, FileMode.Create);
                 await dto.Avatar.CopyToAsync(stream);
                 var request = httpContextAccessor.HttpContext.Request;
-                var urlFilePath = $"{request.Scheme}://{request.Host}{request.PathBase}/Images/{fileName}";
-                user.AvatarPath = urlFilePath;
+                //var urlFilePath = $"{request.Scheme}://{request.Host}{request.PathBase}/Images/{fileName}";
+                user.AvatarPath = filePath;
             
 
             }
@@ -138,9 +149,10 @@ namespace SocialVN.API.Controllers
 
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(string id)
+        public async Task<IActionResult> GetById()
         {
-            var user = await userManager.FindByIdAsync(id);
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var user = await userManager.FindByIdAsync(userId);
             if (user == null)
             {
                 return NotFound(new ApiResponse<string>(404, "Không tìm thấy người dùng", null));
@@ -153,7 +165,8 @@ namespace SocialVN.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id)
         {
-            var user = await userManager.FindByIdAsync(id);
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var user = await userManager.FindByIdAsync(userId);
             if (user == null)
             {
                 return NotFound(new ApiResponse<string>(404, "Không tìm thấy người dùng", null));

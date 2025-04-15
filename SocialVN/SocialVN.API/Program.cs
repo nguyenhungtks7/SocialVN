@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using SocialVN.API.Data;
@@ -9,6 +10,7 @@ using SocialVN.API.Mappings;
 using SocialVN.API.Models.Domain;
 using SocialVN.API.Repositories;
 using System.Reflection;
+using System.Security.Claims;
 using System.Text;
 
 
@@ -30,15 +32,48 @@ builder.Services.AddSwaggerGen(options =>
         Description = "API cho mạng xã hội SocialVN"
     });
     options.EnableAnnotations();
-    options.AddSecurityDefinition(
-    JwtBearerDefaults.AuthenticationScheme,
-    new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+
+    //options.AddSecurityDefinition(
+    //JwtBearerDefaults.AuthenticationScheme,
+    //new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+    //{
+    //    Name = "Authorization",
+    //    In = ParameterLocation.Header,
+    //    Type = SecuritySchemeType.ApiKey,
+    //    //Scheme = JwtBearerDefaults.AuthenticationScheme
+    //    Scheme = "Bearer",
+    //    BearerFormat = "JWT",
+    //    Description = "Nhập token theo định dạng: Bearer {token}"
+    //});
+
+    //options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    //{
+    //    {
+    //        new OpenApiSecurityScheme
+    //        {
+    //            Reference = new OpenApiReference
+    //            {
+    //                Type = ReferenceType.SecurityScheme,
+    //                //Id = JwtBearerDefaults.AuthenticationScheme
+    //                  Id = "Bearer"
+    //            },
+    //           Scheme = "Bearer",
+    //           Name = "Authorization",
+    //           In = ParameterLocation.Header
+    //        },
+    //        new List<string>()
+    //    }
+    //});
+
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
+        Description = "Nhập token theo định dạng: \"{token}\"",
         Name = "Authorization",
         In = ParameterLocation.Header,
-        Type = SecuritySchemeType.ApiKey,
-        Scheme = JwtBearerDefaults.AuthenticationScheme
+        Type = SecuritySchemeType.Http,
+        Scheme = "bearer"
     });
+
 
     options.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
@@ -48,10 +83,11 @@ builder.Services.AddSwaggerGen(options =>
                 Reference = new OpenApiReference
                 {
                     Type = ReferenceType.SecurityScheme,
-                    Id = JwtBearerDefaults.AuthenticationScheme
+                    Id = "Bearer" 
                 },
-                Scheme = "Oauth",
-                In = ParameterLocation.Header
+                Scheme = "bearer",
+                Name = "Authorization",
+                In = ParameterLocation.Header,
             },
             new List<string>()
         }
@@ -107,17 +143,33 @@ builder.Services.Configure<IdentityOptions>(
 // Cấu hình Authentication với JWT Bearer
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
-    options.TokenValidationParameters = new TokenValidationParameters
     {
-        ValidateIssuer = true,
-        ValidateAudience = true,
-        ValidateLifetime = true,
-        ValidateIssuerSigningKey = true,
-        ValidIssuer = builder.Configuration["Jwt:Issuer"],
-        ValidAudience = builder.Configuration["Jwt:Audience"],
-        IssuerSigningKey = new SymmetricSecurityKey(
-            Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"] ?? ""))
+        options.RequireHttpsMetadata = false;
+        options.SaveToken = true;
+
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidAudience = builder.Configuration["Jwt:Audience"],
+            NameClaimType = ClaimTypes.NameIdentifier,
+            IssuerSigningKey = new SymmetricSecurityKey(
+           Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"] ?? ""))
+
+        };
+        options.Events = new JwtBearerEvents
+        {
+            OnAuthenticationFailed = context =>
+            {
+                Console.WriteLine("JWT ERROR: " + context.Exception.Message);
+                return Task.CompletedTask;
+            }
+        };
     }
+   
 );
 
 builder.Services.AddHttpContextAccessor();

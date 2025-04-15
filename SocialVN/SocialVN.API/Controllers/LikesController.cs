@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SocialVN.API.Models.Domain;
 using SocialVN.API.Models.DTO;
@@ -8,8 +9,10 @@ using Swashbuckle.AspNetCore.Annotations;
 namespace SocialVN.API.Controllers
 {
     // https:localhost:portnumber/api/likes
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
+    
     public class LikesController : ControllerBase
     {
         private readonly ILikeRepository likeRepository;

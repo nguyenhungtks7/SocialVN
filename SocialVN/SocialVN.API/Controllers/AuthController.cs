@@ -12,7 +12,7 @@ namespace SocialVN.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-
+   
     public class AuthController : ControllerBase
     {
         private readonly UserManager<ApplicationUser> userManager;
@@ -25,7 +25,7 @@ namespace SocialVN.API.Controllers
 
         }
         //POST: /api/Auth/Register
-
+        
         [SwaggerOperation(Summary = "Register", Description = "Đăng ký.")]
         [HttpPost]
         [Route("Register")]

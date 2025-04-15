@@ -488,47 +488,6 @@
   },
   {
     "ContainingType": "SocialVN.API.Controllers.UsersController",
-    "Method": "Update",
-    "RelativePath": "api/Users/{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.String",
-        "IsRequired": true
-      },
-      {
-        "Name": "FullName",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "BirthDate",
-        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      },
-      {
-        "Name": "Occupation",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Location",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Avatar",
-        "Type": "Microsoft.AspNetCore.Http.IFormFile",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SocialVN.API.Controllers.UsersController",
     "Method": "GetById",
     "RelativePath": "api/Users/{id}",
     "HttpMethod": "GET",
@@ -555,6 +514,42 @@
         "Name": "id",
         "Type": "System.String",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SocialVN.API.Controllers.UsersController",
+    "Method": "Update",
+    "RelativePath": "api/Users/me",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "FullName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "BirthDate",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Occupation",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Location",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Avatar",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

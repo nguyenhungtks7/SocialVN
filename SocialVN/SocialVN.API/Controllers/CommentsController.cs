@@ -9,8 +9,10 @@ using Swashbuckle.AspNetCore.Annotations;
 namespace SocialVN.API.Controllers
 {
     // https:localhost:portnumber/api/comments
+    [Authorize(Roles = "Admin,User")]
     [Route("api/[controller]")]
     [ApiController]
+
     public class CommentsController : ControllerBase
     {
         private readonly ICommentRepository commentsRepository;
@@ -71,6 +73,7 @@ namespace SocialVN.API.Controllers
         }
         // Delete comment by id
         //  DELETE: http:localhost:portnumber/api/comments/{id}
+
         [SwaggerOperation(Summary = "Delete comment", Description = "Xóa bình luận theo id.")]
         [HttpDelete("{id:Guid}")]
         public async Task<IActionResult> Delete(Guid id)

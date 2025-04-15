@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SocialVN.API.Models.Domain;
@@ -9,8 +10,10 @@ using Swashbuckle.AspNetCore.Annotations;
 namespace SocialVN.API.Controllers
 {
     // https:localhost:portnumber/api/friendships
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
+   
     public class FriendshipsController : ControllerBase
     {
         private readonly IFriendshipRepository friendshipRepository;
