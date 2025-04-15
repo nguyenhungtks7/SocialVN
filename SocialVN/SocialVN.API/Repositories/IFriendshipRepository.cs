@@ -10,7 +10,7 @@ namespace SocialVN.API.Repositories
         Task<Friendship> RejectRequestAsync(Guid requestId);
         Task<Friendship> CancelRequestAsync(Guid requestId);
         Task<Friendship> RemoveFriendAsync(Guid friendId);
-        Task<List<User>> ListFriendsAsync(Guid friendId);
+        Task<List<ApplicationUser>> ListFriendsAsync(Guid friendId);
         Task<List<Friendship>> ListFriendRequestsAsync(Guid userId);
         Task<FriendshipStatus> CheckFriendshipStatusAsync(Guid userId, Guid friendId);
     

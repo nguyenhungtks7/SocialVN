@@ -30,7 +30,7 @@ namespace SocialVN.API.Repositories
         //Check like exist
         public async Task<bool> IsLikeExistAsync(Guid postId, Guid userId)
         {
-            return await dbContext.Likes.AnyAsync(l => l.PostId == postId && l.UserId == userId);
+            return await dbContext.Likes.AnyAsync(l => l.PostId == postId && l.UserId == userId.ToString());
         }
         //Count likes
         public async Task<int> CountLikesAsync(Guid postId)

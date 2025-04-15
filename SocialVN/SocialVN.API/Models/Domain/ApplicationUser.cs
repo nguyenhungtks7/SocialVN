@@ -14,5 +14,12 @@ namespace SocialVN.API.Models.Domain
         public IFormFile? Avatar { get; set; }
 
         public string? AvatarPath { get; set; }
+        // Thuộc tính điều hướng
+        public ICollection<Post> Posts { get; set; } = new List<Post>();
+        public ICollection<Friendship> FriendshipsAsRequester { get; set; } = new List<Friendship>();
+        public ICollection<Friendship> FriendshipsAsReceiver { get; set; } = new List<Friendship>();
+        public ICollection<Report> Reports { get; set; } = new List<Report>();
+        public ICollection<Comment> Comments { get; set; } = new List<Comment>();
+        public ICollection<Like> Likes { get; set; } = new List<Like>();
     }
 }

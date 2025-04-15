@@ -6,10 +6,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace SocialVN.API.Migrations.SocialVNAuthDb
+namespace SocialVN.API.Migrations
 {
     /// <inheritdoc />
-    public partial class Thêmdbxacthucuyquyen : Migration
+    public partial class fixlaidbchinhsửauser : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -42,14 +42,14 @@ namespace SocialVN.API.Migrations.SocialVNAuthDb
                 {
                     Id = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    FullName = table.Column<string>(type: "longtext", nullable: false)
+                    FullName = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     BirthDate = table.Column<DateTime>(type: "datetime(6)", nullable: true),
-                    Occupation = table.Column<string>(type: "longtext", nullable: false)
+                    Occupation = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Location = table.Column<string>(type: "longtext", nullable: false)
+                    Location = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Avatar = table.Column<string>(type: "longtext", nullable: false)
+                    AvatarPath = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     UserName = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -207,6 +207,159 @@ namespace SocialVN.API.Migrations.SocialVNAuthDb
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
+            migrationBuilder.CreateTable(
+                name: "Friendships",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false, comment: "ID duy nhất của yêu cầu kết bạn (UUID)", collation: "ascii_general_ci"),
+                    RequesterId = table.Column<string>(type: "varchar(36)", nullable: false, comment: "ID của người gửi yêu cầu kết bạn")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    ReceiverId = table.Column<string>(type: "varchar(36)", nullable: false, comment: "ID của người nhận yêu cầu kết bạn")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Status = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false, defaultValue: "pending", comment: "Trạng thái của yêu cầu kết bạn (pending/accepted/declined)")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false, comment: "Thời gian gửi yêu cầu"),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false, comment: "Thời gian cập nhật trạng thái yêu cầu")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Friendships", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Friendships_Receiver",
+                        column: x => x.ReceiverId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Friendships_Requester",
+                        column: x => x.RequesterId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Posts",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false, comment: "ID duy nhất của bài viết (UUID)", collation: "ascii_general_ci"),
+                    UserId = table.Column<string>(type: "varchar(36)", nullable: false, comment: "ID của người dùng tạo bài viết")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Content = table.Column<string>(type: "longtext", nullable: false, comment: "Nội dung bài viết")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Image = table.Column<string>(type: "longtext", nullable: false, comment: "Đường dẫn ảnh của bài viết (nếu có)")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false, comment: "Thời gian tạo bài viết"),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false, comment: "Thời gian cập nhật bài viết")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Posts", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Posts_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Reports",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false, comment: "ID duy nhất của báo cáo (UUID)", collation: "ascii_general_ci"),
+                    UserId = table.Column<string>(type: "varchar(36)", nullable: false, comment: "ID của người dùng thực hiện báo cáo")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    WeekStart = table.Column<DateTime>(type: "datetime(6)", nullable: false, comment: "Ngày bắt đầu của tuần được báo cáo"),
+                    WeekEnd = table.Column<DateTime>(type: "datetime(6)", nullable: false, comment: "Ngày kết thúc của tuần được báo cáo"),
+                    TotalPosts = table.Column<int>(type: "int", nullable: false, comment: "Tổng số bài viết trong tuần"),
+                    NewFriends = table.Column<int>(type: "int", nullable: false, comment: "Số lượng bạn bè mới trong tuần"),
+                    TotalLikes = table.Column<int>(type: "int", nullable: false, comment: "Tổng số lượt thích trong tuần"),
+                    TotalComments = table.Column<int>(type: "int", nullable: false, comment: "Tổng số lượt comment trong tuần"),
+                    CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false, comment: "Thời gian tạo báo cáo"),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false, comment: "Thời gian cập nhật báo cáo")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Reports", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Reports_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Comments",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false, comment: "ID duy nhất của comment (UUID)", collation: "ascii_general_ci"),
+                    PostId = table.Column<Guid>(type: "char(36)", nullable: false, comment: "ID bài viết mà comment thuộc về", collation: "ascii_general_ci"),
+                    UserId = table.Column<string>(type: "varchar(36)", nullable: false, comment: "ID của người tạo comment")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Content = table.Column<string>(type: "longtext", nullable: false, comment: "Nội dung comment")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false, comment: "Thời gian tạo comment"),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false, comment: "Thời gian cập nhật comment")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Comments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Comments_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Comments_Posts_PostId",
+                        column: x => x.PostId,
+                        principalTable: "Posts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Likes",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false, comment: "ID duy nhất của lượt thích (UUID)", collation: "ascii_general_ci"),
+                    PostId = table.Column<Guid>(type: "char(36)", nullable: false, comment: "ID bài viết được thích", collation: "ascii_general_ci"),
+                    UserId = table.Column<string>(type: "varchar(36)", nullable: false, comment: "ID của người thực hiện thích bài viết")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    ApplicationUserId = table.Column<string>(type: "varchar(255)", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false, comment: "Thời gian thực hiện thích bài viết"),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false, comment: "Thời gian cập nhật lượt thích")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Likes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Likes_AspNetUsers_ApplicationUserId",
+                        column: x => x.ApplicationUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Likes_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Likes_Posts_PostId",
+                        column: x => x.PostId,
+                        principalTable: "Posts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
@@ -252,6 +405,51 @@ namespace SocialVN.API.Migrations.SocialVNAuthDb
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Comments_PostId",
+                table: "Comments",
+                column: "PostId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Comments_UserId",
+                table: "Comments",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Friendships_ReceiverId",
+                table: "Friendships",
+                column: "ReceiverId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Friendships_RequesterId",
+                table: "Friendships",
+                column: "RequesterId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Likes_ApplicationUserId",
+                table: "Likes",
+                column: "ApplicationUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Likes_PostId",
+                table: "Likes",
+                column: "PostId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Likes_UserId",
+                table: "Likes",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Posts_UserId",
+                table: "Posts",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Reports_UserId",
+                table: "Reports",
+                column: "UserId");
         }
 
         /// <inheritdoc />
@@ -273,7 +471,22 @@ namespace SocialVN.API.Migrations.SocialVNAuthDb
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Comments");
+
+            migrationBuilder.DropTable(
+                name: "Friendships");
+
+            migrationBuilder.DropTable(
+                name: "Likes");
+
+            migrationBuilder.DropTable(
+                name: "Reports");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "Posts");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

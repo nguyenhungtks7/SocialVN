@@ -53,8 +53,8 @@ namespace SocialVN.API.Repositories
         public async Task<FriendshipStatus> CheckFriendshipStatusAsync(Guid userId, Guid friendId)
         {
             var friendship = await dbContext.Friendships
-                .FirstOrDefaultAsync(f => (f.RequesterId == userId && f.ReceiverId == friendId) ||
-                (f.RequesterId == friendId && f.ReceiverId == userId));
+                .FirstOrDefaultAsync(f => (f.RequesterId == userId.ToString() && f.ReceiverId == friendId.ToString()) ||
+                                          (f.RequesterId == friendId.ToString() && f.ReceiverId == userId.ToString()));
             return friendship?.StatusEnum ?? FriendshipStatus.NotFriends;
         }
 
@@ -64,18 +64,18 @@ namespace SocialVN.API.Repositories
            return await dbContext.Friendships
                 .Include(f => f.Requester)
                 .Include(f => f.Receiver)
-                .Where(f => f.ReceiverId == userId && f.StatusEnum == FriendshipStatus.Pending)
+                .Where(f => f.ReceiverId == userId.ToString() && f.StatusEnum == FriendshipStatus.Pending)
                 .ToListAsync();
         }
 
         //Get a list of friends
-        public async Task<List<User>> ListFriendsAsync(Guid userId)
+        public async Task<List<ApplicationUser>> ListFriendsAsync(Guid userId)
         {
            return await dbContext.Friendships
                 .Include(f => f.Requester)
                 .Include(f => f.Receiver)
-                .Where(f => (f.RequesterId == userId || f.ReceiverId == userId) && f.StatusEnum == FriendshipStatus.Accepted)
-                .Select(f => f.RequesterId == userId ? f.Receiver : f.Requester)
+                .Where(f => (f.RequesterId == userId.ToString() || f.ReceiverId == userId.ToString()) && f.StatusEnum == FriendshipStatus.Accepted)
+                .Select(f => f.RequesterId == userId.ToString() ? f.Receiver : f.Requester)
                 .ToListAsync();
         }
 

@@ -4,76 +4,16 @@
         <name>SocialVN.API</name>
     </assembly>
     <members>
-        <member name="T:SocialVN.API.Migrations.fixx">
+        <member name="T:SocialVN.API.Migrations.fixlaidbchinhsửauser">
             <inheritdoc />
         </member>
-        <member name="M:SocialVN.API.Migrations.fixx.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:SocialVN.API.Migrations.fixlaidbchinhsửauser.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:SocialVN.API.Migrations.fixx.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:SocialVN.API.Migrations.fixlaidbchinhsửauser.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:SocialVN.API.Migrations.fixx.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="T:SocialVN.API.Migrations.check">
-            <inheritdoc />
-        </member>
-        <member name="M:SocialVN.API.Migrations.check.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:SocialVN.API.Migrations.check.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:SocialVN.API.Migrations.check.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="T:SocialVN.API.Migrations.SocialVNAuthDb.Thêmdbxacthucuyquyen">
-            <inheritdoc />
-        </member>
-        <member name="M:SocialVN.API.Migrations.SocialVNAuthDb.Thêmdbxacthucuyquyen.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:SocialVN.API.Migrations.SocialVNAuthDb.Thêmdbxacthucuyquyen.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:SocialVN.API.Migrations.SocialVNAuthDb.Thêmdbxacthucuyquyen.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="T:SocialVN.API.Migrations.SocialVNAuthDb.chinhlaitypecactruong">
-            <inheritdoc />
-        </member>
-        <member name="M:SocialVN.API.Migrations.SocialVNAuthDb.chinhlaitypecactruong.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:SocialVN.API.Migrations.SocialVNAuthDb.chinhlaitypecactruong.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:SocialVN.API.Migrations.SocialVNAuthDb.chinhlaitypecactruong.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="T:SocialVN.API.Migrations.SocialVNAuthDb.themvaluerole">
-            <inheritdoc />
-        </member>
-        <member name="M:SocialVN.API.Migrations.SocialVNAuthDb.themvaluerole.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:SocialVN.API.Migrations.SocialVNAuthDb.themvaluerole.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:SocialVN.API.Migrations.SocialVNAuthDb.themvaluerole.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="T:SocialVN.API.Migrations.SocialVNAuthDb.AddUserProfileFields">
-            <inheritdoc />
-        </member>
-        <member name="M:SocialVN.API.Migrations.SocialVNAuthDb.AddUserProfileFields.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:SocialVN.API.Migrations.SocialVNAuthDb.AddUserProfileFields.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:SocialVN.API.Migrations.SocialVNAuthDb.AddUserProfileFields.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+        <member name="M:SocialVN.API.Migrations.fixlaidbchinhsửauser.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
     </members>

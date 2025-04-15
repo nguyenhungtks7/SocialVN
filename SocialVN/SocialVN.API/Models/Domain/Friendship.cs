@@ -7,8 +7,8 @@ namespace SocialVN.API.Models.Domain
     public class Friendship : Base
     {
         public Guid Id { get; set; }
-        public Guid RequesterId { get; set; }
-        public Guid ReceiverId { get; set; }
+        public string RequesterId { get; set; }
+        public string ReceiverId { get; set; }
         public string Status { get; set; }
         [NotMapped]
         public FriendshipStatus StatusEnum
@@ -18,8 +18,8 @@ namespace SocialVN.API.Models.Domain
         }
 
         // Thuộc tính điều hướng
-        public User Requester { get; set; }
-        public User Receiver { get; set; }
+        public ApplicationUser Requester { get; set; }
+        public ApplicationUser Receiver { get; set; }
     }
   
 }

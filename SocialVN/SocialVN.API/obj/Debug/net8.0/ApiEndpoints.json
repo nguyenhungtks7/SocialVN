@@ -496,7 +496,7 @@
     "Parameters": [
       {
         "Name": "id",
-        "Type": "System.String",
+        "Type": "",
         "IsRequired": true
       }
     ],
