@@ -7,10 +7,10 @@ namespace SocialVN.API.Repositories
     {
         Task<List<User>> GetAllAsync(string? filterOn = null, string? filterQuery = null,
                   string? sortBy = null, bool isAscending = true, int pageNumber = 1, int pageSize = 1000);
-        Task<User> GetByIdAsync(Guid id);
-        Task<User> CreateAsync(User user);    
-        Task<User> UpdateAsync(User user);
-        Task<User> DeleteAsync(Guid id);
+        Task<ApplicationUser> GetByIdAsync(Guid id);
+        Task<ApplicationUser> CreateAsync(User user);    
+        Task<ApplicationUser> UpdateAsync(User user);
+        Task<ApplicationUser> DeleteAsync(Guid id);
 
     }
 }

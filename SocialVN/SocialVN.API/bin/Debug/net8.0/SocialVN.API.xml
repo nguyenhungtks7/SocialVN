@@ -4,16 +4,28 @@
         <name>SocialVN.API</name>
     </assembly>
     <members>
-        <member name="T:SocialVN.API.Migrations.fixlaidbchinhsửauser">
+        <member name="T:SocialVN.API.Migrations.fixdbcontex">
             <inheritdoc />
         </member>
-        <member name="M:SocialVN.API.Migrations.fixlaidbchinhsửauser.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:SocialVN.API.Migrations.fixdbcontex.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:SocialVN.API.Migrations.fixlaidbchinhsửauser.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:SocialVN.API.Migrations.fixdbcontex.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:SocialVN.API.Migrations.fixlaidbchinhsửauser.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+        <member name="M:SocialVN.API.Migrations.fixdbcontex.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:SocialVN.API.Migrations.themCreatedAtUpdateAtuser">
+            <inheritdoc />
+        </member>
+        <member name="M:SocialVN.API.Migrations.themCreatedAtUpdateAtuser.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SocialVN.API.Migrations.themCreatedAtUpdateAtuser.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SocialVN.API.Migrations.themCreatedAtUpdateAtuser.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
     </members>

@@ -38,11 +38,11 @@ namespace SocialVN.API.Repositories
             return await dbContext.Likes.CountAsync(l => l.PostId == postId);
         }
         //Get users who liked a post
-        public async Task<List<User>> GetUsersWhoLikedAsync(Guid postId)
-        {
-            return await dbContext.Users
-                .Where(u => u.Likes.Any(l => l.PostId == postId))
-                .ToListAsync();
-        }
+        //public async Task<List<User>> GetUsersWhoLikedAsync(Guid postId)
+        //{
+        //    return await dbContext.Users
+        //        .Where(u => u.Likes.Any(l => l.PostId == postId))
+        //        .ToListAsync();
+        //}
     }
 }

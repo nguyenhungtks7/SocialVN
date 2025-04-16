@@ -11,6 +11,6 @@ namespace SocialVN.API.Repositories
         Task<Like> DeleteLikeAsync(Guid id);
         Task<bool> IsLikeExistAsync(Guid postId, Guid userId);
         Task<int> CountLikesAsync(Guid postId);
-        Task<List<User>> GetUsersWhoLikedAsync(Guid postId);
+        //Task<List<User>> GetUsersWhoLikedAsync(Guid postId);
     }
 }

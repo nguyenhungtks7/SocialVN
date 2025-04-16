@@ -68,13 +68,13 @@ namespace SocialVN.API.Controllers
         }
         // Get users who liked a post
         // GET: http:localhost:portnumber/api/likes/{postId}
-        [SwaggerOperation(Summary = "Get users who liked a post", Description = "Lấy danh sách người dùng đã thích một bài đăng cụ thể.")]
-        [HttpGet("{postId:Guid}/users")]
-        public async Task<IActionResult> GetUsersWhoLiked(Guid postId)
-        {
-            var users = await likeRepository.GetUsersWhoLikedAsync(postId);
-            return Ok(mapper.Map<List<UserDto>>(users));
-        }
+        //[SwaggerOperation(Summary = "Get users who liked a post", Description = "Lấy danh sách người dùng đã thích một bài đăng cụ thể.")]
+        //[HttpGet("{postId:Guid}/users")]
+        //public async Task<IActionResult> GetUsersWhoLiked(Guid postId)
+        //{
+        //    var users = await likeRepository.GetUsersWhoLikedAsync(postId);
+        //    return Ok(mapper.Map<List<UserDto>>(users));
+        //}
 
     }
 }

@@ -1,18 +1,22 @@
 ﻿using SocialVN.API.Models.Domain;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SocialVN.API.Models.DTO
 {
-    public class UserDto : BaseDto
+    public class UserDto 
     {
         public Guid Id { get; set; }
         public string Email { get; set; }
 
         public string Role { get; set; }
-        public string FullName { get; set; }
+        public string? FullName { get; set; }
         public DateTime? BirthDate { get; set; }
-        public string Occupation { get; set; }
-        public string Location { get; set; }
-        public string Avatar { get; set; }
+        public string? Occupation { get; set; }
+        public string? Location { get; set; }
+        [NotMapped]
+        public IFormFile? Avatar { get; set; }
+
+        public string? AvatarPath { get; set; }
         // Quan hệ với các thực thể khác
         public ICollection<Post> Posts { get; set; } = new List<Post>();
         public ICollection<Friendship> FriendshipsAsRequester { get; set; } = new List<Friendship>();

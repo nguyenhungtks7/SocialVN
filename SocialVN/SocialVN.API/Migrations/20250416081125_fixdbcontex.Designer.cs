@@ -11,9 +11,9 @@ using SocialVN.API.Data;
 
 namespace SocialVN.API.Migrations
 {
-    [DbContext(typeof(SocialVNAuthDbContext))]
-    [Migration("20250415092206_fix lai db chinh sửa user")]
-    partial class fixlaidbchinhsửauser
+    [DbContext(typeof(SocialVNDbContext))]
+    [Migration("20250416081125_fixdbcontex")]
+    partial class fixdbcontex
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

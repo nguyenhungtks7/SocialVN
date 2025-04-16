@@ -688,31 +688,6 @@
         }
       }
     },
-    "/api/Likes/{postId}/users": {
-      "get": {
-        "tags": [
-          "Likes"
-        ],
-        "summary": "Get users who liked a post",
-        "description": "Lấy danh sách người dùng đã thích một bài đăng cụ thể.",
-        "parameters": [
-          {
-            "name": "postId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/Posts": {
       "get": {
         "tags": [
@@ -969,20 +944,10 @@
         }
       }
     },
-    "/api/Users/{id}": {
+    "/api/Users": {
       "get": {
         "tags": [
           "Users"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
         ],
         "responses": {
           "200": {
@@ -993,16 +958,6 @@
       "delete": {
         "tags": [
           "Users"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
         ],
         "responses": {
           "200": {

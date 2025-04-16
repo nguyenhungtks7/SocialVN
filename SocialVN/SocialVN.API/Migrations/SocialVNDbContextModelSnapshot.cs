@@ -10,8 +10,8 @@ using SocialVN.API.Data;
 
 namespace SocialVN.API.Migrations
 {
-    [DbContext(typeof(SocialVNAuthDbContext))]
-    partial class SocialVNAuthDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(SocialVNDbContext))]
+    partial class SocialVNDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -188,6 +188,9 @@ namespace SocialVN.API.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("longtext");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("varchar(256)");
@@ -232,6 +235,9 @@ namespace SocialVN.API.Migrations
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)

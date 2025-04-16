@@ -19,10 +19,10 @@ namespace SocialVN.API.Repositories
         {
             // Create claims
             var claims = new List<Claim>
-                 {
-                       new Claim(ClaimTypes.Email, user.Email), // Claim Email
-                        new Claim(ClaimTypes.NameIdentifier, user.Id) // Thêm Claim NameIdentifier với user.Id
-                   };
+            {
+                new Claim(ClaimTypes.Email, user.Email), // Claim Email
+                new Claim(ClaimTypes.NameIdentifier, user.Id) // Thêm Claim NameIdentifier với user.Id
+            };
 
             foreach (var role in roles)
             {

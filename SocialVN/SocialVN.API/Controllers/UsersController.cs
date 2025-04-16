@@ -22,14 +22,14 @@ namespace SocialVN.API.Controllers
     {
 
         private readonly UserManager<ApplicationUser> userManager;
-        private readonly IWebHostEnvironment env;
+        private readonly IImageRepository imageRepository;
         private readonly IHttpContextAccessor httpContextAccessor;
 
-        public UsersController(UserManager<ApplicationUser> userManager, IHttpContextAccessor httpContextAccessor, IWebHostEnvironment env)
+        public UsersController(UserManager<ApplicationUser> userManager, IHttpContextAccessor httpContextAccessor, IImageRepository imageRepository)
         {
             this.userManager = userManager;
             this.httpContextAccessor = httpContextAccessor;
-            this.env = env;
+            this.imageRepository = imageRepository;
         }
 
        
@@ -55,27 +55,31 @@ namespace SocialVN.API.Controllers
 
             if (dto.Avatar != null)
             {
-                var uploadsFolder = Path.Combine(env.ContentRootPath, "Images");
-                Directory.CreateDirectory(uploadsFolder);
+                //var uploadsFolder = Path.Combine(env.ContentRootPath, "Images");
+                //Directory.CreateDirectory(uploadsFolder);
 
-                var ext = Path.GetExtension(dto.Avatar.FileName);
-                var fileName = $"{Guid.NewGuid()}{Path.GetExtension(dto.Avatar.FileName)}";
-                var filePath = Path.Combine(uploadsFolder, fileName);
+                //var ext = Path.GetExtension(dto.Avatar.FileName);
+                //var fileName = $"{Guid.NewGuid()}{Path.GetExtension(dto.Avatar.FileName)}";
+                //var filePath = Path.Combine(uploadsFolder, fileName);
 
-                using var stream = new FileStream(filePath, FileMode.Create);
-                await dto.Avatar.CopyToAsync(stream);
-                var request = httpContextAccessor.HttpContext.Request;
+                //using var stream = new FileStream(filePath, FileMode.Create);
+                //await dto.Avatar.CopyToAsync(stream);
+                //var request = httpContextAccessor.HttpContext.Request;
                 //var urlFilePath = $"{request.Scheme}://{request.Host}{request.PathBase}/Images/{fileName}";
-                user.AvatarPath = filePath;
-            
-
+                //user.AvatarPath = "/Images/{fileName}";
+                if (!imageRepository.IsValidImage(dto.Avatar))
+                {
+                    return BadRequest(new ApiResponse<string>(400, "Tệp không hợp lệ. Chỉ chấp nhận các tệp .jpg, .jpeg, .png và kích thước không quá 10MB.", null));
+                }
+                var avatarPath = await imageRepository.UploadAsync(dto.Avatar);
+                user.AvatarPath = avatarPath;
             }
             var result = await userManager.UpdateAsync(user);
             if (!result.Succeeded)
             {
                 return BadRequest(new ApiResponse<string>(400, "Cập nhật thất bại",null));
             }
-            return Ok(new ApiResponse<ApplicationUser>(200, "Cập nhật thành công", user));
+            return Ok(new ApiResponse<ApplicationUser>(200, "Cập nhật thành công", null));
         }
 
         [SwaggerOperation(Summary = "Get all users", Description = "Lấy danh sách tất cả người dùng với tùy chọn lọc, sắp xếp và phân trang.")]
@@ -148,7 +152,7 @@ namespace SocialVN.API.Controllers
         }
 
 
-        [HttpGet("{id}")]
+        [HttpGet]
         public async Task<IActionResult> GetById()
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -162,8 +166,8 @@ namespace SocialVN.API.Controllers
         }
 
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(string id)
+        [HttpDelete]
+        public async Task<IActionResult> Delete()
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var user = await userManager.FindByIdAsync(userId);
@@ -178,7 +182,7 @@ namespace SocialVN.API.Controllers
                 return BadRequest(new ApiResponse<string>(400, "Xoá thất bại", string.Join(", ", result.Errors.Select(e => e.Description))));
             }
 
-            return Ok(new ApiResponse<string>(200, "Xoá thành công", id));
+            return Ok(new ApiResponse<string>(200, "Xoá thành công", null));
         }
 
 

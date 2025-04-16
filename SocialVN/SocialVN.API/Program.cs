@@ -31,39 +31,8 @@ builder.Services.AddSwaggerGen(options =>
         Version = "v1",
         Description = "API cho mạng xã hội SocialVN"
     });
+
     options.EnableAnnotations();
-
-    //options.AddSecurityDefinition(
-    //JwtBearerDefaults.AuthenticationScheme,
-    //new Microsoft.OpenApi.Models.OpenApiSecurityScheme
-    //{
-    //    Name = "Authorization",
-    //    In = ParameterLocation.Header,
-    //    Type = SecuritySchemeType.ApiKey,
-    //    //Scheme = JwtBearerDefaults.AuthenticationScheme
-    //    Scheme = "Bearer",
-    //    BearerFormat = "JWT",
-    //    Description = "Nhập token theo định dạng: Bearer {token}"
-    //});
-
-    //options.AddSecurityRequirement(new OpenApiSecurityRequirement
-    //{
-    //    {
-    //        new OpenApiSecurityScheme
-    //        {
-    //            Reference = new OpenApiReference
-    //            {
-    //                Type = ReferenceType.SecurityScheme,
-    //                //Id = JwtBearerDefaults.AuthenticationScheme
-    //                  Id = "Bearer"
-    //            },
-    //           Scheme = "Bearer",
-    //           Name = "Authorization",
-    //           In = ParameterLocation.Header
-    //        },
-    //        new List<string>()
-    //    }
-    //});
 
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
@@ -99,16 +68,16 @@ builder.Services.AddDbContext<SocialVNDbContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("SocialVNConnectionStrings"),
     new MySqlServerVersion(new Version(8, 0, 41))));
 
-builder.Services.AddDbContext<SocialVNAuthDbContext>(options =>
-    options.UseMySql(builder.Configuration.GetConnectionString("SocialVNAuthConnectionStrings"),
-    new MySqlServerVersion(new Version(8, 0, 41))));
+//builder.Services.AddDbContext<SocialVNAuthDbContext>(options =>
+//    options.UseMySql(builder.Configuration.GetConnectionString("SocialVNAuthConnectionStrings"),
+//    new MySqlServerVersion(new Version(8, 0, 41))));
 
 //Đăng ký AutoMapper và thêm cấu hình ánh xạ từ AutoMapperProfiles
 builder.Services.AddAutoMapper(typeof(AutomapperProfiles));
-
+builder.Services.AddScoped<IImageRepository, SQLImageRepository>();
 //Tiêm các kho lưu trữ vào bộ điều khiển
 builder.Services.AddScoped<ITokenRepository, TokenRepository>();
-builder.Services.AddScoped<IUserRepository, SQLUserRepository>(); // Đăng ký dịch vụ
+//builder.Services.AddScoped<IUserRepository, SQLUserRepository>(); 
 builder.Services.AddScoped<IPostRepository, SQLPostRepository>();
 builder.Services.AddScoped<ICommentRepository, SQLCommentRepository>();
 builder.Services.AddScoped<IFriendshipRepository, SQLFriendshipRepository>();
@@ -121,7 +90,7 @@ builder.Services.AddIdentityCore<ApplicationUser>()
     // Thêm dịch vụ Token Provider với tên "SocialVN"
     .AddTokenProvider<DataProtectorTokenProvider<ApplicationUser>>("SocialVN")
     // Đăng ký EntityFramework Store cho SocialVNAuthDbContext
-    .AddEntityFrameworkStores<SocialVNAuthDbContext>()
+    .AddEntityFrameworkStores<SocialVNDbContext>()
     // Thêm các Token Provider mặc định
     .AddDefaultTokenProviders();
 

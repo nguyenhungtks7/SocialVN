@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SocialVN.API.Migrations
 {
     /// <inheritdoc />
-    public partial class fixlaidbchinhsửauser : Migration
+    public partial class fixdbcontex : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
