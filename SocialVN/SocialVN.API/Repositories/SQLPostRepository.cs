@@ -14,6 +14,7 @@ namespace SocialVN.API.Repositories
         }
         public async Task<Post> CreateAsync(Post post)
         {
+          
             await dbContext.Posts.AddAsync(post);
             await dbContext.SaveChangesAsync();
             return post;

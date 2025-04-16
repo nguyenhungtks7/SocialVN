@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using SocialVN.API.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace SocialVN.API.Models.DTO
 {
@@ -12,8 +13,12 @@ namespace SocialVN.API.Models.DTO
         public string? Occupation { get; set; }
 
         public string? Location { get; set; }
-
+        public string?  LivingPlace { get; set; } // Thêm nơi sống
+        public GenderEnum? Gender { get; set; }
+        [Phone]
+        public string? PhoneNumber { get; set; } // Thêm số điện thoại
         // Avatar là file ảnh tải lên, không cần validate ở đây mà sẽ xử lý ở controller
         public IFormFile? Avatar { get; set; }
+
     }
 }

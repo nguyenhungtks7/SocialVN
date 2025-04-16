@@ -5,25 +5,19 @@ namespace SocialVN.API.Models.DTO
 {
     public class UserDto 
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; }
+        public string UserName { get; set; }
         public string Email { get; set; }
-
-        public string Role { get; set; }
-        public string? FullName { get; set; }
+        public string FullName { get; set; }
         public DateTime? BirthDate { get; set; }
-        public string? Occupation { get; set; }
-        public string? Location { get; set; }
-        [NotMapped]
-        public IFormFile? Avatar { get; set; }
-
-        public string? AvatarPath { get; set; }
-        // Quan hệ với các thực thể khác
-        public ICollection<Post> Posts { get; set; } = new List<Post>();
-        public ICollection<Friendship> FriendshipsAsRequester { get; set; } = new List<Friendship>();
-        public ICollection<Friendship> FriendshipsAsReceiver { get; set; } = new List<Friendship>();
-        public ICollection<Report> Reports { get; set; } = new List<Report>();
-        public ICollection<Comment> Comments { get; set; } = new List<Comment>();
-        public ICollection<Like> Likes { get; set; } = new List<Like>();
+        public string Occupation { get; set; }
+        public string Location { get; set; }
+        public string? LivingPlace { get; set; } // Thêm nơi sống
+        public string? Gender { get; set; }
+        public string PhoneNumber { get; set; }
+        public string AvatarPath { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
     }
 
 

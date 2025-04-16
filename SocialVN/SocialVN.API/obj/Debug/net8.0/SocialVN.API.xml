@@ -28,5 +28,17 @@
         <member name="M:SocialVN.API.Migrations.themCreatedAtUpdateAtuser.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:SocialVN.API.Migrations.Themthongtinuser">
+            <inheritdoc />
+        </member>
+        <member name="M:SocialVN.API.Migrations.Themthongtinuser.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SocialVN.API.Migrations.Themthongtinuser.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SocialVN.API.Migrations.Themthongtinuser.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
     </members>
 </doc>

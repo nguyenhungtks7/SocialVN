@@ -4,5 +4,6 @@
     {
         Task<string> UploadAsync(IFormFile file);
         bool IsValidImage(IFormFile file);
+        Task<string> UploadToImgurAsync(IFormFile file);
     }
 }

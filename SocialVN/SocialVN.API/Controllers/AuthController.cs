@@ -41,7 +41,9 @@ namespace SocialVN.API.Controllers
             var identityUser = new ApplicationUser
             {
                 UserName = registerRequestDto.Username,
-                Email = registerRequestDto.Username
+                Email = registerRequestDto.Username,
+                UpdatedAt =DateTime.Now,
+                CreatedAt = DateTime.Now
             };
             var indentityResult = await userManager.CreateAsync(identityUser, registerRequestDto.Password);
             if (indentityResult.Succeeded)
@@ -68,7 +70,7 @@ namespace SocialVN.API.Controllers
         
         public async Task<IActionResult> Login([FromBody] LoginRequestDto loginRequestDto)
         {
-            var user = await userManager.FindByEmailAsync(loginRequestDto.Usename);
+            var user = await userManager.FindByEmailAsync(loginRequestDto.Username);
             if (user != null)
             {
                 var checkPasswordResult = await userManager.CheckPasswordAsync(user, loginRequestDto.Password);

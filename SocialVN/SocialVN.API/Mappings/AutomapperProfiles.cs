@@ -9,7 +9,7 @@ namespace SocialVN.API.Mappings
     {
         public AutomapperProfiles() {
 
-            CreateMap<User, UserDto>().ReverseMap();
+            CreateMap<ApplicationUser, UserDto>().ReverseMap();
             CreateMap<AddUserRequestDto, User>().ReverseMap();
             CreateMap<UpdateUserRequestDto, User>().ReverseMap();
 

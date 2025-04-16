@@ -10,6 +10,8 @@ namespace SocialVN.API.Models.Domain
         public DateTime? BirthDate { get; set; }
         public string? Occupation { get; set; }
         public string? Location { get; set; }
+        public string? LivingPlace { get; set; } 
+        public string? Gender { get; set; }
         [NotMapped]
         public IFormFile? Avatar { get; set; }
 

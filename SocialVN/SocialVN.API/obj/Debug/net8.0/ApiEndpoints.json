@@ -472,16 +472,6 @@
   },
   {
     "ContainingType": "SocialVN.API.Controllers.UsersController",
-    "Method": "GetById",
-    "RelativePath": "api/Users",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SocialVN.API.Controllers.UsersController",
     "Method": "Delete",
     "RelativePath": "api/Users",
     "HttpMethod": "DELETE",
@@ -519,11 +509,36 @@
         "IsRequired": false
       },
       {
+        "Name": "LivingPlace",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Gender",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PhoneNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
         "Name": "Avatar",
         "Type": "Microsoft.AspNetCore.Http.IFormFile",
         "IsRequired": false
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SocialVN.API.Controllers.UsersController",
+    "Method": "GetProfile",
+    "RelativePath": "api/Users/profile",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {

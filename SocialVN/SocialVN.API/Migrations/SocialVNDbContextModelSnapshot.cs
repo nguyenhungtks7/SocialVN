@@ -201,6 +201,12 @@ namespace SocialVN.API.Migrations
                     b.Property<string>("FullName")
                         .HasColumnType("longtext");
 
+                    b.Property<string>("Gender")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("LivingPlace")
+                        .HasColumnType("longtext");
+
                     b.Property<string>("Location")
                         .HasColumnType("longtext");
 

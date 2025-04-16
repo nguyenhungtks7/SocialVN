@@ -6,7 +6,7 @@ namespace SocialVN.API.Models.DTO
     {
         [Required(ErrorMessage = "Username là bắt buộc")]
         [EmailAddress(ErrorMessage = "Username phải là email hợp lệ")]
-        public string Usename { get; set; }
+        public string Username { get; set; }
 
         [Required(ErrorMessage = "Password là bắt buộc")]
         public string Password { get; set; }

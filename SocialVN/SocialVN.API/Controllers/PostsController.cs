@@ -5,6 +5,7 @@ using SocialVN.API.Models.Domain;
 using SocialVN.API.Models.DTO;
 using SocialVN.API.Repositories;
 using Swashbuckle.AspNetCore.Annotations;
+using System.Security.Claims;
 
 namespace SocialVN.API.Controllers
 {
@@ -38,6 +39,7 @@ namespace SocialVN.API.Controllers
         public async Task<IActionResult> GetById(Guid id)
         {
             var postDomainModel = await postRepository.GetByIdAsync(id);
+
             if (postDomainModel == null)
             {
                 return NotFound();
@@ -52,6 +54,9 @@ namespace SocialVN.API.Controllers
         public async Task<IActionResult> Create([FromBody] AddPostRequestDto post)
         {
             var postDomainModel = mapper.Map<Post>(post);
+            postDomainModel.UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            postDomainModel.UpdatedAt = DateTime.Now;
+            postDomainModel.CreatedAt =DateTime.Now;
             await postRepository.CreateAsync(postDomainModel);
             return Ok(mapper.Map<PostDto>(postDomainModel));
         }
@@ -63,6 +68,9 @@ namespace SocialVN.API.Controllers
         public async Task<IActionResult> Update(Guid id, [FromBody] UpdatePostRequestDto post)
         {
             var postDomainModel = mapper.Map<Post>(post);
+            postDomainModel.UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            postDomainModel.UpdatedAt = DateTime.Now;
+            postDomainModel.CreatedAt =DateTime.Now;
             var updatedPost = await postRepository.UpdateAsync(id, postDomainModel);
             if (updatedPost == null)
             {

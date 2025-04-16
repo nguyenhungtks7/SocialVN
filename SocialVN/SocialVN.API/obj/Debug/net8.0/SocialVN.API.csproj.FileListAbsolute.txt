@@ -980,3 +980,4 @@ D:\Workspace\Bai_tap\Prj-learn\SocialVN\SocialVN\SocialVN.API\bin\Debug\net8.0\M
 D:\Workspace\Bai_tap\Prj-learn\SocialVN\SocialVN\SocialVN.API\bin\Debug\net8.0\Microsoft.Bcl.TimeProvider.dll
 D:\Workspace\Bai_tap\Prj-learn\SocialVN\SocialVN\SocialVN.API\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
 D:\Workspace\Bai_tap\Prj-learn\SocialVN\SocialVN\SocialVN.API\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
+D:\C#\MangxahoiC#\SocialVN\SocialVN\SocialVN.API\bin\Debug\net8.0\Newtonsoft.Json.dll

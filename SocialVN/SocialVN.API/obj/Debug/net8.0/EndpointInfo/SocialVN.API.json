@@ -849,6 +849,21 @@
                   "Location": {
                     "type": "string"
                   },
+                  "LivingPlace": {
+                    "type": "string"
+                  },
+                  "Gender": {
+                    "enum": [
+                      "Male",
+                      "Female",
+                      "Other"
+                    ],
+                    "type": "string"
+                  },
+                  "PhoneNumber": {
+                    "type": "string",
+                    "format": "tel"
+                  },
                   "Avatar": {
                     "type": "string",
                     "format": "binary"
@@ -866,6 +881,15 @@
                   "style": "form"
                 },
                 "Location": {
+                  "style": "form"
+                },
+                "LivingPlace": {
+                  "style": "form"
+                },
+                "Gender": {
+                  "style": "form"
+                },
+                "PhoneNumber": {
                   "style": "form"
                 },
                 "Avatar": {
@@ -887,13 +911,20 @@
         "tags": [
           "Users"
         ],
-        "summary": "Get all users",
+        "summary": "Search",
         "description": "Lấy danh sách tất cả người dùng với tùy chọn lọc, sắp xếp và phân trang.",
         "parameters": [
           {
             "name": "filterOn",
             "in": "query",
             "schema": {
+              "enum": [
+                "FullName",
+                "Location",
+                "Occupation",
+                "BirthDate",
+                "CreatedAt"
+              ],
               "type": "string"
             }
           },
@@ -908,6 +939,13 @@
             "name": "sortBy",
             "in": "query",
             "schema": {
+              "enum": [
+                "FullName",
+                "Location",
+                "Occupation",
+                "BirthDate",
+                "CreatedAt"
+              ],
               "type": "string"
             }
           },
@@ -944,7 +982,7 @@
         }
       }
     },
-    "/api/Users": {
+    "/api/Users/profile": {
       "get": {
         "tags": [
           "Users"
@@ -954,7 +992,9 @@
             "description": "OK"
           }
         }
-      },
+      }
+    },
+    "/api/Users": {
       "delete": {
         "tags": [
           "Users"
@@ -1129,11 +1169,11 @@
       "LoginRequestDto": {
         "required": [
           "password",
-          "usename"
+          "username"
         ],
         "type": "object",
         "properties": {
-          "usename": {
+          "username": {
             "minLength": 1,
             "type": "string",
             "format": "email"

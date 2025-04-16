@@ -12,6 +12,7 @@ using SocialVN.API.Repositories;
 using System.Reflection;
 using System.Security.Claims;
 using System.Text;
+using System.Text.Json.Serialization;
 
 
 
@@ -31,7 +32,7 @@ builder.Services.AddSwaggerGen(options =>
         Version = "v1",
         Description = "API cho mạng xã hội SocialVN"
     });
-
+    options.UseInlineDefinitionsForEnums();
     options.EnableAnnotations();
 
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -140,6 +141,11 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     }
    
 );
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+    });
 
 builder.Services.AddHttpContextAccessor();
 

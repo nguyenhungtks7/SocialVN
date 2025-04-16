@@ -2,7 +2,7 @@
 
 namespace SocialVN.API.Models.DTO
 {
-    public class UpdatePostRequestDto :BaseDto
+    public class UpdatePostRequestDto 
     {
         public Guid UserId { get; set; }
         public string Content { get; set; }

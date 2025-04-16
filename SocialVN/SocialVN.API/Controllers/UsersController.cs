@@ -1,15 +1,15 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Extensions;
+using SocialVN.API.Enums;
 using SocialVN.API.Models.Domain;
 using SocialVN.API.Models.DTO;
 using SocialVN.API.Repositories;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Security.Claims;
-using static System.Net.Mime.MediaTypeNames;
 
 // cần sửa lại giá trị trả về DTO
 namespace SocialVN.API.Controllers
@@ -17,22 +17,24 @@ namespace SocialVN.API.Controllers
     // https:localhost:portnumber/api/users
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class UsersController : ControllerBase
     {
 
         private readonly UserManager<ApplicationUser> userManager;
         private readonly IImageRepository imageRepository;
+        private readonly IMapper mapper;
         private readonly IHttpContextAccessor httpContextAccessor;
 
-        public UsersController(UserManager<ApplicationUser> userManager, IHttpContextAccessor httpContextAccessor, IImageRepository imageRepository)
+        public UsersController(UserManager<ApplicationUser> userManager, IHttpContextAccessor httpContextAccessor, IImageRepository imageRepository, IMapper mapper)
         {
             this.userManager = userManager;
             this.httpContextAccessor = httpContextAccessor;
             this.imageRepository = imageRepository;
+            this.mapper = mapper;
         }
 
-       
+
         [SwaggerOperation(Summary = "Update Profile ", Description = "Cập nhật hồ sơ.")]
         [HttpPut("me")]
         public async Task<IActionResult> Update([FromForm] UpdateUserProfileDto dto)
@@ -52,6 +54,12 @@ namespace SocialVN.API.Controllers
             user.BirthDate = dto.BirthDate;
             user.Occupation = dto.Occupation;
             user.Location = dto.Location;
+            user.LivingPlace = dto.LivingPlace;
+            if (dto.Gender != null)
+            {
+                user.Gender = dto.Gender.Value.GetDisplayName(); 
+            }
+            user.PhoneNumber = dto.PhoneNumber;
 
             if (dto.Avatar != null)
             {
@@ -71,23 +79,24 @@ namespace SocialVN.API.Controllers
                 {
                     return BadRequest(new ApiResponse<string>(400, "Tệp không hợp lệ. Chỉ chấp nhận các tệp .jpg, .jpeg, .png và kích thước không quá 10MB.", null));
                 }
-                var avatarPath = await imageRepository.UploadAsync(dto.Avatar);
+                var avatarPath = await imageRepository.UploadToImgurAsync(dto.Avatar);
                 user.AvatarPath = avatarPath;
             }
+            user.UpdatedAt = DateTime.Now;
             var result = await userManager.UpdateAsync(user);
             if (!result.Succeeded)
             {
-                return BadRequest(new ApiResponse<string>(400, "Cập nhật thất bại",null));
+                return BadRequest(new ApiResponse<string>(400, "Cập nhật thất bại", null));
             }
             return Ok(new ApiResponse<ApplicationUser>(200, "Cập nhật thành công", null));
         }
 
-        [SwaggerOperation(Summary = "Get all users", Description = "Lấy danh sách tất cả người dùng với tùy chọn lọc, sắp xếp và phân trang.")]
+        [SwaggerOperation(Summary = "Search", Description = "Lấy danh sách tất cả người dùng với tùy chọn lọc, sắp xếp và phân trang.")]
         [HttpGet("Search")]
         public async Task<IActionResult> Search(
-        [FromQuery] string? filterOn,
+        [FromQuery] UserFilterField? filterOn,
         [FromQuery] string? filterQuery,
-        [FromQuery] string? sortBy,
+        [FromQuery] UserFilterField? sortBy,
                       [FromQuery] bool? isAscending,
                       [FromQuery] int pageNumber = 1,
                        [FromQuery] int pageSize = 10)
@@ -95,42 +104,42 @@ namespace SocialVN.API.Controllers
             var query = userManager.Users.AsQueryable();
 
             // Lọc (filter)
-            if (!string.IsNullOrWhiteSpace(filterOn) && !string.IsNullOrWhiteSpace(filterQuery))
+            if (!string.IsNullOrWhiteSpace(filterQuery) && filterOn.HasValue)
             {
-                switch (filterOn.ToLower())
+                switch (filterOn)
                 {
-                    case "fullname":
+                    case UserFilterField.FullName:
                         query = query.Where(x => x.FullName != null && x.FullName.Contains(filterQuery));
                         break;
-                    case "location":
+                    case UserFilterField.Location:
                         query = query.Where(x => x.Location != null && x.Location.Contains(filterQuery));
                         break;
-                    case "occupation":
+                    case UserFilterField.Occupation:
                         query = query.Where(x => x.Occupation != null && x.Occupation.Contains(filterQuery));
                         break;
                 }
             }
 
             // Sắp xếp (sort)
-            if (!string.IsNullOrWhiteSpace(sortBy))
+            if (sortBy.HasValue)
             {
-                switch (sortBy.ToLower())
+                switch (sortBy)
                 {
-                    case "fullname":
-                        query = (isAscending ?? true) ? query.OrderBy(x => x.FullName) : query.OrderByDescending(x => x.FullName);
+                    case UserFilterField.FullName:
+                        query = isAscending ?? true ? query.OrderBy(x => x.FullName) : query.OrderByDescending(x => x.FullName);
                         break;
-                    case "birthdate":
-                        query = (isAscending ?? true) ? query.OrderBy(x => x.BirthDate) : query.OrderByDescending(x => x.BirthDate);
+                    case UserFilterField.BirthDate:
+                        query = isAscending ?? true ? query.OrderBy(x => x.BirthDate) : query.OrderByDescending(x => x.BirthDate);
                         break;
-                    case "created":
-                        query = (isAscending ?? true) ? query.OrderBy(x => x.Id) : query.OrderByDescending(x => x.Id); // tạm thời dùng Id để sort
+                    case UserFilterField.CreatedAt:
+                        query = isAscending ?? true ? query.OrderBy(x => x.CreatedAt) : query.OrderByDescending(x => x.CreatedAt);
                         break;
                 }
             }
 
             // Tổng số bản ghi
-            var totalRecords = await query.CountAsync();
 
+            var totalRecords = await query.CountAsync();
             // Phân trang (paging)
             var users = await query
                 .Skip((pageNumber - 1) * pageSize)
@@ -147,22 +156,28 @@ namespace SocialVN.API.Controllers
                     TotalRecords = totalRecords,
                     PageNumber = pageNumber,
                     PageSize = pageSize,
-                    Data = users
+                    Data = mapper.Map<List<UserDto>>(users)
                 }));
         }
 
 
-        [HttpGet]
-        public async Task<IActionResult> GetById()
+        [HttpGet("profile")]
+        public async Task<IActionResult> GetProfile()
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userId))
+            {
+                return BadRequest(new ApiResponse<string>(400, "Không xác định được người dùng.", null));
+            }
+
             var user = await userManager.FindByIdAsync(userId);
             if (user == null)
             {
                 return NotFound(new ApiResponse<string>(404, "Không tìm thấy người dùng", null));
             }
 
-            return Ok(new ApiResponse<ApplicationUser>(200, null, user));
+
+            return Ok(new ApiResponse<UserDto>(200, null, mapper.Map<UserDto>(user)));
         }
 
 
