@@ -17,7 +17,7 @@ namespace SocialVN.API.Controllers
     // https:localhost:portnumber/api/users
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class UsersController : ControllerBase
     {
 
@@ -63,18 +63,6 @@ namespace SocialVN.API.Controllers
 
             if (dto.Avatar != null)
             {
-                //var uploadsFolder = Path.Combine(env.ContentRootPath, "Images");
-                //Directory.CreateDirectory(uploadsFolder);
-
-                //var ext = Path.GetExtension(dto.Avatar.FileName);
-                //var fileName = $"{Guid.NewGuid()}{Path.GetExtension(dto.Avatar.FileName)}";
-                //var filePath = Path.Combine(uploadsFolder, fileName);
-
-                //using var stream = new FileStream(filePath, FileMode.Create);
-                //await dto.Avatar.CopyToAsync(stream);
-                //var request = httpContextAccessor.HttpContext.Request;
-                //var urlFilePath = $"{request.Scheme}://{request.Host}{request.PathBase}/Images/{fileName}";
-                //user.AvatarPath = "/Images/{fileName}";
                 if (!imageRepository.IsValidImage(dto.Avatar))
                 {
                     return BadRequest(new ApiResponse<string>(400, "Tệp không hợp lệ. Chỉ chấp nhận các tệp .jpg, .jpeg, .png và kích thước không quá 10MB.", null));

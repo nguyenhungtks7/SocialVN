@@ -12,8 +12,8 @@ using SocialVN.API.Data;
 namespace SocialVN.API.Migrations
 {
     [DbContext(typeof(SocialVNDbContext))]
-    [Migration("20250416081125_fixdbcontex")]
-    partial class fixdbcontex
+    [Migration("20250417091041_Fix Post")]
+    partial class FixPost
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -191,6 +191,9 @@ namespace SocialVN.API.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("longtext");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("varchar(256)");
@@ -199,6 +202,12 @@ namespace SocialVN.API.Migrations
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("FullName")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Gender")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("LivingPlace")
                         .HasColumnType("longtext");
 
                     b.Property<string>("Location")
@@ -235,6 +244,9 @@ namespace SocialVN.API.Migrations
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)

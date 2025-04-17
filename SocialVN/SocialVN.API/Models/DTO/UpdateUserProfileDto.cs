@@ -13,7 +13,7 @@ namespace SocialVN.API.Models.DTO
         public string? Occupation { get; set; }
 
         public string? Location { get; set; }
-        public string?  LivingPlace { get; set; } // Thêm nơi sống
+        public string?  LivingPlace { get; set; } 
         public GenderEnum? Gender { get; set; }
         [Phone]
         public string? PhoneNumber { get; set; } // Thêm số điện thoại

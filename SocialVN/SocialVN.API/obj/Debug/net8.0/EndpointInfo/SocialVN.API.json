@@ -1129,14 +1129,6 @@
       "AddPostRequestDto": {
         "type": "object",
         "properties": {
-          "createdAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time"
-          },
           "userId": {
             "type": "string",
             "format": "uuid"
@@ -1145,8 +1137,9 @@
             "type": "string",
             "nullable": true
           },
-          "image": {
+          "imageFile": {
             "type": "string",
+            "format": "binary",
             "nullable": true
           }
         },
@@ -1275,14 +1268,6 @@
       "UpdatePostRequestDto": {
         "type": "object",
         "properties": {
-          "createdAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time"
-          },
           "userId": {
             "type": "string",
             "format": "uuid"

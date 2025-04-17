@@ -4,40 +4,16 @@
         <name>SocialVN.API</name>
     </assembly>
     <members>
-        <member name="T:SocialVN.API.Migrations.fixdbcontex">
+        <member name="T:SocialVN.API.Migrations.FixPost">
             <inheritdoc />
         </member>
-        <member name="M:SocialVN.API.Migrations.fixdbcontex.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:SocialVN.API.Migrations.FixPost.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:SocialVN.API.Migrations.fixdbcontex.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:SocialVN.API.Migrations.FixPost.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:SocialVN.API.Migrations.fixdbcontex.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="T:SocialVN.API.Migrations.themCreatedAtUpdateAtuser">
-            <inheritdoc />
-        </member>
-        <member name="M:SocialVN.API.Migrations.themCreatedAtUpdateAtuser.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:SocialVN.API.Migrations.themCreatedAtUpdateAtuser.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:SocialVN.API.Migrations.themCreatedAtUpdateAtuser.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="T:SocialVN.API.Migrations.Themthongtinuser">
-            <inheritdoc />
-        </member>
-        <member name="M:SocialVN.API.Migrations.Themthongtinuser.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:SocialVN.API.Migrations.Themthongtinuser.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:SocialVN.API.Migrations.Themthongtinuser.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+        <member name="M:SocialVN.API.Migrations.FixPost.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
     </members>
