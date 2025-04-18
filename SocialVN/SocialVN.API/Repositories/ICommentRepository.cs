@@ -10,5 +10,6 @@ namespace SocialVN.API.Repositories
         Task<Comment> CreateCommentAsync(Comment comment);
         Task<Comment> UpdateCommentAsync(Guid id, Comment comment);
         Task<Comment> DeleteCommentAsync(Guid id);
+        Task<IEnumerable<Comment>> GetCommentsInLastWeek(string userId);
     }
 }

@@ -23,7 +23,7 @@ namespace SocialVN.API.Models.DTO
         // Thuộc tính điều hướng
 
 
-        public ApplicationUser Requester { get; set; }
-        public ApplicationUser Receiver { get; set; }
+        public UserDto Requester { get; set; }
+        public UserDto Receiver { get; set; }
     }
 }

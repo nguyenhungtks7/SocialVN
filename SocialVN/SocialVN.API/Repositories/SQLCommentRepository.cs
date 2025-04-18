@@ -9,7 +9,7 @@ namespace SocialVN.API.Repositories
         private readonly SocialVNDbContext dbContext;
         public SQLCommentRepository(SocialVNDbContext dbContext)
         {
-            dbContext = dbContext;
+            this.dbContext = dbContext;
         }
         public async Task<Comment> CreateCommentAsync(Comment comment)
         {
@@ -62,6 +62,13 @@ namespace SocialVN.API.Repositories
                 return existingComment;
             }
             return null;
+        }
+        public async Task<IEnumerable<Comment>> GetCommentsInLastWeek(string userId)
+        {
+            var lastWeek = DateTime.Now.AddDays(-7);
+            return await dbContext.Comments
+                .Where(c => c.UserId == userId && c.CreatedAt >= lastWeek)
+                .ToListAsync();
         }
     }
 }

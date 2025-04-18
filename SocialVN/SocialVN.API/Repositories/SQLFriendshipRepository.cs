@@ -11,7 +11,7 @@ namespace SocialVN.API.Repositories
         private readonly SocialVNDbContext dbContext;
         public SQLFriendshipRepository(SocialVNDbContext dbContext)
         {
-            dbContext = dbContext;
+               this.dbContext = dbContext;
         }
         public async Task<Friendship?> GetByIdAsync(Guid requestId)
         {
@@ -67,10 +67,12 @@ namespace SocialVN.API.Repositories
         //Get a list of friend requests
         public async Task<List<Friendship>> ListFriendRequestsAsync(Guid userId)
         {
-           return await dbContext.Friendships
+            string userIdStr = userId.ToString();
+            return await dbContext.Friendships
                 .Include(f => f.Requester)
                 .Include(f => f.Receiver)
-                .Where(f => f.ReceiverId == userId.ToString() && f.StatusEnum == FriendshipStatus.Pending)
+                .Where(f => f.ReceiverId == userIdStr && f.Status == FriendshipStatus.Pending.ToString() &&
+             f.RequesterId != userIdStr)
                 .ToListAsync();
         }
 
@@ -80,7 +82,7 @@ namespace SocialVN.API.Repositories
            return await dbContext.Friendships
                 .Include(f => f.Requester)
                 .Include(f => f.Receiver)
-                .Where(f => (f.RequesterId == userId.ToString() || f.ReceiverId == userId.ToString()) && f.StatusEnum == FriendshipStatus.Accepted)
+                .Where(f => (f.RequesterId == userId.ToString() || f.ReceiverId == userId.ToString()) && f.Status == FriendshipStatus.Accepted.ToString())
                 .Select(f => f.RequesterId == userId.ToString() ? f.Receiver : f.Requester)
                 .ToListAsync();
         }
@@ -111,8 +113,28 @@ namespace SocialVN.API.Repositories
             
             return friendship;
         }
+        public async Task<bool> IsFriendRequestExistsAsync(string userId, string receiverId)
+        {
+            return await dbContext.Friendships.AnyAsync(f =>
+                ((f.RequesterId == userId && f.ReceiverId == receiverId) ||
+                 (f.RequesterId == receiverId && f.ReceiverId == userId)) &&
+                f.Status == FriendshipStatus.Pending.ToString());
+        }
+        public async Task<IEnumerable<ApplicationUser>> GetNewFriendsInLastWeek(string userId)
+        {
+            var lastWeek = DateTime.Now.AddDays(-7);
+
+            var friendships = await dbContext.Friendships
+                .Where(f => (f.RequesterId == userId || f.ReceiverId == userId) &&
+                            (int)f.StatusEnum == (int)FriendshipStatus.Accepted &&  // Chuyển StatusEnum sang int
+                            f.CreatedAt >= lastWeek)
+                .Select(f => f.RequesterId == userId ? f.Receiver : f.Requester)  // Lấy người bạn mới
+                .ToListAsync();
+
+            return friendships;
+        }
 
 
     }
- 
+
 }

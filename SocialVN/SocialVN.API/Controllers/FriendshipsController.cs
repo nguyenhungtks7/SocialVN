@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SocialVN.API.Enums;
 using SocialVN.API.Models.Domain;
 using SocialVN.API.Models.DTO;
@@ -32,6 +33,10 @@ public class FriendshipsController : ControllerBase
         var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         if (string.IsNullOrEmpty(userId))
             return Unauthorized(new ApiResponse<string>(401, "Bạn cần đăng nhập để gửi yêu cầu", null));
+
+        bool exists = await friendshipRepository.IsFriendRequestExistsAsync(userId, dto.ReceiverId.ToString());
+        if (exists)
+            return BadRequest(new ApiResponse<string>(400, "Yêu cầu kết bạn đã tồn tại", null));
 
         var entity = new Friendship
         {

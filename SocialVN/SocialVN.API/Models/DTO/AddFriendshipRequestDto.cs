@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SocialVN.API.Models.DTO
 {
-    public class AddFriendshipRequestDto : BaseDto
+    public class AddFriendshipRequestDto 
     {
         [Required(ErrorMessage = "ReceiverId không được để trống.")]
         public Guid ReceiverId { get; set; }

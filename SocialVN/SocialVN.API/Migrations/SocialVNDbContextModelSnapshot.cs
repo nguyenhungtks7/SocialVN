@@ -368,6 +368,10 @@ namespace SocialVN.API.Migrations
                         .HasColumnType("varchar(36)")
                         .HasComment("ID của người thực hiện thích bài viết");
 
+                    b.Property<string>("Usid")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ApplicationUserId");

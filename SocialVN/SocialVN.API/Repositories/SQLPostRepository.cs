@@ -70,5 +70,12 @@ namespace SocialVN.API.Repositories
             return existingPost;
 
         }
+        public async Task<IEnumerable<Post>> GetPostsCreatedInLastWeek(string userId)
+        {
+            var lastWeek = DateTime.Now.AddDays(-7);
+            return await dbContext.Posts
+                .Where(p => p.UserId == userId && p.CreatedAt >= lastWeek)
+                .ToListAsync();
+        }
     }
 }

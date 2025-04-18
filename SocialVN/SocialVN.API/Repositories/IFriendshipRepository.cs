@@ -14,6 +14,8 @@ namespace SocialVN.API.Repositories
         Task<List<ApplicationUser>> ListFriendsAsync(Guid friendId);
         Task<List<Friendship>> ListFriendRequestsAsync(Guid userId);
         Task<FriendshipStatus> CheckFriendshipStatusAsync(string userId, string friendId);
-    
+        Task<bool> IsFriendRequestExistsAsync(string userId, string receiverId);
+        Task<IEnumerable<ApplicationUser>> GetNewFriendsInLastWeek(string userId);
+
     }
 }

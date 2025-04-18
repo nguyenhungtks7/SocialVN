@@ -5,6 +5,7 @@ using SocialVN.API.Models.Domain;
 using SocialVN.API.Models.DTO;
 using SocialVN.API.Repositories;
 using Swashbuckle.AspNetCore.Annotations;
+using System.Security.Claims;
 
 namespace SocialVN.API.Controllers
 {
@@ -25,65 +26,92 @@ namespace SocialVN.API.Controllers
         }
         // GET all comments
         // GET: http:localhost:portnumber/api/comments
-       
-        [SwaggerOperation(Summary = "Get all comment", Description = "Truy xuất tất cả các bình luận với tùy chọn sắp xếp và phân trang.")]
+
+        // GET all comments with sorting & pagination
+        [SwaggerOperation(Summary = "Retrieve a list of comments")]
         [HttpGet]
         public async Task<IActionResult> GetAll([FromQuery] string? sortBy, [FromQuery] bool? isAscending,
-        [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 1000)
+            [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 1000)
         {
-            var commentsDomainModel = await commentsRepository.GetAllCommentsAsync(sortBy, isAscending ?? true, pageNumber, pageSize);
-            return Ok(mapper.Map<List<CommentDto>>(commentsDomainModel));
+            var comments  = await commentsRepository.GetAllCommentsAsync(sortBy, isAscending ?? true, pageNumber, pageSize);
+            var dto = mapper.Map<List<CommentDto>>(comments);
+            return Ok(new ApiResponse<List<CommentDto>>(200, "Lấy danh sách bình luận thành công", dto));
         }
-        // GET comment By Id
-        // GET: http:localhost:portnumber/api/comments/{id}
-        [SwaggerOperation(Summary = "Get comment by id", Description = "Truy xuất bình luận theo id.")]
+
+        // GET by id
+  
         [HttpGet("{id:Guid}")]
         public async Task<IActionResult> GetById(Guid id)
         {
-            var commentDomainModel = await commentsRepository.GetCommentByIdAsync(id);
-            if (commentDomainModel == null)
+            var comment = await commentsRepository.GetCommentByIdAsync(id);
+            if (comment == null)
             {
-                return NotFound();
+                return NotFound(new ApiResponse<string>(404, "Không tìm thấy bình luận", null));
             }
-            return Ok(mapper.Map<CommentDto>(commentDomainModel));
-        }
-        // Create comment
-        // POST: http:localhost:portnumber/api/comments
-        [SwaggerOperation(Summary = "Create comment", Description = "Tạo bình luận mới.")]
-        [HttpPost]
-        public async Task<IActionResult> Create([FromBody] AddCommentRequestDto comment)
-        {
-            var commentDomainModel = mapper.Map<Comment>(comment);
-            await commentsRepository.CreateCommentAsync(commentDomainModel);
-            return Ok(mapper.Map<CommentDto>(commentDomainModel));
-        }
-        // Update comment by id
-        // PUT: http:localhost:portnumber/api/comments/{id}
-        [SwaggerOperation(Summary = "Update comment", Description = "Cập nhật bình luận theo id.")]
-        [HttpPut("{id:Guid}")]
-        public async Task<IActionResult> Update(Guid id, [FromBody] UpdateCommentRequestDto comment)
-        {
-            var commentDomainModel = mapper.Map<Comment>(comment);
-            var updatedComment = await commentsRepository.UpdateCommentAsync(id, commentDomainModel);
-            if (updatedComment == null)
-            {
-                return NotFound();
-            }
-            return Ok(mapper.Map<CommentDto>(updatedComment));
-        }
-        // Delete comment by id
-        //  DELETE: http:localhost:portnumber/api/comments/{id}
 
-        [SwaggerOperation(Summary = "Delete comment", Description = "Xóa bình luận theo id.")]
+            return Ok(new ApiResponse<CommentDto>(200, "Lấy bình luận thành công", mapper.Map<CommentDto>(comment)));
+        }
+
+        // CREATE
+        [SwaggerOperation(Summary = "Create comment")]
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody] AddCommentRequestDto commentDto)
+        {
+           
+            var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (!Guid.TryParse(userIdString, out Guid userId))
+            {
+                return Unauthorized(new ApiResponse<string>(401, "Không thể xác định người dùng", null));
+            }
+
+            var comment = mapper.Map<Comment>(commentDto);
+            comment.UserId = userId.ToString();
+            comment.CreatedAt = DateTime.UtcNow;
+            comment.UpdatedAt = DateTime.UtcNow;
+
+            var created = await commentsRepository.CreateCommentAsync(comment);
+
+            return Ok(new ApiResponse<string>(201, "Người dùng đã tạo bình luận thành công", null));
+        }
+
+        // UPDATE
+        [SwaggerOperation(Summary = "Update comment")]
+        [Authorize]
+        [HttpPut("{id:Guid}")]
+        public async Task<IActionResult> Update(Guid id, [FromBody] UpdateCommentRequestDto commentDto)
+        {
+            var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (!Guid.TryParse(userIdString, out Guid userId))
+            {
+                return Unauthorized(new ApiResponse<string>(401, "Không thể xác định người dùng", null));
+            }
+
+            var commentDomain = mapper.Map<Comment>(commentDto);
+            commentDomain.UserId = userId.ToString(); // Đảm bảo userId không bị thay đổi
+
+            var updated = await commentsRepository.UpdateCommentAsync(id, commentDomain);
+            if (updated == null)
+            {
+                return NotFound(new ApiResponse<string>(404, "Không tìm thấy bình luận cần cập nhật", null));
+            }
+
+            return Ok(new ApiResponse<string>(200, "Cập nhật bình luận thành công", null));
+        }
+
+        // DELETE
+        [SwaggerOperation(Summary = "Deletecomment")]
+        [Authorize]
         [HttpDelete("{id:Guid}")]
         public async Task<IActionResult> Delete(Guid id)
         {
-            var deletedComment = await commentsRepository.DeleteCommentAsync(id);
-            if (deletedComment == null)
+            var deleted = await commentsRepository.DeleteCommentAsync(id);
+            if (deleted == null)
             {
-                return NotFound();
+                return NotFound(new ApiResponse<string>(404, "Không tìm thấy bình luận cần xóa", null));
             }
-            return Ok(mapper.Map<CommentDto>(deletedComment));
+
+            return Ok(new ApiResponse<string>(200, "Xóa bình luận thành công", null));
         }
 
     }

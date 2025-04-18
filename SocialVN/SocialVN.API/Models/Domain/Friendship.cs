@@ -1,5 +1,6 @@
 ﻿using SocialVN.API.Enums;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace SocialVN.API.Models.Domain
 {
@@ -18,7 +19,9 @@ namespace SocialVN.API.Models.Domain
         }
 
         // Thuộc tính điều hướng
+        [JsonIgnore]
         public ApplicationUser Requester { get; set; }
+        [JsonIgnore]
         public ApplicationUser Receiver { get; set; }
     }
   

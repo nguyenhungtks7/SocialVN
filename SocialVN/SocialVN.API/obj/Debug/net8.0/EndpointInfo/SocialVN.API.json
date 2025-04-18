@@ -176,8 +176,7 @@
         "tags": [
           "Comments"
         ],
-        "summary": "Get all comment",
-        "description": "Truy xuất tất cả các bình luận với tùy chọn sắp xếp và phân trang.",
+        "summary": "Retrieve a list of comments",
         "parameters": [
           {
             "name": "sortBy",
@@ -223,7 +222,6 @@
           "Comments"
         ],
         "summary": "Create comment",
-        "description": "Tạo bình luận mới.",
         "requestBody": {
           "content": {
             "application/json": {
@@ -255,8 +253,6 @@
         "tags": [
           "Comments"
         ],
-        "summary": "Get comment by id",
-        "description": "Truy xuất bình luận theo id.",
         "parameters": [
           {
             "name": "id",
@@ -279,7 +275,6 @@
           "Comments"
         ],
         "summary": "Update comment",
-        "description": "Cập nhật bình luận theo id.",
         "parameters": [
           {
             "name": "id",
@@ -320,8 +315,7 @@
         "tags": [
           "Comments"
         ],
-        "summary": "Delete comment",
-        "description": "Xóa bình luận theo id.",
+        "summary": "Deletecomment",
         "parameters": [
           {
             "name": "id",
@@ -531,8 +525,8 @@
         "tags": [
           "Likes"
         ],
-        "summary": "Create a new like",
-        "description": "Tạo lượt thích mới cho một bài đăng cụ thể của người dùng.",
+        "summary": "Like a post",
+        "description": "Tạo lượt thích mới cho một bài đăng cụ thể.",
         "requestBody": {
           "content": {
             "application/json": {
@@ -841,6 +835,18 @@
         }
       }
     },
+    "/api/Report/generate-report": {
+      "get": {
+        "tags": [
+          "Report"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Users/me": {
       "put": {
         "tags": [
@@ -1106,14 +1112,6 @@
         ],
         "type": "object",
         "properties": {
-          "createdAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time"
-          },
           "receiverId": {
             "type": "string",
             "format": "uuid"
