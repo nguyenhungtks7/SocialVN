@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SocialVN.API.Data;
+using SocialVN.API.Enums;
 using SocialVN.API.Models.Domain;
 
 namespace SocialVN.API.Repositories
@@ -32,15 +33,27 @@ namespace SocialVN.API.Repositories
             return existingPost;
         }
 
-        public async Task<List<Post>> GetAllAsync()
+        public async Task<List<Post>> GetTimelineAsync(string userId,int pageNumber = 1, int pageSize = 1000)
         {
-            return await dbContext.Posts.ToListAsync();
+             var friendIds = dbContext.Friendships
+            .Where(f => f.RequesterId == userId || f.ReceiverId == userId)
+            .AsEnumerable() // Chuyển sang client để xử lý enum
+            .Where(f => f.StatusEnum == FriendshipStatus.Accepted)
+            .Select(f => f.RequesterId == userId ? f.ReceiverId : f.RequesterId)
+            .ToList(); // Dùng ToList thay vì ToListAsync
+
+            return await dbContext.Posts
+                .Where(p => friendIds.Contains(p.UserId))
+                .OrderByDescending(p => p.CreatedAt)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
         }
 
         public async Task<Post> GetByIdAsync(Guid id)
         {
             return await dbContext.Posts.Include(x => x.User).FirstOrDefaultAsync(x => x.Id == id);
-          
+            
         }
 
         public async Task<Post> UpdateAsync(Guid id, Post post)

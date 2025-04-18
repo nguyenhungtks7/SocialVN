@@ -9,9 +9,10 @@ namespace SocialVN.API.Mappings
     {
         public AutomapperProfiles() {
 
+            
             CreateMap<ApplicationUser, UserDto>().ReverseMap();
-            CreateMap<AddUserRequestDto, User>().ReverseMap();
-            CreateMap<UpdateUserRequestDto, User>().ReverseMap();
+            CreateMap<AddUserRequestDto, ApplicationUser>().ReverseMap();
+            CreateMap<UpdateUserRequestDto, ApplicationUser>().ReverseMap();
 
             CreateMap<Comment, CommentDto>().ReverseMap();
             CreateMap<AddCommentRequestDto, Comment>().ReverseMap();
@@ -21,7 +22,7 @@ namespace SocialVN.API.Mappings
             CreateMap<AddLikeRequestDto, Like>().ReverseMap();
 
 
-            CreateMap<Post, PostDto>().ReverseMap();
+            CreateMap<Post, PostDto>().ForMember(dest => dest.User, opt => opt.MapFrom(src => src.User)).ReverseMap();
             CreateMap<AddPostRequestDto, Post>().ReverseMap();
             CreateMap<UpdatePostRequestDto, Post>().ReverseMap();
 

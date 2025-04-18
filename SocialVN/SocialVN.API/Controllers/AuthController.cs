@@ -34,7 +34,7 @@ namespace SocialVN.API.Controllers
             var existingUser = await userManager.FindByNameAsync(registerRequestDto.Username);
             if (existingUser != null)
             {
-                return BadRequest(new ApiResponse<string>(400, "Người dùng đã tồn tại", null));
+                return BadRequest(new ApiResponse<string>(409, "Người dùng đã tồn tại", null));
             }
             
 
@@ -55,12 +55,12 @@ namespace SocialVN.API.Controllers
                     indentityResult = await userManager.AddToRolesAsync(identityUser, new List<string> { "User" });
                     if (indentityResult.Succeeded)
                     {
-                        return Ok(new ApiResponse<string>(200, "Người dùng đã đăng ký thành công", null));
+                        return Ok(new ApiResponse<string>(201, "Người dùng đã đăng ký thành công", null));
                     }
 
                 //}
             }
-            return BadRequest(new ApiResponse<string>(400, "Đã xảy ra sự cố", null));
+            return StatusCode(500, new ApiResponse<string>(500, "Đã xảy ra sự cố trong quá trình đăng ký", null));
 
         }
         //POST: /api/Auth/Login
@@ -88,7 +88,7 @@ namespace SocialVN.API.Controllers
                     return Ok(new ApiResponse<string>(200, "OTP được gửi thành công. Vui lòng xác minh.", otp));
                 }
             }
-            return BadRequest(new ApiResponse<string>(400, "Tên người dùng hoặc mật khẩu không chính xác", null));
+            return BadRequest(new ApiResponse<string>(401, "Tên người dùng hoặc mật khẩu không chính xác", null));
         }
 
         [SwaggerOperation(Summary = "Login", Description = "Đăng nhập vào hệ thống bằng email và mật khẩu. Nếu thành công, OTP sẽ được gửi để xác minh.")]
@@ -97,7 +97,7 @@ namespace SocialVN.API.Controllers
         public async Task<IActionResult> VerifyOtp([FromBody] OtpVerifyDto dto)
         {
             var user = await userManager.FindByEmailAsync(dto.Email);
-            if (user == null) return BadRequest(new ApiResponse<string>(400, "Người dùng không tồn tại", null));
+            if (user == null) return BadRequest(new ApiResponse<string>(404, "Người dùng không tồn tại", null));
 
             var claims = await userManager.GetClaimsAsync(user);
             var otpClaim = claims.FirstOrDefault(c => c.Type == "OTP");
@@ -107,12 +107,12 @@ namespace SocialVN.API.Controllers
                 return BadRequest(new ApiResponse<string>(400, "OTP không tồn tại hoặc đã hết hạn", null));
 
             if (otpClaim.Value != dto.OTP)
-                return BadRequest(new ApiResponse<string>(400, "OTP không chính xác", null));
+                return BadRequest(new ApiResponse<string>(401, "OTP không chính xác", null));
 
             if (DateTime.TryParse(validUntilClaim.Value, out var validUntil))
             {
                 if (DateTime.UtcNow > validUntil)
-                    return BadRequest(new ApiResponse<string>(400, "OTP đã hết hạn", null));
+                    return BadRequest(new ApiResponse<string>(401, "OTP đã hết hạn", null));
             }
 
             // Xoá claim OTP sau khi xác minh thành công
@@ -133,7 +133,7 @@ namespace SocialVN.API.Controllers
             var user = await userManager.FindByEmailAsync(model.Email);
             if (user == null)
             {
-                return BadRequest(new ApiResponse<string>(400, "Người dùng không tồn tại", null));
+                return BadRequest(new ApiResponse<string>(404, "Người dùng không tồn tại", null));
             }
             var token = await userManager.GeneratePasswordResetTokenAsync(user);
             // Gửi email chứa token đến người dùng
@@ -154,7 +154,7 @@ namespace SocialVN.API.Controllers
             var user = await userManager.FindByEmailAsync(model.Email);
             if (user == null)
             {
-                return BadRequest(new ApiResponse<string>(400, "Người dùng không tồn tại", null));
+                return BadRequest(new ApiResponse<string>(404, "Người dùng không tồn tại", null));
             }
             var decodedToken = HttpUtility.UrlDecode(model.Token);
             var result = await userManager.ResetPasswordAsync(user, decodedToken, model.NewPassword);

@@ -8,6 +8,6 @@ namespace SocialVN.API.Repositories
         Task<Post> UpdateAsync(Guid id,Post post);
         Task<Post> DeleteAsync(Guid id);
         Task<Post> GetByIdAsync(Guid id);
-        Task<List<Post>> GetAllAsync();
+        Task<List<Post>> GetTimelineAsync(string userId, int pageNumber = 1, int pageSize = 1000);
     }
 }

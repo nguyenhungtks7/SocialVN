@@ -180,7 +180,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "SocialVN.API.Controllers.FriendshipsController",
+    "ContainingType": "FriendshipsController",
     "Method": "SendFriendRequest",
     "RelativePath": "api/Friendships",
     "HttpMethod": "POST",
@@ -188,7 +188,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "friendship",
+        "Name": "dto",
         "Type": "SocialVN.API.Models.DTO.AddFriendshipRequestDto",
         "IsRequired": true
       }
@@ -196,7 +196,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "SocialVN.API.Controllers.FriendshipsController",
+    "ContainingType": "FriendshipsController",
     "Method": "AcceptFriendRequest",
     "RelativePath": "api/Friendships/accept/{requestId}",
     "HttpMethod": "PUT",
@@ -212,7 +212,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "SocialVN.API.Controllers.FriendshipsController",
+    "ContainingType": "FriendshipsController",
     "Method": "CancelFriendRequest",
     "RelativePath": "api/Friendships/cancel/{requestId}",
     "HttpMethod": "DELETE",
@@ -228,23 +228,17 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "SocialVN.API.Controllers.FriendshipsController",
+    "ContainingType": "FriendshipsController",
     "Method": "GetFriendsList",
-    "RelativePath": "api/Friendships/friends/{userId}",
+    "RelativePath": "api/Friendships/friends",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [
-      {
-        "Name": "userId",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "SocialVN.API.Controllers.FriendshipsController",
+    "ContainingType": "FriendshipsController",
     "Method": "RejectFriendRequest",
     "RelativePath": "api/Friendships/reject/{requestId}",
     "HttpMethod": "DELETE",
@@ -260,15 +254,15 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "SocialVN.API.Controllers.FriendshipsController",
+    "ContainingType": "FriendshipsController",
     "Method": "RemoveFriend",
-    "RelativePath": "api/Friendships/remove/{friendId}",
+    "RelativePath": "api/Friendships/remove/{friendshipId}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "friendId",
+        "Name": "friendshipId",
         "Type": "System.Guid",
         "IsRequired": true
       }
@@ -276,47 +270,26 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "SocialVN.API.Controllers.FriendshipsController",
+    "ContainingType": "FriendshipsController",
     "Method": "GetFriendRequests",
-    "RelativePath": "api/Friendships/requests/{userId}",
+    "RelativePath": "api/Friendships/requests",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [
-      {
-        "Name": "userId",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "SocialVN.API.Controllers.FriendshipsController",
+    "ContainingType": "FriendshipsController",
     "Method": "CheckFriendshipStatus",
-    "RelativePath": "api/Friendships/status/{userId1}/{userId2}",
+    "RelativePath": "api/Friendships/status/{otherUserId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "userId",
+        "Name": "otherUserId",
         "Type": "System.Guid",
-        "IsRequired": false
-      },
-      {
-        "Name": "friendId",
-        "Type": "System.Guid",
-        "IsRequired": false
-      },
-      {
-        "Name": "userId1",
-        "Type": "",
-        "IsRequired": true
-      },
-      {
-        "Name": "userId2",
-        "Type": "",
         "IsRequired": true
       }
     ],
@@ -393,16 +366,6 @@
   },
   {
     "ContainingType": "SocialVN.API.Controllers.PostsController",
-    "Method": "GetAll",
-    "RelativePath": "api/Posts",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SocialVN.API.Controllers.PostsController",
     "Method": "Create",
     "RelativePath": "api/Posts",
     "HttpMethod": "POST",
@@ -410,9 +373,19 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "post",
-        "Type": "SocialVN.API.Models.DTO.AddPostRequestDto",
-        "IsRequired": true
+        "Name": "Content",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ImageFile",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "Status",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -447,9 +420,19 @@
         "IsRequired": true
       },
       {
-        "Name": "post",
-        "Type": "SocialVN.API.Models.DTO.UpdatePostRequestDto",
-        "IsRequired": true
+        "Name": "Content",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ImageFile",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "Status",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -466,6 +449,22 @@
         "Name": "id",
         "Type": "System.Guid",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SocialVN.API.Controllers.PostsController",
+    "Method": "GetTimeline",
+    "RelativePath": "api/Posts/timeline",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

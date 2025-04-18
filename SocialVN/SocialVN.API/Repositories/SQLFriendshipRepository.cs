@@ -13,7 +13,13 @@ namespace SocialVN.API.Repositories
         {
             dbContext = dbContext;
         }
-
+        public async Task<Friendship?> GetByIdAsync(Guid requestId)
+        {
+            return await dbContext.Friendships
+                .Include(f => f.Requester)
+                .Include(f => f.Receiver)
+                .FirstOrDefaultAsync(f => f.Id == requestId);
+        }
         //Send a friend request
         public async Task<Friendship> SendRequestAsync(Friendship friendship)
         {
@@ -50,11 +56,11 @@ namespace SocialVN.API.Repositories
 
 
         //Check if a user is a friend
-        public async Task<FriendshipStatus> CheckFriendshipStatusAsync(Guid userId, Guid friendId)
+        public async Task<FriendshipStatus> CheckFriendshipStatusAsync(string userId, string friendId)
         {
             var friendship = await dbContext.Friendships
-                .FirstOrDefaultAsync(f => (f.RequesterId == userId.ToString() && f.ReceiverId == friendId.ToString()) ||
-                                          (f.RequesterId == friendId.ToString() && f.ReceiverId == userId.ToString()));
+                .FirstOrDefaultAsync(f => (f.RequesterId == userId && f.ReceiverId == friendId.ToString()) ||
+                                          (f.RequesterId == friendId && f.ReceiverId == userId.ToString()));
             return friendship?.StatusEnum ?? FriendshipStatus.NotFriends;
         }
 

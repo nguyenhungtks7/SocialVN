@@ -17,11 +17,12 @@ namespace SocialVN.API.Controllers
     // https:localhost:portnumber/api/users
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    
     public class UsersController : ControllerBase
     {
 
         private readonly UserManager<ApplicationUser> userManager;
+        private readonly SignInManager<ApplicationUser> signInManager;
         private readonly IImageRepository imageRepository;
         private readonly IMapper mapper;
         private readonly IHttpContextAccessor httpContextAccessor;
@@ -33,7 +34,7 @@ namespace SocialVN.API.Controllers
             this.imageRepository = imageRepository;
             this.mapper = mapper;
         }
-
+        [Authorize]
 
         [SwaggerOperation(Summary = "Update Profile ", Description = "Cập nhật hồ sơ.")]
         [HttpPut("me")]
@@ -45,10 +46,10 @@ namespace SocialVN.API.Controllers
                 Console.WriteLine($"{claim.Type}: {claim.Value}");
             }
             if (string.IsNullOrEmpty(userId))
-                return BadRequest(new ApiResponse<string>(400, "Không xác định được người dùng.", null));
+                return BadRequest(new ApiResponse<string>(401, "Không xác định được người dùng.", null));
             var user = await userManager.FindByIdAsync(userId);
             if (user == null)
-                return BadRequest(new ApiResponse<string>(400, "Không tìm thấy người dùng", null));
+                return BadRequest(new ApiResponse<string>(404, "Không tìm thấy người dùng", null));
 
             user.FullName = dto.FullName;
             user.BirthDate = dto.BirthDate;
@@ -57,7 +58,16 @@ namespace SocialVN.API.Controllers
             user.LivingPlace = dto.LivingPlace;
             if (dto.Gender != null)
             {
-                user.Gender = dto.Gender.Value.GetDisplayName(); 
+                if (dto.Gender.Value.GetDisplayName() == "Male")
+                {
+                    user.Gender ="Nam";
+                }
+                else if(dto.Gender.Value.GetDisplayName() == "Female")
+                {
+                    user.Gender = "Nữ";
+                }
+                else
+                    user.Gender = "Khác";
             }
             user.PhoneNumber = dto.PhoneNumber;
 
@@ -74,11 +84,11 @@ namespace SocialVN.API.Controllers
             var result = await userManager.UpdateAsync(user);
             if (!result.Succeeded)
             {
-                return BadRequest(new ApiResponse<string>(400, "Cập nhật thất bại", null));
+                return StatusCode(500, new ApiResponse<string>(500, "Cập nhật thất bại do lỗi hệ thống.", null));
             }
             return Ok(new ApiResponse<ApplicationUser>(200, "Cập nhật thành công", null));
         }
-
+        [Authorize(Roles = "Admin")]
         [SwaggerOperation(Summary = "Search", Description = "Lấy danh sách tất cả người dùng với tùy chọn lọc, sắp xếp và phân trang.")]
         [HttpGet("Search")]
         public async Task<IActionResult> Search(
@@ -107,7 +117,7 @@ namespace SocialVN.API.Controllers
                         break;
                 }
             }
-
+          
             // Sắp xếp (sort)
             if (sortBy.HasValue)
             {
@@ -148,7 +158,8 @@ namespace SocialVN.API.Controllers
                 }));
         }
 
-
+        [Authorize]
+        [SwaggerOperation(Summary = "Get profile", Description = "Hiện thị thông tin  người dùng")]
         [HttpGet("profile")]
         public async Task<IActionResult> GetProfile()
         {
@@ -167,12 +178,15 @@ namespace SocialVN.API.Controllers
 
             return Ok(new ApiResponse<UserDto>(200, null, mapper.Map<UserDto>(user)));
         }
-
-
+        [Authorize]
+        [SwaggerOperation(Summary = "Delete user", Description = "Xóa người dùng")]
         [HttpDelete]
         public async Task<IActionResult> Delete()
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userId))
+                return Unauthorized(new ApiResponse<string>(401, "Không xác định được người dùng.", null));
+
             var user = await userManager.FindByIdAsync(userId);
             if (user == null)
             {
@@ -182,82 +196,12 @@ namespace SocialVN.API.Controllers
             var result = await userManager.DeleteAsync(user);
             if (!result.Succeeded)
             {
-                return BadRequest(new ApiResponse<string>(400, "Xoá thất bại", string.Join(", ", result.Errors.Select(e => e.Description))));
+                return StatusCode(500, new ApiResponse<string>(500, "Xoá thất bại do lỗi hệ thống", string.Join(", ", result.Errors.Select(e => e.Description))));
             }
-
+            await signInManager.SignOutAsync();
             return Ok(new ApiResponse<string>(200, "Xoá thành công", null));
         }
 
 
-        //private readonly IUserRepository userRepository;
-        //private readonly IMapper mapper;
-
-        //public UsersController(IUserRepository userRepository, IMapper mapper)
-        //{
-        //    this.userRepository = userRepository;
-        //    this.mapper = mapper;
-        //}
-
-        ////GET all users
-        //// GET: http:localhost:portnumber/api/users
-        //[HttpGet]
-        //public async Task<IActionResult> GetAll([FromQuery] string? filterOn, [FromQuery] string? filterQuery,
-        //    [FromQuery] string? sortBy, [FromQuery] bool? isAscending,
-        //    [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 1000)
-        //{
-        //    var userDomainModel = await userRepository.GetAllAsync(filterOn, filterQuery, sortBy, isAscending ?? true, pageNumber, pageSize);
-        //    return Ok(mapper.Map<List<UserDto>>(userDomainModel));
-        //}
-
-        ////GET user By Id
-        //// GET: http:localhost:portnumber/api/users/{id}
-        //[HttpGet("{id:Guid}")]
-        //public async Task<IActionResult> GetById(Guid id)
-        //{
-        //    var userDomainModel = await userRepository.GetByIdAsync(id);
-        //    if (userDomainModel == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return Ok(mapper.Map<UserDto>(userDomainModel));
-        //}
-
-        //// Create user
-        //// POST: http:localhost:portnumber/api/users
-        //[HttpPost]
-        //public async Task<IActionResult> Create([FromBody] AddUserRequestDto addUserRequestDto)
-        //{
-        //    var userDomainModel = mapper.Map<User>(addUserRequestDto);
-        //    await userRepository.CreateAsync(userDomainModel);
-        //    return Ok(mapper.Map<UserDto>(userDomainModel));
-        //}
-
-        ////Update user
-        //// PUT: http:localhost:portnumber/api/users/{id}
-        //[HttpPut("{id:Guid}")]
-        //public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateUserRequestDto updateUserRequestDto)
-        //{
-        //    var userDomainModel = await userRepository.GetByIdAsync(id);
-        //    if (userDomainModel == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    mapper.Map(updateUserRequestDto, userDomainModel);
-        //    await userRepository.UpdateAsync(userDomainModel);
-        //    return Ok(mapper.Map<UserDto>(userDomainModel));
-        //}
-
-        ////Delete user
-        //// DELETE: http:localhost:portnumber/api/users/{id}
-        //[HttpDelete("{id:Guid}")]
-        //public async Task<IActionResult> Delete([FromRoute] Guid id)
-        //{
-        //    var userDomainModel = await userRepository.DeleteAsync(id);
-        //    if (userDomainModel == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return Ok(mapper.Map<UserDto>(userDomainModel));
-        //}
     }
 }

@@ -5,6 +5,7 @@ namespace SocialVN.API.Repositories
 {
     public interface IFriendshipRepository
     {
+        Task<Friendship?> GetByIdAsync(Guid requestId);
         Task<Friendship> SendRequestAsync(Friendship friendship);
         Task<Friendship> AcceptRequestAsync(Guid requestId);
         Task<Friendship> RejectRequestAsync(Guid requestId);
@@ -12,7 +13,7 @@ namespace SocialVN.API.Repositories
         Task<Friendship> RemoveFriendAsync(Guid friendId);
         Task<List<ApplicationUser>> ListFriendsAsync(Guid friendId);
         Task<List<Friendship>> ListFriendRequestsAsync(Guid userId);
-        Task<FriendshipStatus> CheckFriendshipStatusAsync(Guid userId, Guid friendId);
+        Task<FriendshipStatus> CheckFriendshipStatusAsync(string userId, string friendId);
     
     }
 }

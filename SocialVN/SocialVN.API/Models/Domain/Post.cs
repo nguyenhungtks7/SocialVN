@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using SocialVN.API.Enums;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SocialVN.API.Models.Domain
 {
@@ -10,6 +11,7 @@ namespace SocialVN.API.Models.Domain
         [NotMapped]
         public IFormFile ImageFile { get; set; }
         public string Image { get; set; }
+        public PostStatus Status { get; set; }
         [NotMapped]
         public bool IsEdited => UpdatedAt > CreatedAt;
         // Thuộc tính điều hướng

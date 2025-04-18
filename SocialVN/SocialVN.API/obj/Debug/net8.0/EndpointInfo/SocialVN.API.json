@@ -423,104 +423,6 @@
         }
       }
     },
-    "/api/Friendships/status/{userId1}/{userId2}": {
-      "get": {
-        "tags": [
-          "Friendships"
-        ],
-        "summary": "Check friendship status",
-        "description": "Kiểm tra trạng thái kết bạn.",
-        "parameters": [
-          {
-            "name": "userId",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "friendId",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "userId1",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "userId2",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Friendships/friends/{userId}": {
-      "get": {
-        "tags": [
-          "Friendships"
-        ],
-        "summary": "Get friends list",
-        "description": "Lấy danh sách bạn bè.",
-        "parameters": [
-          {
-            "name": "userId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Friendships/requests/{userId}": {
-      "get": {
-        "tags": [
-          "Friendships"
-        ],
-        "summary": "Get friend requests",
-        "description": "Lấy danh sách yêu cầu kết bạn.",
-        "parameters": [
-          {
-            "name": "userId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/Friendships/reject/{requestId}": {
       "delete": {
         "tags": [
@@ -546,7 +448,7 @@
         }
       }
     },
-    "/api/Friendships/remove/{friendId}": {
+    "/api/Friendships/remove/{friendshipId}": {
       "delete": {
         "tags": [
           "Friendships"
@@ -555,7 +457,7 @@
         "description": "Xóa bạn bè.",
         "parameters": [
           {
-            "name": "friendId",
+            "name": "friendshipId",
             "in": "path",
             "required": true,
             "schema": {
@@ -564,6 +466,59 @@
             }
           }
         ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Friendships/status/{otherUserId}": {
+      "get": {
+        "tags": [
+          "Friendships"
+        ],
+        "summary": "Check friendship status",
+        "description": "Kiểm tra trạng thái kết bạn.",
+        "parameters": [
+          {
+            "name": "otherUserId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Friendships/friends": {
+      "get": {
+        "tags": [
+          "Friendships"
+        ],
+        "summary": "Get friends list",
+        "description": "Lấy danh sách bạn bè.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Friendships/requests": {
+      "get": {
+        "tags": [
+          "Friendships"
+        ],
+        "summary": "Get friend requests",
+        "description": "Lấy danh sách yêu cầu kết bạn đến.",
         "responses": {
           "200": {
             "description": "OK"
@@ -688,44 +643,24 @@
         }
       }
     },
-    "/api/Posts": {
+    "/api/Posts/timeline": {
       "get": {
         "tags": [
           "Posts"
         ],
-        "summary": "Get all posts",
-        "description": "Lấy danh sách tất cả các bài đăng.",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Posts"
-        ],
-        "summary": "Create post",
-        "description": "Tạo bài đăng mới.",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddPostRequestDto"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddPostRequestDto"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddPostRequestDto"
-              }
+        "summary": "Get timeline",
+        "description": "Lấy bài đăng gần nhất của bạn bè theo trang, mặc định 10 bản ghi.",
+        "parameters": [
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
             }
           }
-        },
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -776,19 +711,44 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/UpdatePostRequestDto"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdatePostRequestDto"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdatePostRequestDto"
+                "required": [
+                  "Content",
+                  "ImageFile",
+                  "Status"
+                ],
+                "type": "object",
+                "properties": {
+                  "Content": {
+                    "maxLength": 1000,
+                    "minLength": 10,
+                    "type": "string"
+                  },
+                  "ImageFile": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "Status": {
+                    "enum": [
+                      "Public",
+                      "FriendsOnly",
+                      "Private"
+                    ],
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "Content": {
+                  "style": "form"
+                },
+                "ImageFile": {
+                  "style": "form"
+                },
+                "Status": {
+                  "style": "form"
+                }
               }
             }
           }
@@ -816,6 +776,64 @@
             }
           }
         ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Posts": {
+      "post": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "Create post",
+        "description": "Tạo bài đăng mới.",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "Content",
+                  "ImageFile",
+                  "Status"
+                ],
+                "type": "object",
+                "properties": {
+                  "Content": {
+                    "maxLength": 1000,
+                    "minLength": 10,
+                    "type": "string"
+                  },
+                  "ImageFile": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "Status": {
+                    "enum": [
+                      "Public",
+                      "FriendsOnly",
+                      "Private"
+                    ],
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "Content": {
+                  "style": "form"
+                },
+                "ImageFile": {
+                  "style": "form"
+                },
+                "Status": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "OK"
@@ -987,6 +1005,8 @@
         "tags": [
           "Users"
         ],
+        "summary": "Get profile",
+        "description": "Hiện thị thông tin  người dùng",
         "responses": {
           "200": {
             "description": "OK"
@@ -999,6 +1019,8 @@
         "tags": [
           "Users"
         ],
+        "summary": "Delete user",
+        "description": "Xóa người dùng",
         "responses": {
           "200": {
             "description": "OK"
@@ -1079,6 +1101,9 @@
         "additionalProperties": false
       },
       "AddFriendshipRequestDto": {
+        "required": [
+          "receiverId"
+        ],
         "type": "object",
         "properties": {
           "createdAt": {
@@ -1089,17 +1114,9 @@
             "type": "string",
             "format": "date-time"
           },
-          "requesterId": {
-            "type": "string",
-            "format": "uuid"
-          },
           "receiverId": {
             "type": "string",
             "format": "uuid"
-          },
-          "status": {
-            "type": "string",
-            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1122,25 +1139,6 @@
           "userId": {
             "type": "string",
             "format": "uuid"
-          }
-        },
-        "additionalProperties": false
-      },
-      "AddPostRequestDto": {
-        "type": "object",
-        "properties": {
-          "userId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "content": {
-            "type": "string",
-            "nullable": true
-          },
-          "imageFile": {
-            "type": "string",
-            "format": "binary",
-            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1259,24 +1257,6 @@
             "format": "uuid"
           },
           "content": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "UpdatePostRequestDto": {
-        "type": "object",
-        "properties": {
-          "userId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "content": {
-            "type": "string",
-            "nullable": true
-          },
-          "image": {
             "type": "string",
             "nullable": true
           }
