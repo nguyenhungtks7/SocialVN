@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using OfficeOpenXml;
 using Microsoft.AspNetCore.Mvc;
-using OfficeOpenXml;
 using SocialVN.API.Repositories;
+using System.ComponentModel;
 using System.Security.Claims;
 
 namespace SocialVN.API.Controllers
@@ -27,6 +27,7 @@ namespace SocialVN.API.Controllers
         [HttpGet("generate-report")]
         public async Task<IActionResult> GenerateReport()
         {
+            ExcelPackage.License.SetNonCommercialPersonal("nguyenphihung");
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);  // Lấy ID của người dùng hiện tại
 
             // Tính toán số bài viết tuần qua

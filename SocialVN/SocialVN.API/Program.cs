@@ -168,14 +168,14 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 // Kích hoạt middleware phục vụ các tệp tĩnh (như hình ảnh, CSS, JavaScript)
-app.UseStaticFiles(new StaticFileOptions
-{
-    // Chỉ định thư mục vật lý chứa các tệp tĩnh (ở đây là thư mục "Images" trong thư mục hiện tại)
-    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "Images")),
+//app.UseStaticFiles(new StaticFileOptions
+//{
+//    // Chỉ định thư mục vật lý chứa các tệp tĩnh (ở đây là thư mục "Images" trong thư mục hiện tại)
+//    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "Images")),
 
-    // Định nghĩa đường dẫn URL từ đó các tệp tĩnh sẽ được truy cập (ví dụ: https://localhost:1234/Images)
-    RequestPath = "/Images"
-});
+//    // Định nghĩa đường dẫn URL từ đó các tệp tĩnh sẽ được truy cập (ví dụ: https://localhost:1234/Images)
+//    RequestPath = "/Images"
+//});
 
 app.MapControllers();
 

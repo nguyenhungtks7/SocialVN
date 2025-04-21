@@ -45,7 +45,7 @@ namespace SocialVN.API.Repositories
         public async Task<Friendship> CancelRequestAsync(Guid requestId)
         {
             var friendship = await dbContext.Friendships
-                .FirstOrDefaultAsync(f => f.Id == requestId && f.StatusEnum == FriendshipStatus.Pending);
+                .FirstOrDefaultAsync(f => f.Id == requestId && f.Status == FriendshipStatus.Pending.ToString());
             if (friendship != null)
             {
                 dbContext.Friendships.Remove(friendship);
@@ -91,7 +91,7 @@ namespace SocialVN.API.Repositories
         public async Task<Friendship> RejectRequestAsync(Guid requestId)
         {
             var friendship = await dbContext.Friendships
-              .FirstOrDefaultAsync(f => f.Id == requestId && f.StatusEnum == FriendshipStatus.Pending);
+              .FirstOrDefaultAsync(f => f.Id == requestId && f.Status == FriendshipStatus.Pending.ToString());
             if (friendship != null)
             {
                 friendship.StatusEnum = FriendshipStatus.Rejected;
@@ -104,7 +104,7 @@ namespace SocialVN.API.Repositories
         public async Task<Friendship> RemoveFriendAsync(Guid friendId)
         {
             var friendship = await dbContext.Friendships
-                .FirstOrDefaultAsync(f => f.Id == friendId && f.StatusEnum == FriendshipStatus.Accepted);
+                .FirstOrDefaultAsync(f => f.Id == friendId && f.Status == FriendshipStatus.Accepted.ToString());
             if (friendship != null)
             {
                 dbContext.Friendships.Remove(friendship);
@@ -126,7 +126,7 @@ namespace SocialVN.API.Repositories
 
             var friendships = await dbContext.Friendships
                 .Where(f => (f.RequesterId == userId || f.ReceiverId == userId) &&
-                            (int)f.StatusEnum == (int)FriendshipStatus.Accepted &&  // Chuyển StatusEnum sang int
+                            f.Status == FriendshipStatus.Accepted.ToString() &&  // Chuyển StatusEnum sang int
                             f.CreatedAt >= lastWeek)
                 .Select(f => f.RequesterId == userId ? f.Receiver : f.Requester)  // Lấy người bạn mới
                 .ToListAsync();
