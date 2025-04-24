@@ -1,9 +1,9 @@
 ﻿using OfficeOpenXml;
 using Microsoft.AspNetCore.Mvc;
 using SocialVN.API.Repositories;
-using System.ComponentModel;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace SocialVN.API.Controllers
 {
@@ -25,7 +25,7 @@ namespace SocialVN.API.Controllers
             _likeRepository = likeRepository;
             _commentRepository = commentRepository;
         }
-
+        [SwaggerOperation(Summary = "Generate report", Description = "Tạo báo cáo")]
         [HttpGet("generate-report")]
         public async Task<IActionResult> GenerateReport()
         {

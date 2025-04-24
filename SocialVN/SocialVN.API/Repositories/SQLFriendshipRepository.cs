@@ -76,7 +76,7 @@ namespace SocialVN.API.Repositories
                 .ToListAsync();
         }
 
-        //Get a list of friends
+     
         public async Task<List<ApplicationUser>> ListFriendsAsync(Guid userId)
         {
            return await dbContext.Friendships
@@ -87,7 +87,7 @@ namespace SocialVN.API.Repositories
                 .ToListAsync();
         }
 
-        //Reject a friend request
+        
         public async Task<Friendship> RejectRequestAsync(Guid requestId)
         {
             var friendship = await dbContext.Friendships
@@ -100,7 +100,7 @@ namespace SocialVN.API.Repositories
             }
             return friendship;
         }
-        //Remove a friend
+   
         public async Task<Friendship> RemoveFriendAsync(Guid friendId)
         {
             var friendship = await dbContext.Friendships

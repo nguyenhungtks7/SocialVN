@@ -137,19 +137,19 @@ public class FriendshipsController : ControllerBase
     }
 
   
-    [SwaggerOperation(Summary = "Check friendship status", Description = "Kiểm tra trạng thái kết bạn.")]
-    [HttpGet("status/{otherUserId:Guid}")]
-    public async Task<IActionResult> CheckFriendshipStatus(Guid otherUserId)
-    {
-        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-        if (string.IsNullOrEmpty(userId))
-            return Unauthorized(new ApiResponse<string>(401, "Bạn cần đăng nhập để kiểm tra trạng thái", null));
+    //[SwaggerOperation(Summary = "Check friendship status", Description = "Kiểm tra trạng thái kết bạn.")]
+    //[HttpGet("status/{otherUserId:Guid}")]
+    //public async Task<IActionResult> CheckFriendshipStatus(Guid otherUserId)
+    //{
+    //    var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+    //    if (string.IsNullOrEmpty(userId))
+    //        return Unauthorized(new ApiResponse<string>(401, "Bạn cần đăng nhập để kiểm tra trạng thái", null));
 
-        var status = await friendshipRepository
-            .CheckFriendshipStatusAsync(userId, otherUserId.ToString());
+    //    var status = await friendshipRepository
+    //        .CheckFriendshipStatusAsync(userId, otherUserId.ToString());
 
-        return Ok(new ApiResponse<FriendshipStatus>(200, null, status));
-    }
+    //    return Ok(new ApiResponse<FriendshipStatus>(200, null, status));
+    //}
 
     // 7. Get friends list
     [SwaggerOperation(Summary = "Get friends list", Description = "Lấy danh sách bạn bè.")]

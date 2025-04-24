@@ -298,56 +298,14 @@
   {
     "ContainingType": "SocialVN.API.Controllers.LikesController",
     "Method": "ToggleLike",
-    "RelativePath": "api/Likes/{postId}",
+    "RelativePath": "api/Likes/Toggle-like",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "like",
+        "Name": "likeDto",
         "Type": "SocialVN.API.Models.DTO.AddLikeRequestDto",
-        "IsRequired": true
-      },
-      {
-        "Name": "postId",
-        "Type": "",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SocialVN.API.Controllers.LikesController",
-    "Method": "CountLikes",
-    "RelativePath": "api/Likes/{postId}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "postId",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SocialVN.API.Controllers.LikesController",
-    "Method": "IsLikeExist",
-    "RelativePath": "api/Likes/{postId}/{userId}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "postId",
-        "Type": "System.Guid",
-        "IsRequired": true
-      },
-      {
-        "Name": "userId",
-        "Type": "System.Guid",
         "IsRequired": true
       }
     ],

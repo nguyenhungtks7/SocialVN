@@ -22,7 +22,7 @@ namespace SocialVN.API.Mappings
             CreateMap<AddLikeRequestDto, Like>().ReverseMap();
 
 
-            CreateMap<Post, PostDto>().ForMember(dest => dest.User, opt => opt.MapFrom(src => src.User)).ReverseMap();
+            CreateMap<Post, PostDto>().ReverseMap();
             CreateMap<AddPostRequestDto, Post>().ReverseMap();
             CreateMap<UpdatePostRequestDto, Post>().ReverseMap();
 

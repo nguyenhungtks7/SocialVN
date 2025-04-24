@@ -23,11 +23,12 @@ namespace SocialVN.API.Controllers
         private readonly IMapper mapper;
         private readonly IImageRepository imageRepository;
 
-        public PostsController(IPostRepository postRepository, IMapper mapper, IImageRepository imageRepository)
+        public PostsController(IPostRepository postRepository, IMapper mapper, IImageRepository imageRepository, IFriendshipRepository friendshipRepository)
         {
             this.postRepository = postRepository;
             this.mapper = mapper;
             this.imageRepository = imageRepository;
+            this.friendshipRepository = friendshipRepository;
         }
         //  GET all posts
         // GET: http:localhost:portnumber/api/posts
@@ -42,7 +43,23 @@ namespace SocialVN.API.Controllers
                 return Unauthorized(new ApiResponse<string>(401, "Bạn cần đăng nhập để xem timeline", null));
 
             var posts = await postRepository.GetTimelineAsync(userId, pageNumber, pageSize);
-            var dtoList = mapper.Map<List<PostDto>>(posts);
+
+            var dtoList = posts.Select(p => new PostDto
+            {
+                Id = p.Id,
+                UserId = p.UserId,
+                Content = p.Content,
+                Image = p.Image,
+                Status = p.Status,
+                IsEdited = p.IsEdited,
+                UserName = p.User.UserName,
+                AvatarPath = p.User.AvatarPath,
+                CommentCount = p.Comments?.Count ?? 0,
+                LikeCount = p.Likes?.Count ?? 0,
+                CreatedAt = p.CreatedAt,
+                UpdatedAt = p.UpdatedAt
+            }).ToList();
+
             return Ok(new ApiResponse<object>(
            200,
            null,
@@ -82,35 +99,25 @@ namespace SocialVN.API.Controllers
                         break; // OK
                 }
             }
+
             var postDto = new PostDto
             {
+                Id = postDomainModel.Id,
                 UserId = postDomainModel.UserId,
                 Content = postDomainModel.Content,
                 Image = postDomainModel.Image,
                 Status = postDomainModel.Status,
-                User = postDomainModel.User == null ? null : new UserDto
-                {
-                    Id = postDomainModel.UserId,
-                    UserName = postDomainModel.User.UserName,
-                    Email = postDomainModel.User?.Email,
-                    FullName = postDomainModel.User?.FullName,
-                    BirthDate = postDomainModel.User?.BirthDate,
-                    Occupation = postDomainModel.User?.Occupation,
-                    Location = postDomainModel.User?.Location,
-                    LivingPlace = postDomainModel.User?.LivingPlace,
-                    Gender = postDomainModel.User?.Gender,
-                    PhoneNumber = postDomainModel.User?.PhoneNumber,
-                    AvatarPath = postDomainModel.User?.AvatarPath,
-                    CreatedAt = postDomainModel.User?.CreatedAt ?? default,
-                    UpdatedAt = postDomainModel.User?.UpdatedAt ?? default
-                }
+                IsEdited = postDomainModel.IsEdited,
+                UserName = postDomainModel.User.UserName,
+                AvatarPath = postDomainModel.User?.AvatarPath,
+                CommentCount = postDomainModel.Comments?.Count ?? 0,
+                LikeCount = postDomainModel.Likes?.Count ?? 0,
+                CreatedAt = postDomainModel.CreatedAt,
+                UpdatedAt = postDomainModel.UpdatedAt
             };
 
-            //// Trả về bài viết trong ApiResponse
-            return Ok(new ApiResponse<PostDto>(200, null, postDto));
-            //var postDto = mapper.Map<PostDto>(postDomainModel);
 
-            //return Ok(new ApiResponse<PostDto>(200, null, postDto));
+            return Ok(new ApiResponse<PostDto>(200, null, postDto));
         }
             
 
@@ -173,17 +180,15 @@ namespace SocialVN.API.Controllers
             }
             var postDomainModel = mapper.Map<Post>(post);
             postDomainModel.UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            if (existingPost.ImageFile != null)
+            if (postDomainModel.ImageFile != null)
             {
-                if (!imageRepository.IsValidImage(existingPost.ImageFile))
+                if (!imageRepository.IsValidImage(postDomainModel.ImageFile))
                 {
                     return BadRequest(new ApiResponse<string>(400, "Tệp không hợp lệ. Chỉ chấp nhận các tệp .jpg, .jpeg, .png và kích thước không quá 10MB.", null));
                 }
-                var imgPath = await imageRepository.UploadToImgurAsync(existingPost.ImageFile);
+                var imgPath = await imageRepository.UploadToImgurAsync(postDomainModel.ImageFile);
                 postDomainModel.Image = imgPath;
             }
-            postDomainModel.Content = existingPost.Content;
-            postDomainModel.Status = existingPost.Status;
             postDomainModel.UpdatedAt = DateTime.Now;
             
             var updatedPost = await postRepository.UpdateAsync(id, postDomainModel);

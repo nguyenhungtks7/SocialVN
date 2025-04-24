@@ -18,6 +18,7 @@ namespace SocialVN.API.Models.DTO
         public string AvatarPath { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
+    
     }
 
 

@@ -520,23 +520,13 @@
         }
       }
     },
-    "/api/Likes/{postId}": {
+    "/api/Likes/Toggle-like": {
       "post": {
         "tags": [
           "Likes"
         ],
         "summary": "Toggle like",
         "description": "Like nếu chưa like, hoặc Unlike nếu đã like.",
-        "parameters": [
-          {
-            "name": "postId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -556,63 +546,6 @@
             }
           }
         },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "get": {
-        "tags": [
-          "Likes"
-        ],
-        "summary": "Count likes",
-        "description": "Đếm số lượt thích cho một bài đăng cụ thể.",
-        "parameters": [
-          {
-            "name": "postId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Likes/{postId}/{userId}": {
-      "get": {
-        "tags": [
-          "Likes"
-        ],
-        "summary": "Check if a like exists",
-        "description": "Kiểm tra xem lượt thích có tồn tại hay không.",
-        "parameters": [
-          {
-            "name": "postId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "userId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -823,6 +756,8 @@
         "tags": [
           "Report"
         ],
+        "summary": "Generate report",
+        "description": "Tạo báo cáo",
         "responses": {
           "200": {
             "description": "OK"
@@ -1087,16 +1022,11 @@
         "additionalProperties": false
       },
       "AddLikeRequestDto": {
+        "required": [
+          "postId"
+        ],
         "type": "object",
         "properties": {
-          "createdAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time"
-          },
           "postId": {
             "type": "string",
             "format": "uuid"

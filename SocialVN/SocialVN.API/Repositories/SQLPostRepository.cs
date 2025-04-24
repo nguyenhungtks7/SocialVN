@@ -1,7 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using SocialVN.API.Data;
 using SocialVN.API.Enums;
 using SocialVN.API.Models.Domain;
+using SocialVN.API.Models.DTO;
 
 namespace SocialVN.API.Repositories
 {
@@ -37,22 +39,37 @@ namespace SocialVN.API.Repositories
         {
              var friendIds = dbContext.Friendships
             .Where(f => f.RequesterId == userId || f.ReceiverId == userId)
-            .AsEnumerable() // Chuyển sang client để xử lý enum
+            .AsEnumerable() 
             .Where(f => f.StatusEnum == FriendshipStatus.Accepted)
             .Select(f => f.RequesterId == userId ? f.ReceiverId : f.RequesterId)
-            .ToList(); // Dùng ToList thay vì ToListAsync
+            .ToList();
 
             return await dbContext.Posts
                 .Where(p => friendIds.Contains(p.UserId))
                 .OrderByDescending(p => p.CreatedAt)
+                .Where(p =>   
+                 p.Status == PostStatus.Public
+                // Bài viết của chính mình
+                || p.UserId == userId
+                // Bài viết chỉ bạn bè xem được
+                 || (p.Status == PostStatus.FriendsOnly && friendIds.Contains(p.UserId))
+                )
+                .Include(p => p.Comments)
+                .Include(p => p.Likes)
+                .Include(p => p.User)
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
+                 
                 .ToListAsync();
         }
 
         public async Task<Post> GetByIdAsync(Guid id)
         {
-            return await dbContext.Posts.Include(x => x.User).FirstOrDefaultAsync(x => x.Id == id);
+            return await dbContext.Posts
+                .Include(x => x.User)
+                .Include(p => p.Comments)
+                .Include(p => p.Likes)
+                .FirstOrDefaultAsync(x => x.Id == id);
             
         }
 
@@ -66,6 +83,7 @@ namespace SocialVN.API.Repositories
             existingPost.UserId = post.UserId;
             existingPost.Content = post.Content;
             existingPost.UpdatedAt = DateTime.Now;
+            existingPost.Status = post.Status;
             await dbContext.SaveChangesAsync();
             return existingPost;
 

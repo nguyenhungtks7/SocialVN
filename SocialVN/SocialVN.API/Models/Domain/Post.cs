@@ -1,5 +1,6 @@
 ﻿using SocialVN.API.Enums;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace SocialVN.API.Models.Domain
 {
@@ -15,6 +16,7 @@ namespace SocialVN.API.Models.Domain
         [NotMapped]
         public bool IsEdited => UpdatedAt > CreatedAt;
         // Thuộc tính điều hướng
+        [JsonIgnore]
         public ApplicationUser User { get; set; }
         public ICollection<Comment> Comments { get; set; }
         public ICollection<Like> Likes { get; set; }
