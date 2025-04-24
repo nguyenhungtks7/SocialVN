@@ -3,11 +3,13 @@ using Microsoft.AspNetCore.Mvc;
 using SocialVN.API.Repositories;
 using System.ComponentModel;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SocialVN.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ReportController : ControllerBase
     {
         private readonly IPostRepository _postRepository;

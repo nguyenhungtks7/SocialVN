@@ -297,8 +297,8 @@
   },
   {
     "ContainingType": "SocialVN.API.Controllers.LikesController",
-    "Method": "LikePost",
-    "RelativePath": "api/Likes",
+    "Method": "ToggleLike",
+    "RelativePath": "api/Likes/{postId}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -307,21 +307,10 @@
         "Name": "like",
         "Type": "SocialVN.API.Models.DTO.AddLikeRequestDto",
         "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SocialVN.API.Controllers.LikesController",
-    "Method": "Delete",
-    "RelativePath": "api/Likes/{id}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
+      },
       {
-        "Name": "id",
-        "Type": "System.Guid",
+        "Name": "postId",
+        "Type": "",
         "IsRequired": true
       }
     ],

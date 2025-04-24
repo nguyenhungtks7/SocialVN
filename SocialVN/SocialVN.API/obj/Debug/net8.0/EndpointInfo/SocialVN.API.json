@@ -520,13 +520,23 @@
         }
       }
     },
-    "/api/Likes": {
+    "/api/Likes/{postId}": {
       "post": {
         "tags": [
           "Likes"
         ],
-        "summary": "Like a post",
-        "description": "Tạo lượt thích mới cho một bài đăng cụ thể.",
+        "summary": "Toggle like",
+        "description": "Like nếu chưa like, hoặc Unlike nếu đã like.",
+        "parameters": [
+          {
+            "name": "postId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -551,18 +561,16 @@
             "description": "OK"
           }
         }
-      }
-    },
-    "/api/Likes/{id}": {
-      "delete": {
+      },
+      "get": {
         "tags": [
           "Likes"
         ],
-        "summary": "Delete a like",
-        "description": "Xóa lượt thích theo id.",
+        "summary": "Count likes",
+        "description": "Đếm số lượt thích cho một bài đăng cụ thể.",
         "parameters": [
           {
-            "name": "id",
+            "name": "postId",
             "in": "path",
             "required": true,
             "schema": {
@@ -597,31 +605,6 @@
           },
           {
             "name": "userId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Likes/{postId}": {
-      "get": {
-        "tags": [
-          "Likes"
-        ],
-        "summary": "Count likes",
-        "description": "Đếm số lượt thích cho một bài đăng cụ thể.",
-        "parameters": [
-          {
-            "name": "postId",
             "in": "path",
             "required": true,
             "schema": {
@@ -1115,10 +1098,6 @@
             "format": "date-time"
           },
           "postId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "userId": {
             "type": "string",
             "format": "uuid"
           }

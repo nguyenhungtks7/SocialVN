@@ -8,10 +8,12 @@ using Microsoft.OpenApi.Models;
 using SocialVN.API.Data;
 using SocialVN.API.Mappings;
 using SocialVN.API.Models.Domain;
+using SocialVN.API.Models.DTO;
 using SocialVN.API.Repositories;
 using System.Reflection;
 using System.Security.Claims;
 using System.Text;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 
@@ -130,12 +132,16 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
            Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"] ?? ""))
 
         };
-        options.Events = new JwtBearerEvents
+        options.Events = new Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerEvents
         {
-            OnAuthenticationFailed = context =>
+            OnChallenge = context =>
             {
-                Console.WriteLine("JWT ERROR: " + context.Exception.Message);
-                return Task.CompletedTask;
+                context.HandleResponse(); // chặn response mặc định
+                context.Response.StatusCode = 401;
+                context.Response.ContentType = "application/json";
+
+                var result = JsonSerializer.Serialize(new ApiResponse<string>(401, "Bạn không có quyền truy cập.", null));
+                return context.Response.WriteAsync(result);
             }
         };
     }
