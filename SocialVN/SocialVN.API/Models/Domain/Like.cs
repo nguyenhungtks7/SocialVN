@@ -7,7 +7,6 @@ namespace SocialVN.API.Models.Domain
         public Guid Id { get; set; }
         public Guid PostId { get; set; }
         public string UserId { get; set; }
-        public string Usid { get; set; }
 
         // Thuộc tính điều hướng
         [ForeignKey("UserId")]

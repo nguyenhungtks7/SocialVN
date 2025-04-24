@@ -13,5 +13,6 @@ namespace SocialVN.API.Repositories
         Task<int> CountLikesAsync(Guid postId);
         //Task<List<User>> GetUsersWhoLikedAsync(Guid postId);
         Task<IEnumerable<Like>> GetLikesInLastWeek(string userId);
+        Task<Like?> GetLikeByUserAndPostAsync(string userId, Guid postId);
     }
 }

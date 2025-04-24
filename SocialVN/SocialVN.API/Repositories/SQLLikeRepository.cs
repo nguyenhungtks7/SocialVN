@@ -51,5 +51,10 @@ namespace SocialVN.API.Repositories
                 .Where(l => l.UserId == userId && l.CreatedAt >= lastWeek)
                 .ToListAsync();
         }
+        public async Task<Like?> GetLikeByUserAndPostAsync(string userId, Guid postId)
+        {
+            return await dbContext.Likes
+                .FirstOrDefaultAsync(like => like.UserId == userId && like.PostId == postId);
+        }
     }
 }

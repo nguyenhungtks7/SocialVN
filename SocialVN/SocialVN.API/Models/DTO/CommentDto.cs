@@ -11,7 +11,7 @@ namespace SocialVN.API.Models.DTO
 
         // Thuộc tính điều hướng
         public Post Post { get; set; }
-        public ApplicationUser User { get; set; }
+        public UserDto User { get; set; }
 
     }
 }

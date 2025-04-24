@@ -128,7 +128,6 @@ public class FriendshipsController : ControllerBase
         if (entity == null)
             return NotFound(new ApiResponse<string>(404, "Quan hệ bạn bè không tồn tại", null));
 
-        // Cả requester hoặc receiver đều có thể unfriend
         if (entity.RequesterId != userId && entity.ReceiverId != userId)
             return StatusCode(403, new ApiResponse<string>(403, "Bạn không có quyền xóa quan hệ này", null));
 
@@ -137,7 +136,7 @@ public class FriendshipsController : ControllerBase
         return Ok(new ApiResponse<FriendshipDto>(200, "Xóa bạn thành công", null));
     }
 
-    // 6. Check friendship status (định nghĩa userId được lấy từ token)
+  
     [SwaggerOperation(Summary = "Check friendship status", Description = "Kiểm tra trạng thái kết bạn.")]
     [HttpGet("status/{otherUserId:Guid}")]
     public async Task<IActionResult> CheckFriendshipStatus(Guid otherUserId)

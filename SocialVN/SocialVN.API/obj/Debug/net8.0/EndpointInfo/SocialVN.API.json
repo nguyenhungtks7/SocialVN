@@ -1079,23 +1079,7 @@
       "AddCommentRequestDto": {
         "type": "object",
         "properties": {
-          "createdAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
           "postId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "userId": {
             "type": "string",
             "format": "uuid"
           },
@@ -1234,26 +1218,6 @@
       "UpdateCommentRequestDto": {
         "type": "object",
         "properties": {
-          "createdAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "postId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "userId": {
-            "type": "string",
-            "format": "uuid"
-          },
           "content": {
             "type": "string",
             "nullable": true

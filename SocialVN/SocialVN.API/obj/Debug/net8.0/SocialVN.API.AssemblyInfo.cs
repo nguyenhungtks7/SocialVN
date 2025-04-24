@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SocialVN.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+18de9ba331249650fb4101fbf8b12bd83b8d30bd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7641ae6d951fba779ab0490d86fb43d2914053a3")]
 [assembly: System.Reflection.AssemblyProductAttribute("SocialVN.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SocialVN.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

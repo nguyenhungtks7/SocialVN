@@ -5,6 +5,7 @@ using SocialVN.API.Models.Domain;
 using SocialVN.API.Models.DTO;
 using SocialVN.API.Repositories;
 using Swashbuckle.AspNetCore.Annotations;
+using System.ComponentModel;
 using System.Security.Claims;
 
 namespace SocialVN.API.Controllers
@@ -23,42 +24,70 @@ namespace SocialVN.API.Controllers
             this.likeRepository = likeRepository;
             this.mapper = mapper;
         }
-
-        // Create like
-        // POST: http:localhost:portnumber/api/likes
-
-        [SwaggerOperation(Summary = "Like a post", Description = "Tạo lượt thích mới cho một bài đăng cụ thể.")]
-        [HttpPost]
-        public async Task<IActionResult> LikePost([FromBody] AddLikeRequestDto like)
+        [SwaggerOperation(Summary = "Toggle like", Description = "Like nếu chưa like, hoặc Unlike nếu đã like.")]
+        [Authorize]
+        [HttpPost("{postId:Guid}")]
+        public async Task<IActionResult> ToggleLike([FromBody] AddLikeRequestDto like)
         {
-            // Lấy UserId từ người dùng hiện tại
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Hoặc tùy theo cách bạn lưu trữ thông tin người dùng
-
-            var likeDomainModel = mapper.Map<Like>(like);
-            likeDomainModel.UserId = userId; // Gán UserId từ người dùng hiện tại
-            likeDomainModel.Usid = userId;  // Gán Usid là chính UserId của người dùng hiện tại
-
-            var result = await likeRepository.CreateLikeAsync(likeDomainModel);
-
-            
-                return Ok(new ApiResponse<LikeDto>(201, "Đã thích bài viết thành công", mapper.Map<LikeDto>(likeDomainModel)));
-            
-        }
-
-
-        // Delete like by id
-        // DELETE: http://localhost:portnumber/api/likes/{id}
-        [SwaggerOperation(Summary = "Delete a like", Description = "Xóa lượt thích theo id.")]
-        [HttpDelete("{id:Guid}")]
-        public async Task<IActionResult> Delete(Guid id)
-        {
-            var likeDomainModel = await likeRepository.DeleteLikeAsync(id);
-            if (likeDomainModel == null)
+          var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null)
             {
-                return NotFound(new ApiResponse<string>(404, "Lượt thích không tồn tại", null));
+                return Unauthorized(new ApiResponse<string>(401, "Không xác định được người dùng", null));
             }
-            return Ok(new ApiResponse<LikeDto>(200, "Xóa lượt thích thành công", mapper.Map<LikeDto>(likeDomainModel)));
+            var existingLike = await likeRepository.GetLikeByUserAndPostAsync(userId, like.PostId);
+
+            if (existingLike != null)
+            {
+
+                var deletedLike = await likeRepository.DeleteLikeAsync(existingLike.Id);
+                return Ok(new ApiResponse<string>(200, "Đã bỏ thích bài viết", null));
+            }
+            else
+            {
+              
+                var likeDomainModel = mapper.Map<Like>(like);
+                likeDomainModel.UserId = userId;
+
+                var createdLike = await likeRepository.CreateLikeAsync(likeDomainModel);
+                return Ok(new ApiResponse<LikeDto>(201, "Đã thích bài viết thành công", mapper.Map<LikeDto>(createdLike)));
+            }
+
         }
+        //// Create like
+        //// POST: http:localhost:portnumber/api/likes
+
+        //[SwaggerOperation(Summary = "Like a post", Description = "Tạo lượt thích mới cho một bài đăng cụ thể.")]
+        //[HttpPost]
+        //public async Task<IActionResult> LikePost([FromBody] AddLikeRequestDto like)
+        //{
+        //    // Lấy UserId từ người dùng hiện tại
+        //    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Hoặc tùy theo cách bạn lưu trữ thông tin người dùng
+
+        //    var likeDomainModel = mapper.Map<Like>(like);
+        //    likeDomainModel.UserId = userId; // Gán UserId từ người dùng hiện tại
+        //    likeDomainModel.Usid = userId;  // Gán Usid là chính UserId của người dùng hiện tại
+
+        //    var result = await likeRepository.CreateLikeAsync(likeDomainModel);
+
+
+        //        return Ok(new ApiResponse<LikeDto>(201, "Đã thích bài viết thành công", mapper.Map<LikeDto>(likeDomainModel)));
+
+        //}
+
+
+        //// Delete like by id
+        //// DELETE: http://localhost:portnumber/api/likes/{id}
+        //[SwaggerOperation(Summary = "Delete a like", Description = "Xóa lượt thích theo id.")]
+        //[HttpDelete("{id:Guid}")]
+        //public async Task<IActionResult> Delete(Guid id)
+        //{
+        //    var likeDomainModel = await likeRepository.DeleteLikeAsync(id);
+        //    if (likeDomainModel == null)
+        //    {
+        //        return NotFound(new ApiResponse<string>(404, "Lượt thích không tồn tại", null));
+        //    }
+        //    return Ok(new ApiResponse<LikeDto>(200, "Xóa lượt thích thành công", mapper.Map<LikeDto>(likeDomainModel)));
+        //}
 
         // Check like exist
         // GET: http://localhost:portnumber/api/likes/{postId}/{userId}

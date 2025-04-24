@@ -17,9 +17,9 @@ namespace SocialVN.API.Controllers
     public class CommentsController : ControllerBase
     {
         private readonly ICommentRepository commentsRepository;
-        private readonly Mapper mapper;
+        private readonly IMapper mapper;
 
-        public CommentsController(ICommentRepository commentsRepository ,Mapper mapper)
+        public CommentsController(ICommentRepository commentsRepository , IMapper mapper)
         {
             this.commentsRepository = commentsRepository;
             this.mapper = mapper;
@@ -86,16 +86,22 @@ namespace SocialVN.API.Controllers
             {
                 return Unauthorized(new ApiResponse<string>(401, "Không thể xác định người dùng", null));
             }
-
-            var commentDomain = mapper.Map<Comment>(commentDto);
-            commentDomain.UserId = userId.ToString(); // Đảm bảo userId không bị thay đổi
-
-            var updated = await commentsRepository.UpdateCommentAsync(id, commentDomain);
+            var existingComment = await commentsRepository.GetCommentByIdAsync(id);
+            if (existingComment == null)
+            {
+                return NotFound(new ApiResponse<string>(404, "Không tìm thấy bình luận cần cập nhật", null));
+            }
+            if (existingComment.UserId != userId.ToString())
+            {
+                return StatusCode(403, new ApiResponse<string>(403, "Bạn không có quyền cập nhật bình luận này", null));
+            }
+            existingComment.Content = commentDto.Content;
+            existingComment.UpdatedAt = DateTime.UtcNow;
+            var updated = await commentsRepository.UpdateCommentAsync(id, existingComment);
             if (updated == null)
             {
                 return NotFound(new ApiResponse<string>(404, "Không tìm thấy bình luận cần cập nhật", null));
             }
-
             return Ok(new ApiResponse<string>(200, "Cập nhật bình luận thành công", null));
         }
 
@@ -105,12 +111,21 @@ namespace SocialVN.API.Controllers
         [HttpDelete("{id:Guid}")]
         public async Task<IActionResult> Delete(Guid id)
         {
-            var deleted = await commentsRepository.DeleteCommentAsync(id);
-            if (deleted == null)
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized(new ApiResponse<string>(401, "Không thể xác định người dùng", null));
+            }
+            var existingComment = await commentsRepository.GetCommentByIdAsync(id);
+            if (existingComment == null)
             {
                 return NotFound(new ApiResponse<string>(404, "Không tìm thấy bình luận cần xóa", null));
             }
-
+            if(existingComment.UserId != userId)
+            {
+                return StatusCode(403, new ApiResponse<string>(403, "Bạn không có quyền xóa bình luận này", null));
+            }
+            var deletedComment = await commentsRepository.DeleteCommentAsync(id);
             return Ok(new ApiResponse<string>(200, "Xóa bình luận thành công", null));
         }
 
