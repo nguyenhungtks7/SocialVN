@@ -56,19 +56,7 @@ namespace SocialVN.API.Controllers
             user.Occupation = dto.Occupation;
             user.Location = dto.Location;
             user.LivingPlace = dto.LivingPlace;
-            if (dto.Gender != null)
-            {
-                if (dto.Gender.Value.GetDisplayName() == "Male")
-                {
-                    user.Gender ="Nam";
-                }
-                else if(dto.Gender.Value.GetDisplayName() == "Female")
-                {
-                    user.Gender = "Nữ";
-                }
-                else
-                    user.Gender = "Khác";
-            }
+            user.Gender = dto.Gender.Value.GetDisplayName();
             user.PhoneNumber = dto.PhoneNumber;
 
             if (dto.Avatar != null)

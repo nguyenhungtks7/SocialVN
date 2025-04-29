@@ -27,7 +27,6 @@ namespace SocialVN.API.Controllers
         // GET all comments
         // GET: http:localhost:portnumber/api/comments
 
-        // GET all comments with sorting & pagination
         [SwaggerOperation(Summary = "Retrieve a list of comments")]
         [HttpGet]
         public async Task<IActionResult> GetAll([FromQuery] string? sortBy, [FromQuery] bool? isAscending,
@@ -43,7 +42,7 @@ namespace SocialVN.API.Controllers
         [HttpGet("{id:Guid}")]
         public async Task<IActionResult> GetById(Guid id)
         {
-            var comment = await commentsRepository.GetCommentByIdAsync(id);
+            var comment = await commentsRepository.GetByIdAsync(id);
             if (comment == null)
             {
                 return NotFound(new ApiResponse<string>(404, "Không tìm thấy bình luận", null));
@@ -70,7 +69,7 @@ namespace SocialVN.API.Controllers
             comment.CreatedAt = DateTime.UtcNow;
             comment.UpdatedAt = DateTime.UtcNow;
 
-            var created = await commentsRepository.CreateCommentAsync(comment);
+            var created = await commentsRepository.CreateAsync(comment);
 
             return Ok(new ApiResponse<string>(201, "Người dùng đã tạo bình luận thành công", null));
         }
@@ -86,7 +85,7 @@ namespace SocialVN.API.Controllers
             {
                 return Unauthorized(new ApiResponse<string>(401, "Không thể xác định người dùng", null));
             }
-            var existingComment = await commentsRepository.GetCommentByIdAsync(id);
+            var existingComment = await commentsRepository.GetByIdAsync(id);
             if (existingComment == null)
             {
                 return NotFound(new ApiResponse<string>(404, "Không tìm thấy bình luận cần cập nhật", null));
@@ -97,7 +96,7 @@ namespace SocialVN.API.Controllers
             }
             existingComment.Content = commentDto.Content;
             existingComment.UpdatedAt = DateTime.UtcNow;
-            var updated = await commentsRepository.UpdateCommentAsync(id, existingComment);
+            var updated = await commentsRepository.UpdateAsync(existingComment);
             if (updated == null)
             {
                 return NotFound(new ApiResponse<string>(404, "Không tìm thấy bình luận cần cập nhật", null));
@@ -116,7 +115,7 @@ namespace SocialVN.API.Controllers
             {
                 return Unauthorized(new ApiResponse<string>(401, "Không thể xác định người dùng", null));
             }
-            var existingComment = await commentsRepository.GetCommentByIdAsync(id);
+            var existingComment = await commentsRepository.GetByIdAsync(id);
             if (existingComment == null)
             {
                 return NotFound(new ApiResponse<string>(404, "Không tìm thấy bình luận cần xóa", null));
@@ -125,7 +124,7 @@ namespace SocialVN.API.Controllers
             {
                 return StatusCode(403, new ApiResponse<string>(403, "Bạn không có quyền xóa bình luận này", null));
             }
-            var deletedComment = await commentsRepository.DeleteCommentAsync(id);
+            await commentsRepository.DeleteAsync(id);
             return Ok(new ApiResponse<string>(200, "Xóa bình luận thành công", null));
         }
 

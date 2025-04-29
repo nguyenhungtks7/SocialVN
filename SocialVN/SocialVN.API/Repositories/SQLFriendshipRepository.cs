@@ -6,29 +6,21 @@ using SocialVN.API.Models.Domain;
 
 namespace SocialVN.API.Repositories
 {
-    public class SQLFriendshipRepository: IFriendshipRepository
+    public class SQLFriendshipRepository: GenericRepository<Friendship>, IFriendshipRepository
     {
-        private readonly SocialVNDbContext dbContext;
-        public SQLFriendshipRepository(SocialVNDbContext dbContext)
+        public SQLFriendshipRepository(SocialVNDbContext dbContext):base(dbContext)
         {
-               this.dbContext = dbContext;
+           
         }
-        public async Task<Friendship?> GetByIdAsync(Guid requestId)
-        {
-            return await dbContext.Friendships
-                .Include(f => f.Requester)
-                .Include(f => f.Receiver)
-                .FirstOrDefaultAsync(f => f.Id == requestId);
-        }
+   
         //Send a friend request
-        public async Task<Friendship> SendRequestAsync(Friendship friendship)
-        {
-            await dbContext.Friendships.AddAsync(friendship);
-            await dbContext.SaveChangesAsync();
-            return friendship;
-        }
+        //public async Task<Friendship> SendRequestAsync(Friendship friendship)
+        //{
+        //    await CreateAsync(friendship);
+        //    return friendship;
+        //}
 
-        //Accept a friend request
+
         public async Task<Friendship> AcceptRequestAsync(Guid requestId)
         {
             var friendship = await dbContext.Friendships.FindAsync(requestId);
@@ -36,12 +28,11 @@ namespace SocialVN.API.Repositories
             {
                 friendship.StatusEnum = FriendshipStatus.Accepted;
                 friendship.UpdatedAt = DateTime.Now;
-                await dbContext.SaveChangesAsync();
+                await SaveAsync();
             }
             return friendship;
         }
 
-        //Cancel a friend request
         public async Task<Friendship> CancelRequestAsync(Guid requestId)
         {
             var friendship = await dbContext.Friendships
@@ -49,13 +40,13 @@ namespace SocialVN.API.Repositories
             if (friendship != null)
             {
                 dbContext.Friendships.Remove(friendship);
-                await dbContext.SaveChangesAsync();
+                await SaveAsync();
             }
             return friendship;
         }
 
 
-        //Check if a user is a friend
+
         public async Task<FriendshipStatus> CheckFriendshipStatusAsync(string userId, string friendId)
         {
             var friendship = await dbContext.Friendships
@@ -64,7 +55,7 @@ namespace SocialVN.API.Repositories
             return friendship?.StatusEnum ?? FriendshipStatus.NotFriends;
         }
 
-        //Get a list of friend requests
+
         public async Task<List<Friendship>> ListFriendRequestsAsync(Guid userId)
         {
             string userIdStr = userId.ToString();
@@ -95,8 +86,8 @@ namespace SocialVN.API.Repositories
             if (friendship != null)
             {
                 friendship.StatusEnum = FriendshipStatus.Rejected;
-                friendship.UpdatedAt = DateTime.Now; 
-                await dbContext.SaveChangesAsync();
+                friendship.UpdatedAt = DateTime.Now;
+                await SaveAsync();
             }
             return friendship;
         }
@@ -108,7 +99,7 @@ namespace SocialVN.API.Repositories
             if (friendship != null)
             {
                 dbContext.Friendships.Remove(friendship);
-                await dbContext.SaveChangesAsync();
+                await SaveAsync();
             }
             
             return friendship;
@@ -126,9 +117,9 @@ namespace SocialVN.API.Repositories
 
             var friendships = await dbContext.Friendships
                 .Where(f => (f.RequesterId == userId || f.ReceiverId == userId) &&
-                            f.Status == FriendshipStatus.Accepted.ToString() &&  // Chuyển StatusEnum sang int
+                            f.Status == FriendshipStatus.Accepted.ToString() && 
                             f.CreatedAt >= lastWeek)
-                .Select(f => f.RequesterId == userId ? f.Receiver : f.Requester)  // Lấy người bạn mới
+                .Select(f => f.RequesterId == userId ? f.Receiver : f.Requester) 
                 .ToListAsync();
 
             return friendships;

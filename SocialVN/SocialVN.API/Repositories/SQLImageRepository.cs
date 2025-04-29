@@ -14,22 +14,7 @@ namespace SocialVN.API.Repositories
         public SQLImageRepository(IWebHostEnvironment env, IConfiguration config)
         {
             _clientId = config["ImgurClientId"];
-        }
-
-        public async Task<string> UploadAsync(IFormFile file)
-        {
-            var uploadsFolder = Path.Combine(env.ContentRootPath, "Images");
-            Directory.CreateDirectory(uploadsFolder);
-
-            var fileName = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
-            var filePath = Path.Combine(uploadsFolder, fileName);
-
-            using var stream = new FileStream(filePath, FileMode.Create);
-            await file.CopyToAsync(stream);
-
-            return $"/Images/{fileName}";
-        }
-
+        } 
         public bool IsValidImage(IFormFile file)
         {
             var extension = Path.GetExtension(file.FileName).ToLower();
@@ -60,32 +45,6 @@ namespace SocialVN.API.Repositories
             var json = JObject.Parse(await response.Content.ReadAsStringAsync());
             return json["data"]?["link"]?.ToString()
                    ?? throw new Exception("Không lấy được link ảnh từ response.");
-        
-            //if (!IsValidImage(file))
-            //{
-            //    throw new InvalidOperationException("Invalid image file.");
-            //}
-
-            //using var client = new HttpClient();
-            //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Client-ID", imgurClientId);
-
-            //using var content = new MultipartFormDataContent();
-            //using var fileStream = file.OpenReadStream();
-            //var streamContent = new StreamContent(fileStream);
-            //streamContent.Headers.ContentType = new MediaTypeHeaderValue(file.ContentType);
-            //content.Add(streamContent, "image", file.FileName);
-
-            //var response = await client.PostAsync("https://api.imgur.com/3/image", content);
-            //response.EnsureSuccessStatusCode();
-            //if (!response.IsSuccessStatusCode)
-            //{
-            //    var error = await response.Content.ReadAsStringAsync();
-            //    throw new Exception($"Imgur upload failed: {response.StatusCode} - {error}");
-            //}
-            //var responseBody = await response.Content.ReadAsStringAsync();
-            //var jsonResponse = JsonSerializer.Deserialize<ImgurResponse>(responseBody);
-
-            //return jsonResponse?.Data?.Link ?? throw new Exception("Failed to upload image to Imgur.");
         }
     }
 }

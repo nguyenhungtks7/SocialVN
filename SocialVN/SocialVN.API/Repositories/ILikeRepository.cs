@@ -3,15 +3,11 @@ using System;
 
 namespace SocialVN.API.Repositories
 {
-    public interface ILikeRepository
+    public interface ILikeRepository : IGenericRepository<Like>
     {
-
-     
-        Task<Like> CreateLikeAsync(Like like);
-        Task<Like> DeleteLikeAsync(Guid id);
         Task<bool> IsLikeExistAsync(Guid postId, Guid userId);
         Task<int> CountLikesAsync(Guid postId);
-        //Task<List<User>> GetUsersWhoLikedAsync(Guid postId);
+
         Task<IEnumerable<Like>> GetLikesInLastWeek(string userId);
         Task<Like?> GetLikeByUserAndPostAsync(string userId, Guid postId);
     }

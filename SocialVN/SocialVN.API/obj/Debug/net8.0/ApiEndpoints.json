@@ -280,22 +280,6 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "FriendshipsController",
-    "Method": "CheckFriendshipStatus",
-    "RelativePath": "api/Friendships/status/{otherUserId}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "otherUserId",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "SocialVN.API.Controllers.LikesController",
     "Method": "ToggleLike",
     "RelativePath": "api/Likes/Toggle-like",

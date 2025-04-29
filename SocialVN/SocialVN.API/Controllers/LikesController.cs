@@ -48,7 +48,7 @@ namespace SocialVN.API.Controllers
             if (existingLike != null)
             {
 
-                var deletedLike = await likeRepository.DeleteLikeAsync(existingLike.Id);
+                await likeRepository.DeleteAsync(existingLike.Id);
                 return Ok(new ApiResponse<string>(200, "Đã bỏ thích bài viết", null));
             }
             else
@@ -58,7 +58,7 @@ namespace SocialVN.API.Controllers
                 likeDomainModel.UserId = userId;
                 likeDomainModel.CreatedAt = DateTime.UtcNow;
                 likeDomainModel.UpdatedAt   = DateTime.UtcNow;
-                var createdLike = await likeRepository.CreateLikeAsync(likeDomainModel);
+                var createdLike = await likeRepository.CreateAsync(likeDomainModel);
                 return Ok(new ApiResponse<LikeDto>(201, "Đã thích bài viết thành công", mapper.Map<LikeDto>(createdLike)));
             }
 

@@ -78,14 +78,14 @@ builder.Services.AddDbContext<SocialVNDbContext>(options =>
 //Đăng ký AutoMapper và thêm cấu hình ánh xạ từ AutoMapperProfiles
 builder.Services.AddAutoMapper(typeof(AutomapperProfiles));
 builder.Services.AddScoped<IImageRepository, SQLImageRepository>();
-//Tiêm các kho lưu trữ vào bộ điều khiển
+
 builder.Services.AddScoped<ITokenRepository, TokenRepository>();
 //builder.Services.AddScoped<IUserRepository, SQLUserRepository>(); 
 builder.Services.AddScoped<IPostRepository, SQLPostRepository>();
 builder.Services.AddScoped<ICommentRepository, SQLCommentRepository>();
 builder.Services.AddScoped<IFriendshipRepository, SQLFriendshipRepository>();
 builder.Services.AddScoped<ILikeRepository, SQLLikeRepository>();
-
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 // Đăng ký Identity Core với IdentityUser và thêm các dịch vụ liên quan
 builder.Services.AddIdentityCore<ApplicationUser>()
     // Thêm dịch vụ quản lý vai trò cho IdentityRole
@@ -102,12 +102,12 @@ builder.Services.AddIdentityCore<ApplicationUser>()
 builder.Services.Configure<IdentityOptions>(
     options =>
     {
-        options.Password.RequireDigit = false; // Không yêu cầu mật khẩu phải có chữ số
-        options.Password.RequireLowercase = false; // Không yêu cầu mật khẩu phải có chữ cái viết thường
-        options.Password.RequireNonAlphanumeric = false; // Không yêu cầu mật khẩu phải có ký tự không phải là chữ hoặc số
-        options.Password.RequireUppercase = false; // Không yêu cầu mật khẩu phải có chữ cái viết hoa
-        options.Password.RequiredLength = 6; // Mật khẩu phải dài ít nhất 6 ký tự
-        options.Password.RequiredUniqueChars = 1; // Mật khẩu phải có ít nhất 1 ký tự khác biệt
+        options.Password.RequireDigit = false; 
+        options.Password.RequireLowercase = false; 
+        options.Password.RequireNonAlphanumeric = false; 
+        options.Password.RequireUppercase = false; 
+        options.Password.RequiredLength = 6; 
+        options.Password.RequiredUniqueChars = 1; 
     }
 );
 

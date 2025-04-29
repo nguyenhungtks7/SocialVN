@@ -77,7 +77,7 @@ namespace SocialVN.API.Controllers
         [HttpGet("{id:Guid}")]
         public async Task<IActionResult> GetById(Guid id)
         {
-            var postDomainModel = await postRepository.GetByIdAsync(id);
+            var postDomainModel = await postRepository.GetPostByIdWithDetailsAsync(id);
             if (postDomainModel == null)
             {
                 return NotFound();
@@ -178,24 +178,33 @@ namespace SocialVN.API.Controllers
             {
                 return BadRequest(new ApiResponse<string>(403, "Bạn không có quyền chỉnh sửa bài viết này", null));
             }
-            var postDomainModel = mapper.Map<Post>(post);
-            postDomainModel.UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            if (postDomainModel.ImageFile != null)
+
+            //var postDomainModel = mapper.Map<Post>(post);
+
+            if (existingPost == null)
             {
-                if (!imageRepository.IsValidImage(postDomainModel.ImageFile))
+                return NotFound(new ApiResponse<string>(404, "Không tìm thấy bài viết", null));
+            }
+            existingPost.UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (post.ImageFile != null)
+            {
+                if (!imageRepository.IsValidImage(post.ImageFile))
                 {
                     return BadRequest(new ApiResponse<string>(400, "Tệp không hợp lệ. Chỉ chấp nhận các tệp .jpg, .jpeg, .png và kích thước không quá 10MB.", null));
                 }
-                var imgPath = await imageRepository.UploadToImgurAsync(postDomainModel.ImageFile);
-                postDomainModel.Image = imgPath;
+                var imgPath = await imageRepository.UploadToImgurAsync(post.ImageFile);
+                existingPost.Image = imgPath;
             }
-            postDomainModel.UpdatedAt = DateTime.Now;
+            existingPost.Content = post.Content;
+            existingPost.UpdatedAt = DateTime.Now;
             
-            var updatedPost = await postRepository.UpdateAsync(id, postDomainModel);
+            var updatedPost = await postRepository.UpdateAsync(existingPost);
             if (updatedPost == null)
             {
-                return NotFound();
+                return NotFound(new ApiResponse<string>(404, "Không tìm thấy bài viết", null));
             }
+
+
             return Ok(new ApiResponse<PostDto>(200, "Cập nhật bài viết thành công", null));
         }
         // Delete post by id
@@ -224,12 +233,9 @@ namespace SocialVN.API.Controllers
                 return StatusCode(403, new ApiResponse<string>(403, "Bạn không có quyền xóa bài viết này", null));
             }
 
-            var postDomainModel = await postRepository.DeleteAsync(id);
-            if (postDomainModel == null)
-            {
-                return NotFound();
-            }
-            return Ok(new ApiResponse<PostDto>(200, "Xóa bài viết thành công", mapper.Map<PostDto>(postDomainModel)));
+            await postRepository.DeleteAsync(id);
+
+            return Ok(new ApiResponse<PostDto>(200, "Xóa bài viết thành công", null));
         }
 
     }

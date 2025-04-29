@@ -1,21 +1,17 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\",
+  "WorkspaceRootPath": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\c#\\mangxahoic#\\socialvn\\socialvn\\socialvn.api\\controllers\\friendshipscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\controllers\\friendshipscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn\\socialvn.api\\repositories\\sqlcommentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\repositories\\sqlcommentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\c#\\mangxahoic#\\socialvn\\socialvn\\socialvn.api\\repositories\\sqlfriendshiprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\repositories\\sqlfriendshiprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn\\socialvn.api\\repositories\\icommentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\repositories\\icommentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\c#\\mangxahoic#\\socialvn\\socialvn\\socialvn.api\\models\\domain\\friendship.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\models\\domain\\friendship.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\c#\\mangxahoic#\\socialvn\\socialvn\\socialvn.api\\controllers\\commentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|d:\\workspace\\bai_tap\\prj-learn\\socialvn\\socialvn\\socialvn\\socialvn.api\\controllers\\commentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{42414451-CE47-41F3-BC90-85A72E86381B}|SocialVN.API\\SocialVN.API.csproj|solutionrelative:socialvn.api\\controllers\\commentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -26,67 +22,44 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SQLCommentRepository.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN\\SocialVN.API\\Repositories\\SQLCommentRepository.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Repositories\\SQLCommentRepository.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN\\SocialVN.API\\Repositories\\SQLCommentRepository.cs",
+              "RelativeToolTip": "SocialVN.API\\Repositories\\SQLCommentRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-29T06:54:59.276Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "SQLFriendshipRepository.cs",
-              "DocumentMoniker": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Repositories\\SQLFriendshipRepository.cs",
-              "RelativeDocumentMoniker": "SocialVN.API\\Repositories\\SQLFriendshipRepository.cs",
-              "ToolTip": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Repositories\\SQLFriendshipRepository.cs",
-              "RelativeToolTip": "SocialVN.API\\Repositories\\SQLFriendshipRepository.cs",
-              "ViewState": "AgIAAGsAAAAAAAAAAAAUwG0AAAAsAAAAAAAAAA==",
+              "Title": "ICommentRepository.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN\\SocialVN.API\\Repositories\\ICommentRepository.cs",
+              "RelativeDocumentMoniker": "SocialVN.API\\Repositories\\ICommentRepository.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN\\SocialVN.API\\Repositories\\ICommentRepository.cs",
+              "RelativeToolTip": "SocialVN.API\\Repositories\\ICommentRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAkAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-24T22:04:35.404Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FriendshipsController.cs",
-              "DocumentMoniker": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Controllers\\FriendshipsController.cs",
-              "RelativeDocumentMoniker": "SocialVN.API\\Controllers\\FriendshipsController.cs",
-              "ToolTip": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Controllers\\FriendshipsController.cs",
-              "RelativeToolTip": "SocialVN.API\\Controllers\\FriendshipsController.cs",
-              "ViewState": "AgIAAIYAAAAAAAAAAAAswJcAAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-24T22:04:17.456Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-29T06:54:54.294Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Friendship.cs",
-              "DocumentMoniker": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Models\\Domain\\Friendship.cs",
-              "RelativeDocumentMoniker": "SocialVN.API\\Models\\Domain\\Friendship.cs",
-              "ToolTip": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Models\\Domain\\Friendship.cs",
-              "RelativeToolTip": "SocialVN.API\\Models\\Domain\\Friendship.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-24T21:55:24.854Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "CommentsController.cs",
-              "DocumentMoniker": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Controllers\\CommentsController.cs",
+              "DocumentMoniker": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN\\SocialVN.API\\Controllers\\CommentsController.cs",
               "RelativeDocumentMoniker": "SocialVN.API\\Controllers\\CommentsController.cs",
-              "ToolTip": "D:\\C#\\MangxahoiC#\\SocialVN\\SocialVN\\SocialVN.API\\Controllers\\CommentsController.cs",
+              "ToolTip": "D:\\Workspace\\Bai_tap\\Prj-learn\\SocialVN\\SocialVN\\SocialVN\\SocialVN.API\\Controllers\\CommentsController.cs",
               "RelativeToolTip": "SocialVN.API\\Controllers\\CommentsController.cs",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAuwDsAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAAwGAAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-24T03:41:03.324Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-29T06:48:03.183Z"
             }
           ]
         }

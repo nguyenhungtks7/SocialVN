@@ -25,7 +25,6 @@ public class FriendshipsController : ControllerBase
         this.mapper = mapper;
     }
 
-    // 1. Send friend request
     [SwaggerOperation(Summary = "Send friend request", Description = "Gửi yêu cầu kết bạn.")]
     [HttpPost]
     public async Task<IActionResult> SendFriendRequest([FromBody] AddFriendshipRequestDto dto)
@@ -47,12 +46,12 @@ public class FriendshipsController : ControllerBase
             UpdatedAt   = DateTime.UtcNow
         };
 
-        await friendshipRepository.SendRequestAsync(entity);
+        await friendshipRepository.CreateAsync(entity);
  
         return Ok(new ApiResponse<FriendshipDto>(200, "Gửi yêu cầu thành công", null));
     }
 
-    // 2. Accept friend request
+ 
     [SwaggerOperation(Summary = "Accept friend request", Description = "Chấp nhận yêu cầu kết bạn.")]
     [HttpPut("accept/{requestId:Guid}")]
     public async Task<IActionResult> AcceptFriendRequest(Guid requestId)
@@ -73,7 +72,7 @@ public class FriendshipsController : ControllerBase
         return Ok(new ApiResponse<FriendshipDto>(200, "Chấp nhận kết bạn thành công", null));
     }
 
-    // 3. Cancel friend request
+ 
     [SwaggerOperation(Summary = "Cancel friend request", Description = "Hủy yêu cầu kết bạn.")]
     [HttpDelete("cancel/{requestId:Guid}")]
     public async Task<IActionResult> CancelFriendRequest(Guid requestId)
@@ -89,12 +88,12 @@ public class FriendshipsController : ControllerBase
         if (entity.RequesterId != userId)
             return StatusCode(403, new ApiResponse<string>(403, "Bạn không có quyền hủy yêu cầu này", null));
 
-        entity = await friendshipRepository.CancelRequestAsync(requestId);
+         await friendshipRepository.DeleteAsync(requestId);
        
         return Ok(new ApiResponse<FriendshipDto>(200, "Hủy yêu cầu thành công", null));
     }
 
-    // 4. Reject friend request
+
     [SwaggerOperation(Summary = "Reject friend request", Description = "Từ chối yêu cầu kết bạn.")]
     [HttpDelete("reject/{requestId:Guid}")]
     public async Task<IActionResult> RejectFriendRequest(Guid requestId)
@@ -115,7 +114,7 @@ public class FriendshipsController : ControllerBase
         return Ok(new ApiResponse<FriendshipDto>(200, "Từ chối yêu cầu thành công", null));
     }
 
-    // 5. Remove friend
+ 
     [SwaggerOperation(Summary = "Remove friend", Description = "Xóa bạn bè.")]
     [HttpDelete("remove/{friendshipId:Guid}")]
     public async Task<IActionResult> RemoveFriend(Guid friendshipId)
@@ -151,7 +150,7 @@ public class FriendshipsController : ControllerBase
     //    return Ok(new ApiResponse<FriendshipStatus>(200, null, status));
     //}
 
-    // 7. Get friends list
+
     [SwaggerOperation(Summary = "Get friends list", Description = "Lấy danh sách bạn bè.")]
     [HttpGet("friends")]
     public async Task<IActionResult> GetFriendsList()
@@ -165,7 +164,7 @@ public class FriendshipsController : ControllerBase
         return Ok(new ApiResponse<List<UserDto>>(200, null, resultDtos));
     }
 
-    // 8. Get incoming friend requests
+   
     [SwaggerOperation(Summary = "Get friend requests", Description = "Lấy danh sách yêu cầu kết bạn đến.")]
     [HttpGet("requests")]
     public async Task<IActionResult> GetFriendRequests()

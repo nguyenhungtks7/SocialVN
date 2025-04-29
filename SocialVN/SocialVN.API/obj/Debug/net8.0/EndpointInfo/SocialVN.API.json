@@ -467,31 +467,6 @@
         }
       }
     },
-    "/api/Friendships/status/{otherUserId}": {
-      "get": {
-        "tags": [
-          "Friendships"
-        ],
-        "summary": "Check friendship status",
-        "description": "Kiểm tra trạng thái kết bạn.",
-        "parameters": [
-          {
-            "name": "otherUserId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/Friendships/friends": {
       "get": {
         "tags": [

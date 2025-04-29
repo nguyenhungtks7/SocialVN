@@ -3,10 +3,10 @@ using SocialVN.API.Models.Domain;
 
 namespace SocialVN.API.Repositories
 {
-    public interface IFriendshipRepository
+    public interface IFriendshipRepository:IGenericRepository<Friendship>
     {
-        Task<Friendship?> GetByIdAsync(Guid requestId);
-        Task<Friendship> SendRequestAsync(Friendship friendship);
+        //Task<Friendship?> GetByIdAsync(Guid requestId);
+        //Task<Friendship> SendRequestAsync(Friendship friendship);
         Task<Friendship> AcceptRequestAsync(Guid requestId);
         Task<Friendship> RejectRequestAsync(Guid requestId);
         Task<Friendship> CancelRequestAsync(Guid requestId);
