@@ -154,6 +154,17 @@ builder.Services.AddControllers()
         options.JsonSerializerOptions.WriteIndented = true;
     });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReactApp",
+        policy => policy
+            .WithOrigins("http://localhost:3000")
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials()
+    );
+});
+
 
 builder.Services.AddHttpContextAccessor();
 
@@ -165,6 +176,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+// Bật CORS trước app.UseAuthorization()
+app.UseCors("AllowReactApp");
 
 app.UseHttpsRedirection();
 // Kích hoạt middleware xác thực để xử lý yêu cầu xác thực người dùng
